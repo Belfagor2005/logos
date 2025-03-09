@@ -2,8 +2,8 @@ name: Count Graphic Files
 
 on:
   schedule:
-    - cron: '0 2 * * 1'  # Ogni lunedì alle 02:00 UTC (puoi cambiare l'orario qui)
-  workflow_dispatch:  # Permette di avviarlo manualmente
+    - cron: '0 2 * * 1'  # lunedì 02:00 UTC
+  workflow_dispatch:
 
 jobs:
   count-graphic-files:
@@ -14,16 +14,12 @@ jobs:
 
       - name: Count graphic files
         run: |
-          # Definisce le estensioni dei file grafici
           extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' \)"
           
-          # Conta i file di grafica nel repository
           total_files=$(find . -type f $extensions | wc -l)
 
-          # Crea la cartella txt se non esiste
           mkdir -p txt
 
-          # Crea il file di testo con il numero di file grafici
           txt_file="txt/Number Picons (${total_files}).txt"
           echo "Number of graphic files: $total_files" > "$txt_file"
           
