@@ -37,11 +37,11 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          # Add the updated files (README and Number Picons txt)
-          git add README.md "Number Picons ($GRAPHIC_COUNT).txt"
+          # Add the updated files (README and the correctly named NumberPicons txt)
+          git add README.md "NumberPicons$GRAPHIC_COUNT.txt"
 
           # Commit the changes
-          git commit -m "Updated number of graphic files in README and Number Picons txt"
+          git commit -m "Updated number of graphic files in README and NumberPicons txt"
 
           # Push the changes (with force in case of conflicts)
           git push --force
