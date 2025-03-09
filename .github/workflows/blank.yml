@@ -38,6 +38,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+          git config --global core.compression 0
           git add *.zip
           git commit -m "Added zipped folders"
-          git push
+          git push || git push --force
