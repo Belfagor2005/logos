@@ -14,25 +14,23 @@ jobs:
 
       - name: Count graphic files
         run: |
-          extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' -o -name '*.bmp' -o -name '*.tiff' -o -name '*.webp' -o -name '*.ico' -o -name '*.psd' \)"
+          # Definisce le estensioni dei file grafici
+          extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' \)"
           
           total_files=$(find . -type f $extensions | wc -l)
 
-          mkdir -p txt
+          # mkdir -p txt
 
-          txt_file="txt/Number Picons (${total_files}).txt"
+          txt_file="NumberPicons${total_files}.txt"
           echo "Number of graphic files: $total_files" > "$txt_file"
           
           echo "File created: $txt_file with $total_files graphic files."
 
-      - name: Pull the latest changes
+      - name: Commit and push file with graphic count
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git pull origin main || echo "No changes to pull"
 
-      - name: Commit and push file with graphic count
-        run: |
           git add txt/*.txt
           git commit -m "Added number of graphic files"
           git push || git push --force
