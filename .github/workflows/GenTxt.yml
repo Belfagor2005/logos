@@ -1,41 +1,39 @@
-name: Generate File List
+name: Count Graphic Files
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
-  workflow_dispatch:  # Permette di avviarlo manualmente
+    - cron: '0 2 * * 1'  # lunedì 02:00 UTC
+  workflow_dispatch:
 
 jobs:
-  list-files:
+  count-graphic-files:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Remove existing txt files
-        run:
-          rm -rf txt
-
-      - name: Create txt files with file list
+      - name: Count graphic files
         run: |
+          # Definisce le estensioni dei file grafici
+          extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' \)"
+          
+          # Conta i file di grafica nel repository
+          total_files=$(find . -type f $extensions | wc -l)
+
+          # Crea la cartella txt se non esiste
           mkdir -p txt
 
-          for folder in logos/*; do
-            if [ -d "$folder" ]; then
-              folder_name=$(basename "$folder")
-              txt_file="txt/${folder_name}.txt"
+          # Crea il file di testo con il numero di file grafici
+          txt_file="txt/Number Picons (${total_files}).txt"
+          echo "Number of graphic files: $total_files" > "$txt_file"
+          
+          echo "File created: $txt_file with $total_files graphic files."
 
-              find "$folder" -type f -name "*.jpg" -o -name "*.png" -o -name "*.gif" | sort > "$txt_file"
-
-              echo "File list for folder $folder_name has been created at $txt_file"
-            fi
-          done
-
-      - name: Commit and push file lists
+      - name: Commit and push file with graphic count
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
           git add txt/*.txt
-          git commit -m "Added file lists for folders"
+          git commit -m "Added number of graphic files"
           git push || git push --force
