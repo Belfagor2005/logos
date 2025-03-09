@@ -1,4 +1,4 @@
-name: Count Graphic Files and Update README
+name: Count and Update Graphic Files
 
 on:
   schedule:
@@ -12,51 +12,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Count graphic files
+      - name: Configure Git to handle large pushes
         run: |
-          # Define graphic file extensions
-          extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' -o -name '*.bmp' -o -name '*.tiff' -o -name '*.webp' -o -name '*.ico' -o -name '*.psd' \)"
-          
-          # Count graphic files in the repository
-          total_files=$(find . -type f $extensions | wc -l)
-
-          # Create 'txt' folder if it does not exist
-          mkdir -p txt
-
-          # Create the text file with the number of graphic files
-          txt_file="NumberPicons${total_files}.txt"
-          echo "Number of graphic files: $total_files" > "$txt_file"
-          
-          echo "File created: $txt_file with $total_files graphic files."
-
-      - name: Update README.md with number of graphic files
-        run: |
-          # Update the README file with the number of graphic files
-          readme_file="README.md"
-          if grep -q "Number of graphic files" "$readme_file"; then
-            # If line exists, replace it
-            sed -i "s/Number of graphic files: .*/Number of graphic files: $total_files/" "$readme_file"
-          else
-            # Otherwise, append it to the end of the file
-            echo "Number of Picons files on Github: $total_files" >> "$readme_file"
-          fi
+          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
 
       - name: Pull the latest changes
         run: |
-          # Set git configuration for the commit
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git fetch --all
+          git reset --hard origin/main || echo "No changes to pull"
+
+      - name: Count graphic files and update number
+        run: |
+          # Count the graphic files (png, jpg, gif, svg, etc.)
+          GRAPHIC_COUNT=$(find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.svg" \) | wc -l)
+
+          # Create or update the file with the graphic count in the root folder with the correct name
+          echo "Number of graphic files: $GRAPHIC_COUNT" > "NumberPicons$GRAPHIC_COUNT.txt"
           
-          # Pull latest changes from remote to avoid conflicts
-          git pull origin main || echo "No changes to pull"
+          # Update README with the number of graphic files
+          sed -i "s/Number of graphic files:.*/Number of graphic files: $GRAPHIC_COUNT/" README.md || echo "Number of graphic files: $GRAPHIC_COUNT" >> README.md
 
       - name: Commit and push changes
         run: |
-          # Add the updated README.md and other text files to git
-          git add README.md txt/*.txt
-          
-          # Commit changes
-          git commit -m "Updated number of graphic files in README"
-          
-          # Push changes to remote, force push in case of conflicts
-          git push || git push --force
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          # Add the updated files (README and Number Picons txt)
+          git add README.md "Number Picons ($GRAPHIC_COUNT).txt"
+
+          # Commit the changes
+          git commit -m "Updated number of graphic files in README and Number Picons txt"
+
+          # Push the changes (with force in case of conflicts)
+          git push --force
