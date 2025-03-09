@@ -18,22 +18,16 @@ jobs:
 
       - name: Zip folders
         run: |
-          zip -r zip/CRYPT.zip logo/CRYPT
-          zip -r zip/EMU.zip logo/EMU
-          zip -r zip/IPTV.zip logo/IPTV
-          zip -r zip/PROVIDER.zip logo/PROVIDER
-          zip -r zip/SAT.zip logo/SAT
-          zip -r zip/SNP.zip logo/SNP
-          zip -r zip/SRF.zip logo/SRF
-          zip -r zip/VOD.zip logo/VOD
-          zip -r zip/VOD_ANIMATION.zip logo/VOD/ANIMATION-
-          zip -r zip/VOD_GENRE.zip logo/VOD/GENRE
-          zip -r zip/VOD_SERIES.zip logo/VOD/SERIES
+          for dir in logo/CRYPT logo/EMU logo/IPTV logo/PROVIDER logo/SAT logo/SNP logo/SRF logo/VOD logo/VOD/ANIMATION- logo/VOD/GENRE logo/VOD/SERIES; do
+            if [ -d "$dir" ]; then
+              zip -r "zip/$(basename $dir).zip" "$dir"
+            fi
+          done
 
       - name: Commit and push zipped files
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add zip/*.zip
-          git commit -m "Added zipped folders"
-          git push
+          git commit -m "Added zipped folders" || echo "No changes to commit"
+          git push || echo "No changes to push"
