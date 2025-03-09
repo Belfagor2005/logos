@@ -1,3 +1,17 @@
+name: Weekly Zipping
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
+  workflow_dispatch:  # Permette di avviarlo manualmente
+
+jobs:
+  zip-folders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Create zip files (max 50MB each)
         run: |
           mkdir -p zip
