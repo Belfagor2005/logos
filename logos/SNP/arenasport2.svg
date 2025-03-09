@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 283.5 283.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Nepojmenovaný_přechod_27-3);
+      }
+
+      .cls-2 {
+        fill: url(#Nepojmenovaný_přechod_27-2);
+      }
+
+      .cls-3 {
+        fill: url(#Nepojmenovaný_přechod_27-4);
+      }
+
+      .cls-4 {
+        fill: url(#Nepojmenovaný_přechod_20-2);
+      }
+
+      .cls-5 {
+        fill: url(#Nepojmenovaný_přechod_20-4);
+      }
+
+      .cls-6 {
+        fill: url(#Nepojmenovaný_přechod_20-5);
+      }
+
+      .cls-7 {
+        fill: url(#Nepojmenovaný_přechod_20-3);
+      }
+
+      .cls-8 {
+        fill: url(#Nepojmenovaný_přechod_20-8);
+      }
+
+      .cls-9 {
+        fill: url(#Nepojmenovaný_přechod_20-7);
+      }
+
+      .cls-10 {
+        fill: url(#Nepojmenovaný_přechod_20-6);
+      }
+
+      .cls-11 {
+        fill: url(#Nepojmenovaný_přechod_20-9);
+      }
+
+      .cls-12 {
+        fill: url(#Nepojmenovaný_přechod_27);
+      }
+
+      .cls-13 {
+        fill: url(#Nepojmenovaný_přechod_20);
+      }
+
+      .cls-14 {
+        fill: url(#Nepojmenovaný_přechod_22);
+      }
+
+      .cls-15 {
+        fill: url(#Nepojmenovaný_přechod_24);
+      }
+
+      .cls-16 {
+        fill: #16387d;
+      }
+
+      .cls-17 {
+        fill: url(#Nepojmenovaný_přechod_20-10);
+      }
+
+      .cls-18 {
+        fill: url(#Nepojmenovaný_přechod_20-11);
+      }
+    </style>
+    <linearGradient id="Nepojmenovaný_přechod_20" data-name="Nepojmenovaný přechod 20" x1="122.8" y1="158.9" x2="125.9" y2="174.7" gradientTransform="translate(0 286) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e6e6e6"/>
+      <stop offset=".7" stop-color="#b3b3b3"/>
+      <stop offset="1" stop-color="#e6e6e6"/>
+    </linearGradient>
+    <linearGradient id="Nepojmenovaný_přechod_20-2" data-name="Nepojmenovaný přechod 20" x1="137.1" y1="153.6" x2="140.3" y2="182.3" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-3" data-name="Nepojmenovaný přechod 20" x1="148.6" y1="155.5" x2="157.8" y2="186.5" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-4" data-name="Nepojmenovaný přechod 20" x1="162.6" y1="151.2" x2="170.7" y2="184.7" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-5" data-name="Nepojmenovaný přechod 20" x1="179.3" y1="157.6" x2="187.1" y2="175.9" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-6" data-name="Nepojmenovaný přechod 20" x1="82.1" y1="116" x2="103.4" y2="150.1" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-7" data-name="Nepojmenovaný přechod 20" x1="116.6" y1="127.4" x2="133.3" y2="158.8" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-8" data-name="Nepojmenovaný přechod 20" x1="153.1" y1="135.4" x2="163.2" y2="163.2" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-9" data-name="Nepojmenovaný přechod 20" x1="176" y1="123.3" x2="196.4" y2="176.5" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-10" data-name="Nepojmenovaný přechod 20" x1="198.5" y1="124.7" x2="219" y2="197.7" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_20-11" data-name="Nepojmenovaný přechod 20" x1="224.1" y1="172.1" x2="228.6" y2="125.4" xlink:href="#Nepojmenovaný_přechod_20"/>
+    <linearGradient id="Nepojmenovaný_přechod_22" data-name="Nepojmenovaný přechod 22" x1="54.5" y1="148.1" x2="129.4" y2="128.5" gradientTransform="translate(0 286) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333"/>
+      <stop offset=".3" stop-color="#999"/>
+    </linearGradient>
+    <linearGradient id="Nepojmenovaný_přechod_27" data-name="Nepojmenovaný přechod 27" x1="48.5" y1="133.1" x2="63.9" y2="109.2" gradientTransform="translate(0 286) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333"/>
+      <stop offset=".3" stop-color="#999"/>
+    </linearGradient>
+    <linearGradient id="Nepojmenovaný_přechod_24" data-name="Nepojmenovaný přechod 24" x1="50.9" y1="129.2" x2="45.9" y2="137.3" gradientTransform="translate(0 286) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333"/>
+      <stop offset="1" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="Nepojmenovaný_přechod_27-2" data-name="Nepojmenovaný přechod 27" x1="47" y1="160" x2="63.1" y2="104.5" xlink:href="#Nepojmenovaný_přechod_27"/>
+    <linearGradient id="Nepojmenovaný_přechod_27-3" data-name="Nepojmenovaný přechod 27" x1="49.3" y1="130.3" x2="57" y2="184" xlink:href="#Nepojmenovaný_přechod_27"/>
+    <linearGradient id="Nepojmenovaný_přechod_27-4" data-name="Nepojmenovaný přechod 27" x1="40.4" y1="153.9" x2="85.1" y2="199.2" xlink:href="#Nepojmenovaný_přechod_27"/>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.7.1, SVG Export Plug-In . SVG Version: 1.2.0 Build 142)  -->
+  <g>
+    <g id="Vrstva_1">
+      <rect class="cls-16" width="283.5" height="283.5"/>
+      <g>
+        <g id="ARENA_SPORT_bk">
+          <g id="arena">
+            <path class="cls-13" d="M123.6,119.3c1.6,0,2.8.5,3.5,1.5l.3-1.1h4.1l-3.6,12h-4.1l.4-1.4h0c-1.2,1-2.8,1.7-4.4,1.7-3.5,0-5.1-2.8-4.1-6.3s4.4-6.4,7.9-6.4h0,0ZM122.1,128.5c1.6,0,3.1-1.2,3.6-2.8.5-1.7-.4-2.8-1.9-2.8s-3.2,1.2-3.7,2.8c-.5,1.6.3,2.8,2,2.8Z"/>
+            <path class="cls-4" d="M134.4,119.7h4.1l-.5,1.7h0s1.9-2.1,4.3-2.1,2.4.7,2.4.7l-2.8,3.5s-.6-.7-2-.7c-2.2,0-3.1,2.1-3.2,2.4l-1.9,6.3h-4.1l3.6-12h0Z"/>
+            <path class="cls-7" d="M147.6,126.2c-.6,1.8.8,2.5,1.9,2.5s2-.3,3.3-1.3l2.5,1.5c-2,2.3-4.5,3.1-7.2,3.1s-5.7-2.9-4.7-6.3c1-3.5,4.9-6.4,8.5-6.4s5.8,2.2,4.5,6.4c0,.2-.1.4-.2.6h-8.7s0,0,0,0ZM153,123.9c.2-1.3-.5-1.9-1.7-1.9s-2.5.8-2.9,1.9h4.6Z"/>
+            <path class="cls-5" d="M160.3,119.7h4.1l-.4,1.3h0c1.2-.9,2.6-1.6,3.9-1.6,2.2,0,4.9,1.1,3.9,4.4l-2.4,7.9h-4.1l2-6.8c.4-1.2-.1-2.3-1.5-2.3s-2.8,1.1-3.2,2.3l-2,6.8h-4.1l3.6-12h0Z"/>
+            <path class="cls-6" d="M181,119.3c1.6,0,2.8.5,3.5,1.5l.3-1.1h4.1l-3.6,12h-4.1l.4-1.4h0c-1.2,1-2.8,1.7-4.4,1.7-3.5,0-5.1-2.8-4.1-6.3s4.4-6.4,7.9-6.4h0ZM179.5,128.5c1.6,0,3.1-1.2,3.6-2.8.5-1.7-.4-2.8-1.9-2.8s-3.2,1.2-3.7,2.8c-.5,1.6.3,2.8,2,2.8h0Z"/>
+          </g>
+          <g id="sport">
+            <path class="cls-10" d="M109.4,135.1l-4.3,5.4s-2.3-1.5-4.8-1.5-2.6.3-3,1.4c-.4,1.3,1.2,1.6,3,2.3,2.9,1,6.4,2.8,5,7.7-2.1,7.1-8.8,8.2-13.7,8.2s-8.2-3.2-8.2-3.2l5-5.7s2.4,2.8,5.1,2.8,2.6-.1,3.1-1.7c.5-1.7-2-1.9-4.3-3.3-2-1.3-3.9-2.9-2.9-6.5,1.5-4.9,6.4-7.7,12.7-7.7s7.4,1.9,7.4,1.9h0Z"/>
+            <path class="cls-9" d="M122.9,158.6c-3.2,0-5.5-1.1-6.9-3l-4.3,14.4h-8.2l10.7-36.1h8.1l-.8,2.7h0c2.3-2,5.6-3.4,8.8-3.4,7,0,10.1,5.7,8.1,12.7-2.1,7-8.6,12.7-15.6,12.7ZM125.9,140.3c-3.2,0-6.2,2.3-7.2,5.6-1,3.3.8,5.7,3.8,5.7s6.3-2.3,7.2-5.7c1-3.3-.6-5.6-3.9-5.6h0Z"/>
+            <path class="cls-8" d="M158.7,133.2c7.9,0,12.6,5.2,10.4,12.7-2.2,7.4-9.7,12.7-17.9,12.7s-12.8-5.3-10.6-12.7c2.2-7.5,10.1-12.7,18.1-12.7h0ZM153.2,151.5c3.2,0,6.2-2.3,7.2-5.6,1-3.3-.8-5.7-3.8-5.7s-6.3,2.3-7.2,5.7c-1,3.3.6,5.6,3.9,5.6,0,0,0,0,0,0Z"/>
+            <path class="cls-11" d="M176.6,133.9h8.2l-1,3.5h0s3.8-4.2,8.5-4.2,4.8,1.5,4.8,1.5l-5.5,7s-1.1-1.3-3.9-1.3c-4.3,0-6.1,4.3-6.3,4.9l-3.7,12.6h-8.2l7.1-24h0Z"/>
+            <path class="cls-17" d="M203.7,125h8.2l-2.6,8.9h5l-1.9,6.3h-5l-2.3,7.6c-.7,2.2-.4,3.3.9,3.3s2.3-.7,2.3-.7v6.7c0,0-3,1.5-6.4,1.5-6.5,0-6.7-4.9-5.4-9.2l2.7-9.2h-3.4l1.9-6.3h3.4l2.6-8.9h0s0,0,0,0Z"/>
+          </g>
+        </g>
+        <path id="_2" class="cls-18" d="M213.5,152l-1,5.9h22l1.2-7.1h-10.9s.5-.6.7-.7c1.8-2.2,3.6-4.5,5.4-6.8,1.9-2.4,3.9-4.9,5.7-7.5,1.6-2.2,2.8-4.5,3.6-7.1.6-2,1-3.9.7-6-.5-3.1-2.1-5.3-5.1-6.4-2.5-.9-5.1-1.1-7.7-.6-4.7.8-7.9,3.5-9.5,7.9-.8,2.1-1.2,4.4-1.4,6.6,0,0,0,.3,0,.3h8.9s0-.3,0-.4c.3-1.3.4-2.6.7-4,.2-.9.4-1.8.8-2.7.3-.6.9-1.1,1.7-1.3,1-.2,2,0,2.2,1.5,0,.4,0,.7,0,1.1,0,.9-.3,1.7-.7,2.6-.6,1.6-1.5,3-2.4,4.4-2.2,3.3-4.5,6.4-6.8,9.6-2.6,3.5-5.3,7-7.8,10.4-.1.2-.4.5-.4.5h0s0,0,0,0Z"/>
+        <g id="i_BK">
+          <rect id="PASIK" class="cls-14" x="68" y="104.3" width="2.3" height="74.9"/>
+          <g id="I">
+            <path class="cls-12" d="M52,159.8h1.4c.2,0,.3-.2.3-.3v-8.2l-8.4,6.2c1.7,1.5,4.1,2.4,6.7,2.4Z"/>
+            <path class="cls-15" d="M45.3,157.5l8.4-6.2v-.4l-9.5,5.4c.3.4.7.8,1.2,1.2Z"/>
+            <path class="cls-2" d="M53.1,129.8c0,0-.2,0-.3,0l-8.3,4.8c0,0-.2.1-.2.2-.2.3,0,.6.2.8l8.3,4.8c0,0,.2,0,.3,0,.3,0,.6-.3.6-.6v-9.5c0-.1,0-.2,0-.3-.1-.2-.3-.3-.5-.3h0Z"/>
+            <path class="cls-1" d="M59.5,146.5l-9.3-5.3-6.8-3.9c0,0-.2,0-.3,0h0s0,0-.1,0c-.3,0-.5.3-.5.6v13.9c0,.8.1,1.6.4,2.4,0,.1.1.3.2.4,0,0,0,0,0,0,0,.1.1.3.2.4,0,0,0,0,0,0,.2.4.5.9.8,1.2h0s9.5-5.4,9.5-5.4l5.8-3.3c0,0,.2-.1.2-.2.2-.3,0-.6-.2-.8h0Z"/>
+            <path class="cls-3" d="M47.2,129.8c3,.5,5.9-1.6,6.4-4.6.5-3-1.6-5.9-4.6-6.4-.3,0-.6,0-.9,0-2.7,0-5,1.9-5.5,4.7-.5,3,1.6,5.9,4.6,6.4Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
