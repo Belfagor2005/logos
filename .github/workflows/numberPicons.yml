@@ -28,10 +28,12 @@ jobs:
 
           # Create the file with the graphic count in the root folder
           FILE_NAME="NumberPicons_${GRAPHIC_COUNT}.txt"
-          echo "Number of graphic files: $GRAPHIC_COUNT" > "$FILE_NAME"
+          
+          # Create the file with the graphic count
+          echo "Number of graphic files: $GRAPHIC_COUNT" > "./$FILE_NAME"
           
           # List files to confirm that the file was created
-          ls -l "$FILE_NAME"  # Verify the file creation
+          ls -l .  # List all files in the root directory to verify the file creation
           
           # Update README with the number of graphic files
           sed -i "s/Number of graphic files:.*/Number of graphic files: $GRAPHIC_COUNT/" README.md || echo "Number of graphic files: $GRAPHIC_COUNT" >> README.md
@@ -42,10 +44,10 @@ jobs:
           git config --global user.email "github-actions@github.com"
 
           # Add the updated files (README and the correctly named NumberPicons txt)
-          git add README.md "$FILE_NAME"
+          git add README.md "./NumberPicons_${GRAPHIC_COUNT}.txt"
 
           # Commit the changes
-          git commit -m "Updated number of graphic files in README and $FILE_NAME"
+          git commit -m "Updated number of graphic files in README and NumberPicons_${GRAPHIC_COUNT}.txt"
 
           # Push the changes
           git push --force
