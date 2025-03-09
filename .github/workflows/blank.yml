@@ -24,10 +24,20 @@ jobs:
             fi
           done
 
+      - name: Check if zip files exist
+        id: check_zip
+        run: |
+          if ls zip/*.zip 1> /dev/null 2>&1; then
+            echo "ZIP_FILES_EXIST=true" >> $GITHUB_ENV
+          else
+            echo "ZIP_FILES_EXIST=false" >> $GITHUB_ENV
+          fi
+
       - name: Commit and push zipped files
+        if: env.ZIP_FILES_EXIST == 'true'
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add zip/*.zip
-          git commit -m "Added zipped folders" || echo "No changes to commit"
-          git push || echo "No changes to push"
+          git commit -m "Added zipped folders"
+          git push
