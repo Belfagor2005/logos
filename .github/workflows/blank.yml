@@ -33,7 +33,8 @@ jobs:
                   total_size=$file_size
                 fi
 
-                cp --parents "$file" "$temp_dir"
+                cp "$file" "$temp_dir/$folder_name/"
+                mkdir -p "$temp_dir/$folder_name"
               done
 
               if [ "$(ls -A "$temp_dir")" ]; then
