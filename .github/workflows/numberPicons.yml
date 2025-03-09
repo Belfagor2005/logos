@@ -2,7 +2,7 @@ name: Count and Update Graphic Files
 
 on:
   schedule:
-    - cron: '0 3 * * 1'  # Every Monday at 02:00 UTC
+    - cron: '0 2 * * 1'  # Every Monday at 02:00 UTC
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -21,20 +21,20 @@ jobs:
           git fetch --all
           git reset --hard origin/main || echo "No changes to pull"
 
-      - name: Count graphic files and update number
+      - name: Count graphic files and create the number file
         run: |
           # Count the graphic files (png, jpg, gif, svg, etc.)
           GRAPHIC_COUNT=$(find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.svg" \) | wc -l)
 
-          # Define the file name correctly without spaces or problematic characters
-          FILE_NAME="NumberPicons.txt"
-          
+          # Define the file name directly with the count
+          FILE_NAME="NumberPicons_${GRAPHIC_COUNT}.txt"
+
           # Create the file with the graphic count in the root folder
           echo "Number of graphic files: $GRAPHIC_COUNT" > $FILE_NAME
-          
-          # List files to confirm that the file was created
-          ls -l .  # List all files in the root directory to verify the file creation
-          
+
+          # List the files to ensure the new file is created in the root
+          ls -l $FILE_NAME  # Check if the file exists
+
           # Update README with the number of graphic files
           sed -i "s/Number of graphic files:.*/Number of graphic files: $GRAPHIC_COUNT/" README.md || echo "Number of graphic files: $GRAPHIC_COUNT" >> README.md
 
@@ -43,7 +43,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          # Add the updated files (README and the correctly named NumberPicons txt)
+          # Add the updated files (README and the new NumberPicons file)
           git add README.md $FILE_NAME
 
           # Commit the changes
