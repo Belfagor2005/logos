@@ -26,7 +26,7 @@ jobs:
           # Count the graphic files (png, jpg, gif, svg, etc.)
           GRAPHIC_COUNT=$(find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.svg" \) | wc -l)
 
-          # Define the file name
+          # Define the file name correctly without spaces or problematic characters
           FILE_NAME="NumberPicons_${GRAPHIC_COUNT}.txt"
           
           # Create the file with the graphic count in the root folder
