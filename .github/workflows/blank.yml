@@ -2,8 +2,8 @@ name: Weekly Zipping
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # lunedì 00:00 UTC
-  workflow_dispatch:
+    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
+  workflow_dispatch:  # Permette di avviarlo manualmente
 
 jobs:
   zip-folders:
@@ -26,22 +26,27 @@ jobs:
                 file_size=$(du -b "$file" | cut -f1)
                 total_size=$((total_size + file_size))
 
-                if [ "$total_size" -gt 40000000 ]; then  # Modificato il limite a 40MB
+                # Quando la dimensione totale supera il limite, crea un nuovo zip
+                if [ "$total_size" -gt 40000000 ]; then  # Modificato a 40MB
                   zip -r "zip/${folder_name}_${part}.zip" "$temp_dir"/*
-                  rm -rf "$temp_dir"/*
+                  rm -rf "$temp_dir"/*  # Pulisce la directory temporanea
                   part=$((part + 1))
-                  total_size=$file_size
+                  total_size=$file_size  # Reset per la nuova parte
                 fi
 
-                cp "$file" "$temp_dir/$folder_name/"
+                # Assicurati che la cartella di destinazione esista
                 mkdir -p "$temp_dir/$folder_name"
+
+                # Copia il file nella directory temporanea
+                cp "$file" "$temp_dir/$folder_name/"
               done
 
+              # Se ci sono file rimanenti, zip in una nuova parte
               if [ "$(ls -A "$temp_dir")" ]; then
                 zip -r "zip/${folder_name}_${part}.zip" "$temp_dir"/*
               fi
 
-              rm -rf "$temp_dir"
+              rm -rf "$temp_dir"  # Pulisce la directory temporanea
             fi
           done
 
