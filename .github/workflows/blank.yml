@@ -1,0 +1,74 @@
+name: Weekly Zipping
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
+  workflow_dispatch:  # Permette di avviarlo manualmente
+
+jobs:
+  zip-folders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Remove old zip files
+        run: |
+          rm -f zip/*.zip  # Rimuove i vecchi file zip nella cartella 'zip'
+
+      - name: Create zip files (max 40MB each)
+        run: |
+          mkdir -p zip
+          for folder in logos/*; do
+            if [ -d "$folder" ]; then
+              folder_name=$(basename "$folder")
+              part=1
+              temp_dir=$(mktemp -d)  # Creazione di una directory temporanea
+              total_size=0
+
+              find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
+                file_size=$(du -b "$file" | cut -f1)
+                total_size=$((total_size + file_size))
+
+                # Quando la dimensione totale supera il limite, crea un nuovo zip
+                if [ "$total_size" -gt 40000000 ]; then  # Modificato a 40MB
+                  zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*  # Aggiunge i file direttamente senza la struttura delle sottocartelle
+                  rm -rf "$temp_dir"/*  # Pulisce la directory temporanea
+                  part=$((part + 1))
+                  total_size=$file_size  # Reset per la nuova parte
+                fi
+
+                # Assicurati che la cartella di destinazione esista
+                mkdir -p "$temp_dir"
+
+                # Copia il file nella directory temporanea
+                cp "$file" "$temp_dir/"
+              done
+
+              # Se ci sono file rimanenti, zip in una nuova parte
+              if [ "$(ls -A "$temp_dir")" ]; then
+                zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*  # Aggiunge i file senza la struttura delle sottocartelle
+              fi
+
+              rm -rf "$temp_dir"  # Pulisce la directory temporanea
+            fi
+          done
+
+      - name: Commit and push zipped files
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          # Recupera le modifiche dal repository remoto prima del push
+          git pull origin main
+
+          for file in zip/*.zip; do
+            if [ $(du -m "$file" | cut -f1) -le 100 ]; then
+              git add "$file"
+            else
+              echo "Skipping $file (size > 100MB)"
+            fi
+          done
+
+          git commit -m "Added zipped folders" || echo "No changes to commit"
+          git push || git push --force
