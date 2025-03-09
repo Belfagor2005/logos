@@ -12,6 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Remove old zip files
+        run: |
+          rm -f zip/*.zip  # Rimuove i vecchi file zip nella cartella 'zip'
+
       - name: Create zip files (max 40MB each)
         run: |
           mkdir -p zip
@@ -63,4 +67,5 @@ jobs:
             fi
           done
 
-          git commit -m "Added
+          git commit -m "Added zipped folders" || echo "No changes to commit"
+          git push || git push --force
