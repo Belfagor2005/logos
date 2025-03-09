@@ -26,10 +26,12 @@ jobs:
           # Count the graphic files (png, jpg, gif, svg, etc.)
           GRAPHIC_COUNT=$(find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.svg" \) | wc -l)
 
-          # Create the file with the graphic count in the root folder without parentheses or spaces
+          # Create the file with the graphic count in the root folder
           FILE_NAME="NumberPicons_${GRAPHIC_COUNT}.txt"
           echo "Number of graphic files: $GRAPHIC_COUNT" > "$FILE_NAME"
-          ls -l "$FILE_NAME"  # Ensure the file has been created successfully
+          
+          # List files to confirm that the file was created
+          ls -l "$FILE_NAME"  # Verify the file creation
           
           # Update README with the number of graphic files
           sed -i "s/Number of graphic files:.*/Number of graphic files: $GRAPHIC_COUNT/" README.md || echo "Number of graphic files: $GRAPHIC_COUNT" >> README.md
@@ -45,5 +47,5 @@ jobs:
           # Commit the changes
           git commit -m "Updated number of graphic files in README and $FILE_NAME"
 
-          # Push the changes (with force in case of conflicts)
+          # Push the changes
           git push --force
