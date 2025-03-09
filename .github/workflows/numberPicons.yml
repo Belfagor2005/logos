@@ -1,9 +1,9 @@
-name: Count Graphic Files
+name: Count Graphic Files and Update README
 
 on:
   schedule:
-    - cron: '0 2 * * 1'  # lunedì 02:00 UTC
-  workflow_dispatch:
+    - cron: '0 2 * * 1'  # Every Monday at 02:00 UTC
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   count-graphic-files:
@@ -14,22 +14,49 @@ jobs:
 
       - name: Count graphic files
         run: |
-          extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' \)"
+          # Define graphic file extensions
+          extensions="\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' -o -name '*.bmp' -o -name '*.tiff' -o -name '*.webp' -o -name '*.ico' -o -name '*.psd' \)"
           
+          # Count graphic files in the repository
           total_files=$(find . -type f $extensions | wc -l)
 
+          # Create 'txt' folder if it does not exist
           mkdir -p txt
 
-          txt_file="txt/Number Picons (${total_files}).txt"
+          # Create the text file with the number of graphic files
+          txt_file="NumberPicons${total_files}.txt"
           echo "Number of graphic files: $total_files" > "$txt_file"
           
           echo "File created: $txt_file with $total_files graphic files."
 
-      - name: Commit and push file with graphic count
+      - name: Update README.md with number of graphic files
         run: |
+          # Update the README file with the number of graphic files
+          readme_file="README.md"
+          if grep -q "Number of graphic files" "$readme_file"; then
+            # If line exists, replace it
+            sed -i "s/Number of graphic files: .*/Number of graphic files: $total_files/" "$readme_file"
+          else
+            # Otherwise, append it to the end of the file
+            echo "Number of Picons files on Github: $total_files" >> "$readme_file"
+          fi
+
+      - name: Pull the latest changes
+        run: |
+          # Set git configuration for the commit
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+          
+          # Pull latest changes from remote to avoid conflicts
+          git pull origin main || echo "No changes to pull"
 
-          git add txt/*.txt
-          git commit -m "Added number of graphic files"
+      - name: Commit and push changes
+        run: |
+          # Add the updated README.md and other text files to git
+          git add README.md txt/*.txt
+          
+          # Commit changes
+          git commit -m "Updated number of graphic files in README"
+          
+          # Push changes to remote, force push in case of conflicts
           git push || git push --force
