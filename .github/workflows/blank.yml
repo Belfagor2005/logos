@@ -2,8 +2,8 @@ name: Weekly Zipping
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
-  workflow_dispatch:  # Permette di avviarlo manualmente
+    - cron: '0 0 * * 1'  # lunedì 00:00 UTC
+  workflow_dispatch:
 
 jobs:
   zip-folders:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Create zip files (max 50MB each)
+      - name: Create zip files (max 40MB each)
         run: |
           mkdir -p zip
           for folder in logos/*; do
@@ -26,7 +26,7 @@ jobs:
                 file_size=$(du -b "$file" | cut -f1)
                 total_size=$((total_size + file_size))
 
-                if [ "$total_size" -gt 50000000 ]; then
+                if [ "$total_size" -gt 40000000 ]; then  # Modificato il limite a 40MB
                   zip -r "zip/${folder_name}_${part}.zip" "$temp_dir"/*
                   rm -rf "$temp_dir"/*
                   part=$((part + 1))
