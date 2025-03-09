@@ -18,16 +18,16 @@ jobs:
 
       - name: Zip folders
         run: |
-          for dir in logo/CRYPT logo/EMU logo/IPTV logo/PROVIDER logo/SAT logo/SNP logo/SRF logo/VOD logo/VOD/ANIMATION- logo/VOD/GENRE logo/VOD/SERIES; do
+          for dir in logos/CRYPT logos/EMU logos/IPTV logos/PROVIDER logos/SAT logos/SNP logos/SRF logos/VOD; do
             if [ -d "$dir" ]; then
-              zip -r "zip/$(basename $dir).zip" "$dir"
+              zip -r "$(basename $dir).zip" "$dir"
             fi
           done
 
       - name: Check if zip files exist
         id: check_zip
         run: |
-          if ls zip/*.zip 1> /dev/null 2>&1; then
+          if ls *.zip 1> /dev/null 2>&1; then
             echo "ZIP_FILES_EXIST=true" >> $GITHUB_ENV
           else
             echo "ZIP_FILES_EXIST=false" >> $GITHUB_ENV
@@ -38,6 +38,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add zip/*.zip
+          git add *.zip
           git commit -m "Added zipped folders"
           git push
