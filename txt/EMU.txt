@@ -1,0 +1,16 @@
+logos/EMU/CCcam.png
+logos/EMU/Camd3.png
+logos/EMU/DOScam.png
+logos/EMU/EvoCamd.png
+logos/EMU/Exset.png
+logos/EMU/Fta.png
+logos/EMU/Gbox.png
+logos/EMU/Gcam.png
+logos/EMU/HyperCam.png
+logos/EMU/Mbox.png
+logos/EMU/Mgcamd.png
+logos/EMU/Unknown.png
+logos/EMU/Wicardd.png
+logos/EMU/ncam.png
+logos/EMU/oscam.png
+logos/EMU/scam.png
