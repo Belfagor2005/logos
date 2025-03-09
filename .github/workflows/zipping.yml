@@ -2,8 +2,8 @@ name: Weekly Zipping
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
-  workflow_dispatch:  # Permette di avviarlo manualmente
+    - cron: '0 0 * * 1'  # lunedì 00:00 UTC
+  workflow_dispatch:
 
 jobs:
   zip-folders:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Remove old zip files
         run: |
-          rm -f zip/*.zip  # Rimuove i vecchi file zip nella cartella 'zip'
+          rm -f zip/*.zip 
 
       - name: Create zip files (max 40MB each)
         run: |
@@ -23,34 +23,30 @@ jobs:
             if [ -d "$folder" ]; then
               folder_name=$(basename "$folder")
               part=1
-              temp_dir=$(mktemp -d)  # Creazione di una directory temporanea
+              temp_dir=$(mktemp -d)
               total_size=0
 
               find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
                 file_size=$(du -b "$file" | cut -f1)
                 total_size=$((total_size + file_size))
 
-                # Quando la dimensione totale supera il limite, crea un nuovo zip
-                if [ "$total_size" -gt 40000000 ]; then  # Modificato a 40MB
-                  zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*  # Aggiunge i file direttamente senza la struttura delle sottocartelle
-                  rm -rf "$temp_dir"/*  # Pulisce la directory temporanea
+                if [ "$total_size" -gt 40000000 ]; then  # 40MB
+                  zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
+                  rm -rf "$temp_dir"/*
                   part=$((part + 1))
-                  total_size=$file_size  # Reset per la nuova parte
+                  total_size=$file_size
                 fi
 
-                # Assicurati che la cartella di destinazione esista
                 mkdir -p "$temp_dir"
 
-                # Copia il file nella directory temporanea
                 cp "$file" "$temp_dir/"
               done
 
-              # Se ci sono file rimanenti, zip in una nuova parte
               if [ "$(ls -A "$temp_dir")" ]; then
-                zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*  # Aggiunge i file senza la struttura delle sottocartelle
+                zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
               fi
 
-              rm -rf "$temp_dir"  # Pulisce la directory temporanea
+              rm -rf "$temp_dir"
             fi
           done
 
@@ -59,7 +55,6 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          # Recupera le modifiche dal repository remoto prima del push
           git pull origin main
 
           for file in zip/*.zip; do
