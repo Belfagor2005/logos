@@ -1,44 +1,47 @@
-name: Zip Git Folders
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-jobs:
-  zip-folders:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Create zip folder (if needed)
-        run: mkdir -p zip
-
-      - name: Zip folders
+      - name: Create zip files (max 50MB each)
         run: |
-          for dir in logos/CRYPT logos/EMU logos/IPTV logos/PROVIDER logos/SAT logos/SNP logos/SRF logos/VOD; do
-            if [ -d "$dir" ]; then
-              zip -r "$(basename $dir).zip" "$dir"
+          mkdir -p zip
+          for folder in logos/*; do
+            if [ -d "$folder" ]; then
+              folder_name=$(basename "$folder")
+              part=1
+              temp_dir=$(mktemp -d)
+              total_size=0
+
+              find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
+                file_size=$(du -b "$file" | cut -f1)
+                total_size=$((total_size + file_size))
+
+                if [ "$total_size" -gt 50000000 ]; then
+                  zip -r "zip/${folder_name}_${part}.zip" "$temp_dir"/*
+                  rm -rf "$temp_dir"/*
+                  part=$((part + 1))
+                  total_size=$file_size
+                fi
+
+                cp --parents "$file" "$temp_dir"
+              done
+
+              if [ "$(ls -A "$temp_dir")" ]; then
+                zip -r "zip/${folder_name}_${part}.zip" "$temp_dir"/*
+              fi
+
+              rm -rf "$temp_dir"
             fi
           done
 
-      - name: Check if zip files exist
-        id: check_zip
-        run: |
-          if ls *.zip 1> /dev/null 2>&1; then
-            echo "ZIP_FILES_EXIST=true" >> $GITHUB_ENV
-          else
-            echo "ZIP_FILES_EXIST=false" >> $GITHUB_ENV
-          fi
-
       - name: Commit and push zipped files
-        if: env.ZIP_FILES_EXIST == 'true'
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git config --global core.compression 0
-          git add *.zip
-          git commit -m "Added zipped folders"
+
+          for file in zip/*.zip; do
+            if [ $(du -m "$file" | cut -f1) -le 100 ]; then
+              git add "$file"
+            else
+              echo "Skipping $file (size > 100MB)"
+            fi
+          done
+
+          git commit -m "Added zipped folders" || echo "No changes to commit"
           git push || git push --force
