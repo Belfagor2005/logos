@@ -26,11 +26,11 @@ jobs:
           # Count the graphic files (png, jpg, gif, svg, etc.)
           GRAPHIC_COUNT=$(find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.gif" -o -iname "*.svg" \) | wc -l)
 
-          # Create the file with the graphic count in the root folder
+          # Define the file name
           FILE_NAME="NumberPicons_${GRAPHIC_COUNT}.txt"
           
-          # Create the file with the graphic count
-          echo "Number of graphic files: $GRAPHIC_COUNT" > "./$FILE_NAME"
+          # Create the file with the graphic count in the root folder
+          echo "Number of graphic files: $GRAPHIC_COUNT" > $FILE_NAME
           
           # List files to confirm that the file was created
           ls -l .  # List all files in the root directory to verify the file creation
@@ -44,10 +44,10 @@ jobs:
           git config --global user.email "github-actions@github.com"
 
           # Add the updated files (README and the correctly named NumberPicons txt)
-          git add README.md "./NumberPicons_${GRAPHIC_COUNT}.txt"
+          git add README.md $FILE_NAME
 
           # Commit the changes
-          git commit -m "Updated number of graphic files in README and NumberPicons_${GRAPHIC_COUNT}.txt"
+          git commit -m "Updated number of graphic files in README and $FILE_NAME"
 
           # Push the changes
           git push --force
