@@ -3,6 +3,7 @@ name: List Files in Folders
 on:
   schedule:
     - cron: '0 2 * * 1'  # Every Monday at 02:00 UTC
+
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -14,14 +15,14 @@ jobs:
       - name: Configure Git to handle large pushes
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
-      - name: Generate file lists
+      - name: Generate file lists (excluding 'txt' folder)
         run: |
           # Create the 'txt' folder if it doesn't exist
           mkdir -p txt
-
-          # Loop through all folders in the repository
+          
+          # Loop through all folders in the repository except 'txt'
           for folder in */; do
-            if [ -d "$folder" ]; then
+            if [ -d "$folder" ] && [ "$folder" != "txt/" ]; then
               folder_name=$(basename "$folder")
               txt_file="txt/${folder_name}.txt"
               
@@ -30,7 +31,6 @@ jobs:
               echo "File list for folder $folder_name created at $txt_file"
             fi
           done
-
       - name: Pull the latest changes
         run: |
           # Set git configuration for the commit
@@ -39,10 +39,9 @@ jobs:
           
           # Pull latest changes from remote to avoid conflicts
           git pull origin main || echo "No changes to pull"
-
       - name: Commit and push file lists
         run: |
-          # Add the generated text files to git
+          # Add the generated text files to git, excluding 'txt.txt'
           git add txt/*.txt
           
           # Commit changes
