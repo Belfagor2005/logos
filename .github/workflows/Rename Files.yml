@@ -9,13 +9,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Necessario per ripristinare file da vecchi commit
-
-      - name: Restore deleted files from commit 7894e1d99ca2bd83fe51695000f08593cd7cd202
-        run: |
-          git checkout 7894e1d99ca2bd83fe51695000f08593cd7cd202 -- logos/
-          git status  # Controllo per vedere i file ripristinati
 
       - name: Rename files with double extensions
         run: |
