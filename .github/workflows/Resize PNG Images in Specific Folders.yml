@@ -12,20 +12,23 @@ jobs:
   resize:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure Git to handle large pushes
+        run: |
+          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB	
+	
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Install ImageMagick
         run: sudo apt-get install -y imagemagick
-      - name: Configure Git to handle large pushes
+
+      - name: Find and Resize PNG Images in srp, snp, svg
         run: |
-          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
-      - name: Find and Resize PNG Images
-        run: |
-          # Trova tutte le immagini PNG nelle cartelle specificate
-          find ./srp ./snp -type f -name "*.png" | while read image; do
-            echo "Resizing $image"
-            convert "$image" -resize 417x250 "$image"
+          for folder in srp snp; do
+            find "$folder" -type f -name "*.png" | while read image; do
+              echo "Resizing $image"
+              convert "$image" -resize 417x250 "$image"
+            done
           done
 
       - name: Commit resized images
