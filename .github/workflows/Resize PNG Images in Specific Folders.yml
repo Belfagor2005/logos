@@ -1,0 +1,35 @@
+name: Resize PNG Images in Specific Folders
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  resize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install ImageMagick
+        run: sudo apt-get install -y imagemagick
+
+      - name: Find and Resize PNG Images
+        run: |
+          # Trova tutte le immagini PNG nelle cartelle specificate
+          find ./srp ./snp -type f -name "*.png" | while read image; do
+            echo "Resizing $image"
+            convert "$image" -resize 417x250 "$image"
+          done
+
+      - name: Commit resized images
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Resize PNG images in srp, snp, svg"
+          git push
