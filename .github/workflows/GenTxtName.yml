@@ -15,8 +15,8 @@ jobs:
       - name: Configure Git to handle large pushes and set author
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.email "ekekaz@gmail.com"
+          git config --global user.name "Belfagor2005"
 
       - name: Remove old .txt files
         run: |
@@ -52,9 +52,9 @@ jobs:
         run: |
           # Add the generated text files to git
           git add txt/*.txt
-
+          
           # Commit changes
           git commit -m "Added file lists for folders" || echo "No changes to commit"
-
+          
           # Push changes to remote, force push in case of conflicts
           git push || git push --force
