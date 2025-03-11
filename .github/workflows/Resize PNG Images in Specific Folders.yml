@@ -15,12 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Configure Git to handle large pushes
+        run: |
+          git config --global http.postBuffer 524288000
+
       - name: Install ImageMagick
         run: sudo apt-get install -y imagemagick
 
-      - name: Resize PNG and JPG Images in srp and snp
+      - name: Resize PNG and JPG Images in SNP and SRF
         run: |
-          for folder in srp snp; do
+          for folder in SNP SRF; do
             find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
               echo "Before resizing: $(identify -format "%wx%h" $image)"
               convert "$image" -resize 417x250 "$image"
@@ -33,6 +37,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add -A  # Aggiunge tutte le modifiche
-          git commit -m "Resize PNG and JPG images in srp and snp" || echo "No changes to commit"
+          git commit -m "Resize PNG and JPG images in SNP and SRF" || echo "No changes to commit"
           git push
-
