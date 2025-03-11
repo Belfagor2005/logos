@@ -1,4 +1,4 @@
-name: Resize PNG Images in Specific Folders
+name: Resize PNG and JPG Images in Specific Folders
 
 on:
   push:
@@ -12,20 +12,16 @@ jobs:
   resize:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure Git to handle large pushes
-        run: |
-          git config --global http.postBuffer 524288000
-
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Install ImageMagick
         run: sudo apt-get install -y imagemagick
 
-      - name: Find and Resize PNG Images in srp, snp
+      - name: Resize PNG and JPG Images in srp and snp
         run: |
           for folder in srp snp; do
-            find "$folder" -type f -name "*.png" | while read image; do
+            find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
               echo "Resizing $image"
               convert "$image" -resize 417x250 "$image"
             done
@@ -36,5 +32,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git commit -m "Resize PNG images in srp, snp"
+          git commit -m "Resize PNG and JPG images in srp and snp"
           git push
