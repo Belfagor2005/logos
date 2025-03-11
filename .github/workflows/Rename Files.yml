@@ -1,4 +1,4 @@
-name: Restore Deleted Files and Clean Up
+name: Rename Files and Clean Up
 
 on:
   workflow_dispatch:  # Avvio manuale
