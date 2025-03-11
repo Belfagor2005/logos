@@ -1,20 +1,21 @@
-name: Restore and Rename Files
+name: Restore Deleted Files and Clean Up
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Avvio manuale
 
 jobs:
-  restore-and-rename:
+  restore-and-clean:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure full history is available
+          fetch-depth: 0  # Necessario per ripristinare file da vecchi commit
 
-      - name: Restore deleted files
+      - name: Restore deleted files from commit 7894e1d99ca2bd83fe51695000f08593cd7cd202
         run: |
-          git checkout HEAD^ -- $(git log --diff-filter=D --summary | awk '/delete/ {print $3}') || echo "No files to restore"
+          git checkout 7894e1d99ca2bd83fe51695000f08593cd7cd202 -- logos/
+          git status  # Controllo per vedere i file ripristinati
 
       - name: Rename files with double extensions
         run: |
@@ -22,7 +23,7 @@ jobs:
             mv "$file" "${file%.png.png}.png"
           done
 
-      - name: Delete files with parentheses
+      - name: Remove files with parentheses in the name
         run: |
           find . -type f \( -name "*(*" -o -name "*)*" \) -delete
 
