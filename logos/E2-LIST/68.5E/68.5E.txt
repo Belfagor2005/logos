@@ -1,0 +1,82 @@
+1_0_1_3_1A_14_2AD0000_0_0_0.png - AVO - Channels TV
+1_0_1_4_1A_14_2AD0000_0_0_0.png - AVO - WAP TV
+1_0_1_6_1A_14_2AD0000_0_0_0.png - AVO - TVC Entertainment
+1_0_1_7_1A_14_2AD0000_0_0_0.png - AVO - TVC News
+1_0_16_B_1A_14_2AD0000_0_0_0.png - Efatha TV
+1_0_1_E_1A_14_2AD0000_0_0_0.png - Amazing Facts
+1_0_1_10_1A_14_2AD0000_0_0_0.png - Novo Tempo
+1_0_2_5C_1A_14_2AD0000_0_0_0.png - Radio Maranatha
+1_0_2_5E_1A_14_2AD0000_0_0_0.png - Radio Novo Tempo
+1_0_1_66_2_49_2AD0000_0_0_0.png - UBN
+1_0_1_69_2_49_2AD0000_0_0_0.png - Prophetic
+1_0_1_6A_2_49_2AD0000_0_0_0.png - Free Indeed TV
+1_0_1_6D_2_49_2AD0000_0_0_0.png - Mercy TV Plus
+1_0_1_75_5_49_2AD0000_0_0_0.png - MERIBA TV
+1_0_1_7D_2_49_2AD0000_0_0_0.png - KLN
+1_0_1_7F_5_49_2AD0000_0_0_0.png - Encounter Jesus TV
+1_0_1_83_2_49_2AD0000_0_0_0.png - RTM TV
+1_0_1_CB_5_49_2AD0000_0_0_0.png - Celebration TV
+1_0_1_CF_2_49_2AD0000_0_0_0.png - Champions TV Plus
+1_0_1_D4_5_49_2AD0000_0_0_0.png - DUNAMIS TV
+1_0_1_D9_5_49_2AD0000_0_0_0.png - REMITE TV
+1_0_1_DE_5_49_2AD0000_0_0_0.png - NEW JERUSALEM
+1_0_1_E0_2_49_2AD0000_0_0_0.png - APTIM TV
+1_0_1_E2_2_49_2AD0000_0_0_0.png - Liberation TV
+1_0_1_E4_2_49_2AD0000_0_0_0.png - Ambience TV
+1_0_1_E8_5_49_2AD0000_0_0_0.png - Divine Hand TV
+1_0_1_E9_5_49_2AD0000_0_0_0.png - SHEKINAH TV
+1_0_1_EA_5_49_2AD0000_0_0_0.png - EBENZER TV
+1_0_1_F1_5_49_2AD0000_0_0_0.png - Temple TV
+1_0_1_F5_5_49_2AD0000_0_0_0.png - GNF TV
+1_0_1_102_5_49_2AD0000_0_0_0.png - Encounter TV
+1_0_2_141_2_49_2AD0000_0_0_0.png - Cii
+1_0_2_142_2_49_2AD0000_0_0_0.png - Salaamedia
+1_0_2_143_2_49_2AD0000_0_0_0.png - Radio Islam
+1_0_2_147_2_49_2AD0000_0_0_0.png - ChAfr
+1_0_1_C576_6_49_2AD0000_0_0_0.png - SPARE1
+1_0_1_C577_6_49_2AD0000_0_0_0.png - SPARE
+1_0_1_C57D_6_49_2AD0000_0_0_0.png - Markaz Sahaba
+1_0_1_C57F_6_49_2AD0000_0_0_0.png - DAYSTAR
+1_0_1_C582_6_49_2AD0000_0_0_0.png - Ezekiel HD
+1_0_1_C585_6_49_2AD0000_0_0_0.png - EMMANUEL TV HD
+1_0_1_C587_6_49_2AD0000_0_0_0.png - CHRIST-TV
+1_0_1_C670_6_49_2AD0000_0_0_0.png - ANGEL TV
+1_0_1_C671_6_49_2AD0000_0_0_0.png - NAC
+1_0_1_1_1_1_2AD3112_0_0_0.png - LoveWorld SAT
+1_0_1_2_1_1_2AD3112_0_0_0.png - Sonlife
+1_0_1_3_1_1_2AD3112_0_0_0.png - Homebase TV
+1_0_1_4_1_1_2AD3112_0_0_0.png - LN24 International
+1_0_1_5_1_1_2AD3112_0_0_0.png - Flame TV
+1_0_1_6_1_1_2AD3112_0_0_0.png - COZA TV
+1_0_1_8_1_1_2AD3112_0_0_0.png - The NOW Network (USA)
+1_0_1_9_1_1_2AD3112_0_0_0.png - Salvation TV
+1_0_1_A_1_1_2AD3112_0_0_0.png - ARK TV
+1_0_1_C_1_1_2AD3112_0_0_0.png - REVIVAL TV
+1_0_1_D_1_1_2AD3112_0_0_0.png - Endtime Message TV
+1_0_1_F_1_1_2AD3112_0_0_0.png - MOGPA TV Plus
+1_0_1_12_1_1_2AD3112_0_0_0.png - Kingdom TV
+1_0_1_13_1_1_2AD3112_0_0_0.png - Yadah TV Plus
+1_0_1_14_1_1_2AD3112_0_0_0.png - Mahdi Has appeared
+1_0_1_15_1_1_2AD3112_0_0_0.png - MFM TV
+1_0_1_16_1_1_2AD3112_0_0_0.png - Chosen TV
+1_0_1_17_1_1_2AD3112_0_0_0.png - DOVE TV
+1_0_1_19_1_1_2AD3112_0_0_0.png - MCTV Global 02
+1_0_1_1A_1_1_2AD3112_0_0_0.png - Dove Entertainment
+1_0_1_1B_1_1_2AD3112_0_0_0.png - New Vision TV
+1_0_1_1C_1_1_2AD3112_0_0_0.png - CVV TV
+1_0_1_1E_1_1_2AD3112_0_0_0.png - ACNN TV
+1_0_1_1F_1_1_2AD3112_0_0_0.png - ROV TV
+1_0_1_20_1_1_2AD3112_0_0_0.png - REVIVAL CHANNEL
+1_0_1_21_1_1_2AD3112_0_0_0.png - Bible Explorations TV
+1_0_1_22_1_1_2AD3112_0_0_0.png - Miracle TV
+1_0_1_25_1_1_2AD3112_0_0_0.png - KICC TV
+1_0_1_27_1_1_2AD3112_0_0_0.png - SYNAGOGUE TV
+1_0_1_20_1_1_2ADB15A_0_0_0.png - BTV 1
+1_0_1_21_1_1_2ADB15A_0_0_0.png - BTV News
+1_0_1_22_1_1_2ADB15A_0_0_0.png - KhudugaHD
+1_0_1_23_1_1_2ADB15A_0_0_0.png - France24
+1_0_1_24_1_1_2ADB15A_0_0_0.png - BTV 2
+1_0_1_25_1_1_2ADB15A_0_0_0.png - YTV Botswana
+1_0_1_26_1_1_2ADB15A_0_0_0.png - Radio Services
+1_0_1_38_1_1_2ADB15A_0_0_0.png - BTV Mobile
+1_0_1_1_1_FFFF_2ADB171_0_0_0.png - BTV ENC B

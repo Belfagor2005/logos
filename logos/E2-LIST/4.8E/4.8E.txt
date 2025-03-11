@@ -1,0 +1,207 @@
+1_0_16_1_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_16_2_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_16_3_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_19_4_A_2C_300000_0_0_0.png - Ми-Україна
+1_0_16_4_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_16_5_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_5_C9_1_300000_0_0_0.png - WHTV1
+1_0_16_6_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_6_C9_1_300000_0_0_0.png - WHTV2
+1_0_16_7_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_7_C9_1_300000_0_0_0.png - SIS ONE
+1_0_16_8_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_8_C9_1_300000_0_0_0.png - SIS TWO
+1_0_16_9_A_2C_300000_0_0_0.png - Перший
+1_0_16_9_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_9_C9_1_300000_0_0_0.png - SIS EURO
+1_0_16_A_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_16_B_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_B_65_1_300000_0_0_0.png - SIS VISION AUDIO & VBI - CISCO 1
+1_0_16_C_C_2C_300000_0_0_0.png - DSNS Informed
+1_0_1_10_65_1_300000_0_0_0.png - CTV1
+1_0_1_21_65_1_300000_0_0_0.png - LADBROKES SIS LES2 - CISCO 1
+1_0_1_46_65_1_300000_0_0_0.png - SIS VISION BTC AUDIO (Ch11)
+1_0_1_5A_65_1_300000_0_0_0.png - SIS EUROPE - CISCO 2
+1_0_1_5F_C9_1_300000_0_0_0.png - SIS Spanish
+1_0_1_88_C9_1_300000_0_0_0.png - SISTwo BTC
+1_0_1_93_65_1_300000_0_0_0.png - NEW BOYLES SPORTS - CISCO 1
+1_0_1_A0_C9_1_300000_0_0_0.png - Betfred1
+1_0_1_A2_C9_1_300000_0_0_0.png - Betfred2
+1_0_1_A3_C9_1_300000_0_0_0.png - Betfred3
+1_0_1_D2_2_55_300000_0_0_0.png - TBN Ukraine
+1_0_1_DC_2_55_300000_0_0_0.png - TV Rain HD
+1_0_2_E6_2_55_300000_0_0_0.png - European Radio for Belarus
+1_0_2_EA_2_55_300000_0_0_0.png - Radio Marija Latvia
+1_0_1_F0_2_55_300000_0_0_0.png - Echo
+1_0_1_FA_2_55_300000_0_0_0.png - SBN International
+1_0_1_FA_C9_1_300000_0_0_0.png - SISTwo BarOne
+1_0_1_122_2_55_300000_0_0_0.png - English Club HD
+1_0_1_190_C9_1_300000_0_0_0.png - SIS Two
+1_0_1_26C_65_1_300000_0_0_0.png - CoralTV1
+1_0_1_26F_65_1_300000_0_0_0.png - CoralTV2
+1_0_1_2B0_65_1_300000_0_0_0.png - LTV2
+1_0_1_2B4_65_1_300000_0_0_0.png - SIS Spanish
+1_0_1_50B_2_55_300000_0_0_0.png - BELSAT TV HD
+1_0_1F_9F1_18_44_300000_0_0_0.png - Eurosport 1 HD
+1_0_1F_9F3_18_44_300000_0_0_0.png - Setanta Sport +
+1_0_19_9F9_18_44_300000_0_0_0.png - History2 HD
+1_0_16_9FD_18_44_300000_0_0_0.png - Cine+ HIT
+1_0_16_A1C_18_44_300000_0_0_0.png - Hollywood
+1_0_1_A8C_18_44_300000_0_0_0.png - History
+1_0_1_BC2_18_44_300000_0_0_0.png - Eurosport 2 HD
+1_0_1_FDC_6_56_300000_0_0_0.png - GOD Channel
+1_0_16_17D4_C_55_300000_0_0_0.png - 1+1
+1_0_16_17D5_C_55_300000_0_0_0.png - 1+1 Ukraine
+1_0_16_17DC_C_55_300000_0_0_0.png - Kvartal TV
+1_0_16_17DE_C_55_300000_0_0_0.png - TET
+1_0_16_17E0_C_55_300000_0_0_0.png - Plus Plus
+1_0_16_17E2_C_55_300000_0_0_0.png - Bigudi
+1_0_16_17E8_C_55_300000_0_0_0.png - 2+2
+1_0_16_17ED_C_55_300000_0_0_0.png - 1+1 International
+1_0_16_17F7_C_55_300000_0_0_0.png - 24 Kanal
+1_0_16_17FE_C_55_300000_0_0_0.png - BTQ
+1_0_16_1804_C_55_300000_0_0_0.png - Tuso
+1_0_16_1808_C_55_300000_0_0_0.png - FilmUADrama
+1_0_16_180E_C_55_300000_0_0_0.png - Nicktoons
+1_0_16_1810_C_55_300000_0_0_0.png - Unian TV
+1_0_16_181B_C_55_300000_0_0_0.png - Star Cinema
+1_0_16_181D_C_55_300000_0_0_0.png - Star Family
+1_0_16_181F_C_55_300000_0_0_0.png - National Geographic
+1_0_16_1821_C_55_300000_0_0_0.png - National Geographic Wild
+1_0_16_182B_C_55_300000_0_0_0.png - XSport
+1_0_16_182C_C_55_300000_0_0_0.png - Plus Plus
+1_0_16_1831_C_55_300000_0_0_0.png - Unian TV
+1_0_19_196E_107B_55_300000_0_0_0.png - STB HD
+1_0_19_1978_107B_55_300000_0_0_0.png - ICTV HD
+1_0_19_1982_107B_55_300000_0_0_0.png - NOVY CHANNEL HD
+1_0_19_198C_107B_55_300000_0_0_0.png - M1 HD
+1_0_19_1996_107B_55_300000_0_0_0.png - M2 HD
+1_0_19_19A0_107B_55_300000_0_0_0.png - OCE HD
+1_0_19_19AA_107B_55_300000_0_0_0.png - ICTV 2
+1_0_19_19B4_107B_55_300000_0_0_0.png - TVIY SERIAL
+1_0_1_19C8_10_55_300000_0_0_0.png - Ukrayinske Radio
+1_0_2_19CA_10_55_300000_0_0_0.png - Radio Promin
+1_0_2_19CC_10_55_300000_0_0_0.png - Radio Culture
+1_0_2_19CE_10_55_300000_0_0_0.png - RadioTochka
+1_0_2_19D0_10_55_300000_0_0_0.png - Voice
+1_0_1_19D2_10_55_300000_0_0_0.png - 2+2
+1_0_1_19DC_10_55_300000_0_0_0.png - DIM TV
+1_0_1_19E6_10_55_300000_0_0_0.png - STB SD
+1_0_1_19FA_10_55_300000_0_0_0.png - ICTV 2 SD
+1_0_1_1A04_10_55_300000_0_0_0.png - WE-UKRAINE+
+1_0_1_1A09_10_55_300000_0_0_0.png - ROZPAKUY
+1_0_1_1A13_10_55_300000_0_0_0.png - Army TV
+1_0_1_1A18_10_55_300000_0_0_0.png - 1+1 Ukraine
+1_0_1_1A22_10_55_300000_0_0_0.png - /////PRYAMIY
+1_0_2_1A27_10_55_300000_0_0_0.png - Tysa FM
+1_0_2_1AF4_11_55_300000_0_0_0.png - ARMY FM
+1_0_2_1AF6_11_55_300000_0_0_0.png - Emmanuel
+1_0_2_1AF8_11_55_300000_0_0_0.png - radio nv
+1_0_2_1AFC_11_55_300000_0_0_0.png - Golos Kyiva
+1_0_1_1AFE_11_55_300000_0_0_0.png - ROZPAKUY
+1_0_16_1B03_11_55_300000_0_0_0.png - NADIYA
+1_0_1_1B08_11_55_300000_0_0_0.png - SONCE (UA)
+1_0_1_1B1C_11_55_300000_0_0_0.png - SONATA TV
+1_0_1_1B26_11_55_300000_0_0_0.png - /////PRYAMIY
+1_0_1_1B3A_11_55_300000_0_0_0.png - ' Apostrophe TV
+1_0_1_1B3F_11_55_300000_0_0_0.png - WE-UKRAINE+
+1_0_1_1B44_11_55_300000_0_0_0.png - Espreso TV
+1_0_1_1B4E_11_55_300000_0_0_0.png - Kyiv TV
+1_0_19_1DB0_2B_55_300000_0_0_0.png - DW English HD
+1_0_2_1DB6_2B_55_300000_0_0_0.png - Current Time Network
+1_0_16_1DC9_2B_55_300000_0_0_0.png - Channel 5 (Ukraine) HD
+1_0_1_1DCE_2B_55_300000_0_0_0.png - Svoboda / Holos Ameryky
+1_0_16_1DD8_2B_55_300000_0_0_0.png - GALYCHYNA HD
+1_0_1_1DE2_2B_55_300000_0_0_0.png - ERC
+1_0_1_1DEC_2B_55_300000_0_0_0.png - New Christian
+1_0_1_1DF1_2B_55_300000_0_0_0.png - Televsesvit
+1_0_19_1E0A_2B_55_300000_0_0_0.png - English Club HD
+1_0_19_1EE7_2E_55_300000_0_0_0.png - Inter HD
+1_0_1_1EE9_2E_55_300000_0_0_0.png - NTN HD
+1_0_19_1EEB_2E_55_300000_0_0_0.png - MEGA HD
+1_0_19_1EED_2E_55_300000_0_0_0.png - K1 HD
+1_0_19_1EF3_2E_55_300000_0_0_0.png - PIXEL HD
+1_0_19_1EF5_2E_55_300000_0_0_0.png - Enter Film HD
+1_0_1_2774_C9_55_300000_0_0_0.png - LTV1
+1_0_1_2779_C9_55_300000_0_0_0.png - LTV7
+1_0_1_277E_C9_55_300000_0_0_0.png - Star Family
+1_0_1_2783_C9_55_300000_0_0_0.png - TV3 Life
+1_0_1_2788_C9_55_300000_0_0_0.png - TV6 (LV)
+1_0_1_278D_C9_55_300000_0_0_0.png - TV3 Mini
+1_0_1_2792_C9_55_300000_0_0_0.png - 3 plus
+1_0_1_2797_C9_55_300000_0_0_0.png - TV8
+1_0_1_279C_C9_55_300000_0_0_0.png - LNK
+1_0_1_27A1_C9_55_300000_0_0_0.png - BTV
+1_0_1_27A6_C9_55_300000_0_0_0.png - TV1 (LT)
+1_0_1_27AB_C9_55_300000_0_0_0.png - OTV
+1_0_1_27B5_C9_55_300000_0_0_0.png - TLC
+1_0_1_27B6_C9_55_300000_0_0_0.png - TLC_
+1_0_1_27BA_C9_55_300000_0_0_0.png - Viasat Kino
+1_0_1_27BB_C9_55_300000_0_0_0.png - Viasat_Kino
+1_0_1_27BF_C9_55_300000_0_0_0.png - Viasat Kino World
+1_0_1_27C4_C9_55_300000_0_0_0.png - National Geographic HD
+1_0_19_27C5_C9_55_300000_0_0_0.png - National_Geographic HD
+1_0_1_27C9_C9_55_300000_0_0_0.png - Viasat Explore HD
+1_0_19_27CA_C9_55_300000_0_0_0.png - Viasat_Explore HD
+1_0_1_27CE_C9_55_300000_0_0_0.png - Viasat History HD
+1_0_19_27CF_C9_55_300000_0_0_0.png - Viasat History HD
+1_0_1_27D8_C9_55_300000_0_0_0.png - MTV Hits
+1_0_1_27DD_C9_55_300000_0_0_0.png - Kidzone Mini
+1_0_1_27E2_C9_55_300000_0_0_0.png - Duo 5
+1_0_1_27E7_C9_55_300000_0_0_0.png - FX
+1_0_1_27E8_C9_55_300000_0_0_0.png - FX
+1_0_1_27EC_C9_55_300000_0_0_0.png - Duo 3
+1_0_1_283C_0_0_302EB6_0_0_0.png - TV6 (LT)
+1_0_1_2846_0_0_302EB6_0_0_0.png - TV6
+1_0_1_284B_0_0_302EB6_0_0_0.png - ETV
+1_0_1_2850_0_0_302EB6_0_0_0.png - Kanal 2
+1_0_1_2855_0_0_302EB6_0_0_0.png - Duo 4
+1_0_1_285A_0_0_302EB6_0_0_0.png - 3Plus LT
+1_0_1_285F_0_0_302EB6_0_0_0.png - Viasat Kino Action
+1_0_1_2860_0_0_302EB6_0_0_0.png - Viasat_Kino Action
+1_0_1_2864_0_0_302EB6_0_0_0.png - FILMUADRAMA
+1_0_1_2869_0_0_302EB6_0_0_0.png - Setanta Sport
+1_0_1_286E_0_0_302EB6_0_0_0.png - TV3 Life EE
+1_0_1_2873_0_0_302EB6_0_0_0.png - Disney Channel
+1_0_1_2878_0_0_302EB6_0_0_0.png - Disney Junior
+1_0_1_287D_0_0_302EB6_0_0_0.png - Re:TV
+1_0_1_2882_0_0_302EB6_0_0_0.png - Go3 Sport Open
+1_0_1_2887_0_0_302EB6_0_0_0.png - Nickelodeon
+1_0_1_288C_0_0_302EB6_0_0_0.png - Nick JR
+1_0_1_2891_0_0_302EB6_0_0_0.png - Nicktoons
+1_0_1_289B_0_0_302EB6_0_0_0.png - BBC NEWS
+1_0_1_28A0_0_0_302EB6_0_0_0.png - Brazzers TV
+1_0_19_28A5_0_0_302EB6_0_0_0.png - Go3 Sport 2 HD
+1_0_1_28AA_0_0_302EB6_0_0_0.png - MTV 00s
+1_0_1_28AF_0_0_302EB6_0_0_0.png - Playboy TV
+1_0_1_28C8_0_0_302EB6_0_0_0.png - NBA TV
+1_0_1_28CD_0_0_302EB6_0_0_0.png - LRT Plius
+1_0_1_28D2_0_0_302EB6_0_0_0.png - TV24
+1_0_1_28D7_0_0_302EB6_0_0_0.png - FX Life
+1_0_1_28D8_0_0_302EB6_0_0_0.png - FX_Life
+1_0_16_9_A_2C_30ADE3_0_0_0.png - Перший
+1_0_1_2904_0_0_30AEA2_0_0_0.png - Current Time
+1_0_1_2909_0_0_30AEA2_0_0_0.png - LRT Televizija
+1_0_1_290E_0_0_30AEA2_0_0_0.png - LRT Lituanica
+1_0_1_2913_0_0_30AEA2_0_0_0.png - Lietuvos Rytas TV
+1_0_1_2918_0_0_30AEA2_0_0_0.png - ETV2
+1_0_1_291D_0_0_30AEA2_0_0_0.png - TV3 Gold
+1_0_1_2922_0_0_30AEA2_0_0_0.png - 360TV
+1_0_1_2936_0_0_30AEA2_0_0_0.png - Viasat Nature
+1_0_1_2937_0_0_30AEA2_0_0_0.png - Viasat Nature LV
+1_0_1_293B_0_0_30AEA2_0_0_0.png - Euronews
+1_0_1_2940_0_0_30AEA2_0_0_0.png - Go3 Film HD
+1_0_1_2945_0_0_30AEA2_0_0_0.png - Go3 Sport 1 HD
+1_0_1_294A_0_0_30AEA2_0_0_0.png - Epic Drama
+1_0_1_294B_0_0_30AEA2_0_0_0.png - Epic_Drama
+1_0_1_294F_0_0_30AEA2_0_0_0.png - TV3 Estonia HD
+1_0_1_2954_0_0_30AEA2_0_0_0.png - TV3 Latvia HD
+1_0_1_2959_0_0_30AEA2_0_0_0.png - TV3 Lithuania HD
+1_0_1_2963_0_0_30AEA2_0_0_0.png - Go3 sport 3
+1_0_1_2968_0_0_30AEA2_0_0_0.png - ETV+
+1_0_1_296D_0_0_30AEA2_0_0_0.png - Duo 6
+1_0_1_2972_0_0_30AEA2_0_0_0.png - Eurosport 1
+1_0_1_2977_0_0_30AEA2_0_0_0.png - Eurosport 2
+1_0_1_297C_0_0_30AEA2_0_0_0.png - Discovery Channel
+1_0_1_297D_0_0_30AEA2_0_0_0.png - Discovery_Channel
+1_0_1_299A_0_0_30AEA2_0_0_0.png - RADA
