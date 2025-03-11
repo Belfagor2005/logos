@@ -26,42 +26,16 @@ jobs:
             echo "No txt folder found, skipping file removal."
           fi
 
-      # 3. Funzione per generare la lista dei file
-      - name: Generate file lists for each folder
+      # 3. Genera la lista dei file per ogni cartella
+      - name: Genera le liste dei file
         run: |
           mkdir -p txt
-
-          # Funzione ricorsiva per elencare i file di una cartella
-          generate_file_list() {
-            local folder=$1
-            local txt_file="txt/${folder}.txt"
-
-            # Aggiungi l'elenco dei file nella cartella corrente
-            echo "Elenco dei file in: $folder" >> "$txt_file"
-            find "$folder" -maxdepth 1 -type f >> "$txt_file"
-            echo "" >> "$txt_file"
-
-            # Cerca eventuali sottocartelle e aggiungi i loro file
-            for subfolder in "$folder"*/; do
-              if [ -d "$subfolder" ]; then
-                subfolder_name=$(basename "$subfolder")
-                echo "Elenco dei file in: $subfolder_name" >> "$txt_file"
-                find "$subfolder" -maxdepth 1 -type f >> "$txt_file"
-                echo "" >> "$txt_file"
-
-                # Chiamata ricorsiva per la sottocartella
-                generate_file_list "$subfolder"
-              fi
-            done
-          }
-
-          # Esegui la funzione su tutte le cartelle principali
           for folder in */; do
             if [ -d "$folder" ] && [ "$folder" != "txt/" ]; then
               folder_name=$(basename "$folder")
-                                               
-                                                  
-              generate_file_list "$folder_name"
+              txt_file="txt/${folder_name}.txt"
+              find "$folder" -type f > "$txt_file"
+              echo "Lista dei file per la cartella $folder_name creata in $txt_file"
             fi
           done
 
