@@ -45,18 +45,13 @@ jobs:
 
       - name: Pull latest changes
         run: |
-          # Pull latest changes from remote to avoid conflicts
           git pull origin main || echo "No changes to pull"
 
       - name: Add all changes (including file deletions)
         run: |
-          # Add all changes including deletions
           git add -A
-          
+
       - name: Commit and push file lists
         run: |
-          # Commit changes
           git commit -m "Added file lists for folders" || echo "No changes to commit"
-          
-          # Push changes to remote, force push in case of conflicts
-          git push || git push --force
+          git push origin main || git push --force
