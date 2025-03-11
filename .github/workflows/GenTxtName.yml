@@ -3,7 +3,6 @@ name: List Files in Folders
 on:
   schedule:
     - cron: '0 2 * * 1'  # Every Monday at 02:00 UTC
-
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -19,7 +18,6 @@ jobs:
 
       - name: Remove old .txt files
         run: |
-                                                         
           rm -f txt/*.txt
           echo "Old .txt files removed from the txt folder"
 
@@ -27,7 +25,6 @@ jobs:
         run: |
           # Create the 'txt' folder if it doesn't exist
           mkdir -p txt
-          
           # Loop through all folders in the repository
           for folder in */; do
             if [ -d "$folder" ]; then
@@ -40,15 +37,10 @@ jobs:
             fi
           done
 
-      - name: Pull the latest changes
+      - name: Pull the latest changes and merge
         run: |
-          # Set git configuration for the commit
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          
-          # Pull latest changes from remote to avoid conflicts
-          git pull origin main || echo "No changes to pull"
-        
+          git pull origin main --rebase || git pull origin main
+
       - name: Commit and push file lists
         run: |
           # Add the generated text files to git
