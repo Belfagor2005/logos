@@ -12,11 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Clear existing git config (if any)
-        run: |
-          git config --unset-all user.name || true
-          git config --unset-all user.email || true
-
       - name: Configure Git to handle large pushes and set author
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
@@ -25,11 +20,13 @@ jobs:
 
       - name: Remove old .txt files
         run: |
+          echo "Removing old .txt files..."
           rm -f txt/*.txt
-          echo "Old .txt files removed from the txt folder"
+          echo "Old .txt files removed from the txt folder."
 
       - name: Generate file lists
         run: |
+          echo "Generating new file lists..."
           # Create the 'txt' folder if it doesn't exist
           mkdir -p txt
           # Loop through all folders in the repository
@@ -48,6 +45,11 @@ jobs:
             fi
           done
 
+      - name: Check if files were created
+        run: |
+          # Check if any txt files are created
+          ls -l txt/*.txt || echo "No .txt files were created."
+
       - name: Pull the latest changes
         run: |
           # Pull latest changes from remote to avoid conflicts
@@ -58,8 +60,8 @@ jobs:
           # Add the generated text files to git
           git add txt/*.txt
           
-          # Commit changes, allow empty commits if no changes
-          git commit --allow-empty -m "Added file lists for folders" || echo "No changes to commit"
+          # Commit changes
+          git commit -m "Added/Updated file lists for folders" || echo "No changes to commit"
           
-          # Push changes to remote, force push in case of conflicts
+          # Push changes to remote
           git push || git push --force
