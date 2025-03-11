@@ -28,7 +28,8 @@ jobs:
               temp_dir=$(mktemp -d)
               total_size=0
 
-              find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
+              # find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
+              for folder in $(find . -type d ! -path "./logos*" ! -path "./E2-LIST-ZIP*" ! -path "./E2-LIST*"); do
                 file_size=$(du -b "$file" | cut -f1)
                 total_size=$((total_size + file_size))
 
