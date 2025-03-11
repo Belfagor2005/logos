@@ -12,6 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Clear existing git config (if any)
+        run: |
+          git config --unset-all user.name || true
+          git config --unset-all user.email || true
+
       - name: Configure Git to handle large pushes and set author
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
@@ -53,8 +58,8 @@ jobs:
           # Add the generated text files to git
           git add txt/*.txt
           
-          # Commit changes
-          git commit -m "Added file lists for folders" || echo "No changes to commit"
+          # Commit changes, allow empty commits if no changes
+          git commit --allow-empty -m "Added file lists for folders" || echo "No changes to commit"
           
           # Push changes to remote, force push in case of conflicts
           git push || git push --force
