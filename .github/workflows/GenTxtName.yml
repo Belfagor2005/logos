@@ -20,13 +20,11 @@ jobs:
 
       - name: Remove old .txt files
         run: |
-          echo "Removing old .txt files..."
           rm -f txt/*.txt
-          echo "Old .txt files removed from the txt folder."
+          echo "Old .txt files removed from the txt folder"
 
       - name: Generate file lists
         run: |
-          echo "Generating new file lists..."
           # Create the 'txt' folder if it doesn't exist
           mkdir -p txt
           # Loop through all folders in the repository
@@ -45,21 +43,20 @@ jobs:
             fi
           done
 
-      - name: Check git status
+      - name: Pull latest changes
         run: |
-          echo "Checking git status..."
-          git status
+          # Pull latest changes from remote to avoid conflicts
+          git pull origin main || echo "No changes to pull"
 
-      - name: Add new files to git (force add)
+      - name: Add all changes (including file deletions)
         run: |
-          # Force add the .txt files (even if unchanged)
-          git add -f txt/*.txt
-          echo "Forced adding of .txt files"
-
+          # Add all changes including deletions
+          git add -A
+          
       - name: Commit and push file lists
         run: |
           # Commit changes
-          git commit -m "Added/Updated file lists for folders" || echo "No changes to commit"
+          git commit -m "Added file lists for folders" || echo "No changes to commit"
           
-          # Push changes to remote
+          # Push changes to remote, force push in case of conflicts
           git push || git push --force
