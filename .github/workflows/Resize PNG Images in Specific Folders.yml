@@ -1,12 +1,12 @@
 name: Resize PNG and JPG Images in Specific Folders
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
 
 jobs:
   resize:
