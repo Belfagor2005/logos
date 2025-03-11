@@ -22,8 +22,9 @@ jobs:
         run: |
           for folder in srp snp; do
             find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
-              echo "Resizing $image"
+              echo "Before resizing: $(identify -format "%wx%h" $image)"
               convert "$image" -resize 417x250 "$image"
+              echo "After resizing: $(identify -format "%wx%h" $image)"
             done
           done
 
@@ -31,6 +32,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Resize PNG and JPG images in srp and snp"
+          git add -A  # Aggiunge tutte le modifiche
+          git commit -m "Resize PNG and JPG images in srp and snp" || echo "No changes to commit"
           git push
+
