@@ -45,7 +45,7 @@ jobs:
         run: |
           # Check if there are changes in README.md or NumeroPicons.txt
           git diff --exit-code README.md || echo "Changes detected in README.md"
-          git diff --exit-code NumeroPicons.txt || echo "Changes detected in NumeroPicons.txt"
+          #git diff --exit-code NumeroPicons.txt || echo "Changes detected in NumeroPicons.txt"
 
       - name: Commit and push changes
         run: |
