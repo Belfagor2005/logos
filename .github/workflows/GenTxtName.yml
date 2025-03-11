@@ -12,9 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Configure Git to handle large pushes
+      - name: Configure Git to handle large pushes and set author
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
       - name: Remove old .txt files
         run: |
@@ -41,21 +43,18 @@ jobs:
             fi
           done
 
-      - name: Pull the latest changes and merge
+      - name: Pull the latest changes
         run: |
-          git pull origin main --rebase || git pull origin main
+          # Pull latest changes from remote to avoid conflicts
+          git pull origin main || echo "No changes to pull"
 
       - name: Commit and push file lists
         run: |
-          # Configura l'autore e l'email per Git
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-      
-          # Aggiungi i file txt generati al commit
+          # Add the generated text files to git
           git add txt/*.txt
           
-          # Commit delle modifiche
+          # Commit changes
           git commit -m "Added file lists for folders" || echo "No changes to commit"
           
-          # Push delle modifiche al remote (con push forzato in caso di conflitto)
+          # Push changes to remote, force push in case of conflicts
           git push || git push --force
