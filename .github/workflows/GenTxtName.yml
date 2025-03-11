@@ -8,41 +8,36 @@ on:
 jobs:
   list-files-in-folders:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. Checkout del repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2. Rimuovi i vecchi file .txt (se esistono)
       - name: Rimuovi vecchi file .txt
         run: |
           rm -f txt/*.txt
           echo "Vecchi file .txt rimossi dalla cartella txt"
 
+      # 3. Genera la lista dei file per ogni cartella
       - name: Genera le liste dei file
         run: |
           mkdir -p txt
           for folder in */; do
-            if [ -d "$folder" ]; then
+            if [ -d "$folder" ] && [ "$folder" != "txt/" ]; then
               folder_name=$(basename "$folder")
-              
-              # Skip the 'txt' folder to avoid creating txt.txt
-              if [ "$folder_name" != "txt" ]; then
-                txt_file="txt/${folder_name}.txt"
-                
-                # List files in the folder (including subfolders) and save to a text file
-                find "$folder" -type f > "$txt_file"
-                echo "File list for folder $folder_name created at $txt_file"
-              fi
+              txt_file="txt/${folder_name}.txt"
+              find "$folder" -type f > "$txt_file"
+              echo "Lista dei file per la cartella $folder_name creata in $txt_file"
             fi
           done
 
-      - name: Sincronizzare con il repository remoto
-        run: |
-          git pull origin main || echo "Non ci sono modifiche da sincronizzare"
-
+      # 4. Commit e push delle modifiche (evita modifiche ai file di workflow)
       - name: Commit e push delle modifiche
         run: |
           git config --global user.email "ekekaz@gmail.com"
           git config --global user.name "Belfagor2005"
           git add txt/*.txt
           git commit -m "Aggiunti file di lista per le cartelle" || echo "Nessuna modifica da commettere"
-          git push origin main
+          git push origin main || echo "Push fallito"
