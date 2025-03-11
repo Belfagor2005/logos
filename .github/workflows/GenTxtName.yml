@@ -45,21 +45,19 @@ jobs:
             fi
           done
 
-      - name: Check if files were created
+      - name: Check git status
         run: |
-          # Check if any txt files are created
-          ls -l txt/*.txt || echo "No .txt files were created."
+          echo "Checking git status..."
+          git status
 
-      - name: Pull the latest changes
+      - name: Add new files to git (force add)
         run: |
-          # Pull latest changes from remote to avoid conflicts
-          git pull origin main || echo "No changes to pull"
+          # Force add the .txt files (even if unchanged)
+          git add -f txt/*.txt
+          echo "Forced adding of .txt files"
 
       - name: Commit and push file lists
         run: |
-          # Add the generated text files to git
-          git add txt/*.txt
-          
           # Commit changes
           git commit -m "Added/Updated file lists for folders" || echo "No changes to commit"
           
