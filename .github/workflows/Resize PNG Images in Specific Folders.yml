@@ -24,7 +24,7 @@ jobs:
 
       - name: Resize PNG and JPG Images in SNP and SRF
         run: |
-          for folder in logos/SNP logos/SRF; do
+          for folder in logos/IPTV logos/SNP logos/SRF; do
             if [ -d "$folder" ]; then
               echo "Resizing images in folder: $folder"
               find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
