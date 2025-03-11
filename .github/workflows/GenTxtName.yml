@@ -2,19 +2,19 @@ name: List Files in Folders
 
 on:
   schedule:
-    - cron: '0 2 * * 1'  # Ogni lunedì alle 02:00 UTC
-  workflow_dispatch:  # Permette di eseguire manualmente
+    - cron: '0 3 * * 1'  # Monday 03:00 UTC
+  workflow_dispatch:
 
 jobs:
   list-files-in-folders:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del repository
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Rimuovi i vecchi file .txt (se esistono)
+      # 2. Riemove old files .txt (if exists)
       - name: Remove old .txt files
         run: |
           echo "Checking if txt folder exists..."
@@ -26,24 +26,23 @@ jobs:
             echo "No txt folder found, skipping file removal."
           fi
 
-      # 3. Genera la lista dei file per ogni cartella
-      - name: Genera le liste dei file
-        run: |
+      # 3. Make file lists file folder for folder/sub
+        run:
           mkdir -p txt
           for folder in */; do
             if [ -d "$folder" ] && [ "$folder" != "txt/" ]; then
               folder_name=$(basename "$folder")
               txt_file="txt/${folder_name}.txt"
               find "$folder" -type f > "$txt_file"
-              echo "Lista dei file per la cartella $folder_name creata in $txt_file"
+              echo "List of files for folder $folder_name created in $txt_file"
             fi
           done
 
-      # 4. Commit e push delle modifiche (evita modifiche ai file di workflow)
+      # 4. Commit and push (avoid changes to workflow files)
       - name: Commit e push delle modifiche
         run: |
           git config --global user.email "ekekaz@gmail.com"
           git config --global user.name "Belfagor2005"
           git add txt/*.txt
-          git commit -m "Aggiunti file di lista per le cartelle" || echo "Nessuna modifica da commettere"
-          git push origin main || echo "Push fallito"
+          git commit -m "Added list files for folders" || echo "No changes to make"
+          git push origin main || echo "Push failure"
