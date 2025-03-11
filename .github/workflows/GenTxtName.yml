@@ -52,9 +52,9 @@ jobs:
         run: |
           # Add the generated text files to git
           git add txt/*.txt
-          
+
           # Commit changes
           git commit -m "Added file lists for folders" || echo "No changes to commit"
-          
+
           # Push changes to remote, force push in case of conflicts
           git push || git push --force
