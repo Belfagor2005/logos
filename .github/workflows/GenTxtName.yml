@@ -47,11 +47,15 @@ jobs:
 
       - name: Commit and push file lists
         run: |
-          # Add the generated text files to git
+          # Configura l'autore e l'email per Git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+      
+          # Aggiungi i file txt generati al commit
           git add txt/*.txt
           
-          # Commit changes
-          git commit -m "Added file lists for folders"
+          # Commit delle modifiche
+          git commit -m "Added file lists for folders" || echo "No changes to commit"
           
-          # Push changes to remote, force push in case of conflicts
+          # Push delle modifiche al remote (con push forzato in caso di conflitto)
           git push || git push --force
