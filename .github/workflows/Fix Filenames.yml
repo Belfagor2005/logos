@@ -1,7 +1,7 @@
 name: Fix Filenames
 
 on:
-  schedule:
+  #schedule:
     # - cron: '0 3 * * 1'  # Ogni lunedì alle 03:00 UTC
   workflow_dispatch:  # Permette esecuzione manuale
 
