@@ -15,10 +15,16 @@ jobs:
         uses: actions/checkout@v3
 
       # 2. Rimuovi i vecchi file .txt (se esistono)
-      - name: Rimuovi vecchi file .txt
+      - name: Remove old .txt files
         run: |
-          rm -f txt/*.txt
-          echo "Vecchi file .txt rimossi dalla cartella txt"
+          echo "Checking if txt folder exists..."
+          if [ -d "txt" ]; then
+            echo "txt folder found. Removing .txt files..."
+            rm -f txt/*.txt
+            echo "Old .txt files removed from the txt folder."
+          else
+            echo "No txt folder found, skipping file removal."
+          fi
 
       # 3. Genera la lista dei file per ogni cartella
       - name: Genera le liste dei file
