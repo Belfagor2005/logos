@@ -1,0 +1,35 @@
+name: Restore and Rename Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  restore-and-rename:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full history is available
+
+      - name: Restore deleted files
+        run: |
+          git checkout HEAD^ -- $(git log --diff-filter=D --summary | awk '/delete/ {print $3}') || echo "No files to restore"
+
+      - name: Rename files with double extensions
+        run: |
+          find . -type f -name "*.png.png" | while read file; do
+            mv "$file" "${file%.png.png}.png"
+          done
+
+      - name: Delete files with parentheses
+        run: |
+          find . -type f \( -name "*(*" -o -name "*)*" \) -delete
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Restored deleted files, renamed .png.png files, and removed files with parentheses" || echo "No changes to commit"
+          git push || echo "No changes to push"
