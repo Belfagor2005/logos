@@ -2,8 +2,8 @@ name: List Files in Folders
 
 on:
   schedule:
-    - cron: '0 2 * * 1'  # Every Monday at 02:00 UTC
-  workflow_dispatch:  # Allows manual trigger
+    - cron: '0 2 * * 1'  # Ogni lunedì alle 02:00 UTC
+  workflow_dispatch:  # Permette di eseguire manualmente
 
 jobs:
   list-files-in-folders:
@@ -12,22 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Configure Git to handle large pushes and set author
-        run: |
-          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
-          git config --global user.email "ekekaz@gmail.com"
-          git config --global user.name "Belfagor2005"
-
-      - name: Remove old .txt files
+      - name: Rimuovi vecchi file .txt
         run: |
           rm -f txt/*.txt
-          echo "Old .txt files removed from the txt folder"
+          echo "Vecchi file .txt rimossi dalla cartella txt"
 
-      - name: Generate file lists
+      - name: Genera le liste dei file
         run: |
-          # Create the 'txt' folder if it doesn't exist
           mkdir -p txt
-          # Loop through all folders in the repository
           for folder in */; do
             if [ -d "$folder" ]; then
               folder_name=$(basename "$folder")
@@ -43,19 +35,10 @@ jobs:
             fi
           done
 
-      - name: Pull latest changes from remote to avoid conflicts
+      - name: Commit e push delle modifiche
         run: |
-          git pull origin main --rebase || echo "No changes to pull"
-
-      - name: Force add the .txt files (even if unchanged)
-        run: |
-          git add -A
-          echo "Forced adding of .txt files"
-
-      - name: Commit changes
-        run: |
-          git commit -m "Added file lists for folders" || echo "No changes to commit"
-
-      - name: Push changes
-        run: |
-          git push origin main || git push --force
+          git config --global user.email "ekekaz@gmail.com"
+          git config --global user.name "Belfagor2005"
+          git add txt/*.txt
+          git commit -m "Aggiunti file di lista per le cartelle"
+          git push origin main
