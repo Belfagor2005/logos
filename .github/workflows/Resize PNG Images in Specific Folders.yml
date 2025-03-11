@@ -17,7 +17,9 @@ jobs:
 
       - name: Install ImageMagick
         run: sudo apt-get install -y imagemagick
-
+      - name: Configure Git to handle large pushes
+        run: |
+          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
       - name: Find and Resize PNG Images
         run: |
           # Trova tutte le immagini PNG nelle cartelle specificate
