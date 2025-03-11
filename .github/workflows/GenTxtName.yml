@@ -45,13 +45,17 @@ jobs:
 
       - name: Pull latest changes from remote to avoid conflicts
         run: |
-          git pull origin main || echo "No changes to pull"
+          git pull origin main --rebase || echo "No changes to pull"
 
-      - name: Add all changes (including file deletions)
+      - name: Force add the .txt files (even if unchanged)
         run: |
           git add -A
+          echo "Forced adding of .txt files"
 
-      - name: Commit and push file lists
+      - name: Commit changes
         run: |
           git commit -m "Added file lists for folders" || echo "No changes to commit"
+
+      - name: Push changes
+        run: |
           git push origin main || git push --force
