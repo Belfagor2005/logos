@@ -1,47 +1,76 @@
-name: Resize PNG and JPG Images in Specific Folders
+name: Weekly Zipping
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
+on:
+  workflow_dispatch
 
 jobs:
-  resize:
+  zip-folders:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
+        
       - name: Configure Git to handle large pushes
         run: |
-          git config --global http.postBuffer 524288000
+          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
 
-      - name: Install ImageMagick
-        run: sudo apt-get install -y imagemagick
-
-      - name: Resize PNG and JPG Images in SNP and SRF
+      - name: Remove old zip files
         run: |
-          for folder in logos/IPTV logos/SNP logos/SRF; do
+          rm -f zip/*.zip 
+
+      - name: Create zip files (max 40MB each)
+        run: |
+          mkdir -p zip
+          for folder in logos/* E2-LIST-ZIP/* E2-LIST/*; do
+            # Exclude folders logos, E2-LIST-ZIP e E2-LIST
+            if [[ "$folder" == "logos" || "$folder" == "E2-LIST-ZIP" || "$folder" == "E2-LIST" ]]; then
+              echo "Skipping folder: $folder"
+              continue
+            fi
+
             if [ -d "$folder" ]; then
-              echo "Resizing images in folder: $folder"
-              find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
-                echo "Before resizing: $(identify -format "%wx%h" $image)"
-                convert "$image" -resize 417x250 "$image"
-                echo "After resizing: $(identify -format "%wx%h" $image)"
+              folder_name=$(basename "$folder")
+              part=1
+              temp_dir=$(mktemp -d)
+              total_size=0
+
+              find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
+                file_size=$(du -b "$file" | cut -f1)
+                total_size=$((total_size + file_size))
+
+                if [ "$total_size" -gt 40000000 ]; then  # 40MB
+                  zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
+                  rm -rf "$temp_dir"/*
+                  part=$((part + 1))
+                  total_size=$file_size
+                fi
+
+                mkdir -p "$temp_dir"
+                cp "$file" "$temp_dir/"
               done
-            else
-              echo "Directory $folder does not exist!"
+
+              if [ "$(ls -A "$temp_dir")" ]; then
+                zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
+              fi
+
+              rm -rf "$temp_dir"
             fi
           done
 
-      - name: Commit resized images
+      - name: Commit and push zipped files
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
           git pull origin main
-          git add -A  # Aggiunge tutte le modifiche
-          git commit -m "Resize PNG and JPG images in SNP and SRF" || echo "No changes to commit"
-          git push
+
+          for file in zip/*.zip; do
+            if [ $(du -m "$file" | cut -f1) -le 100 ]; then
+              git add "$file"
+            else
+              echo "Skipping $file (size > 100MB)"
+            fi
+          done
+
+          git commit -m "Added zipped folders" || echo "No changes to commit"
+          git push || git push --force
