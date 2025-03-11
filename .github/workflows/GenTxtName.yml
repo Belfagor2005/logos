@@ -43,7 +43,7 @@ jobs:
             fi
           done
 
-      - name: Pull latest changes
+      - name: Pull latest changes from remote to avoid conflicts
         run: |
           git pull origin main || echo "No changes to pull"
 
