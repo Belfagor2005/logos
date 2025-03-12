@@ -30,8 +30,8 @@ jobs:
                 fi
                 echo "Before resizing: $current_size"
                 # convert "$image" -resize 417x250 "$image"
-			convert "$image" -resize 417x250! "$image"
-  		echo "After resizing: $(identify -format "%wx%h" $image)"
+                convert "$image" -resize 417x250! "$image"
+		echo "After resizing: $(identify -format "%wx%h" $image)"
               done
             else
               echo "Directory $folder does not exist!"
