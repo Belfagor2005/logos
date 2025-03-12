@@ -1,4 +1,4 @@
-name: TEST Resize PNG and JPG Images
+name: Resize PNG and JPG Images in Specific Folders
 
 on:
   workflow_dispatch
@@ -13,6 +13,7 @@ jobs:
       - name: Configure Git to handle large pushes
         run: |
           git config --global http.postBuffer 524288000
+
       - name: Install ImageMagick
         run: sudo apt-get install -y imagemagick
 
@@ -21,27 +22,46 @@ jobs:
           for folder in logos/SNP logos/SRF; do
             if [ -d "$folder" ]; then
               echo "Resizing images in folder: $folder"
-              # Prendi solo i primi 10 file
-              find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | head -n 10 | while read image; do
-                # check format files
-                current_size=$(identify -format "%wx%h" "$image")
+              find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
+                # Verifica che il file esista
+                if [ ! -f "$image" ]; then
+                  echo "File non trovato: $image"
+                  continue
+                fi
+                
+                # Check formato immagini
+                current_size=$(identify -format "%wx%h" "$image" 2>/dev/null)
+                if [ $? -ne 0 ]; then
+                  echo "Errore nel recuperare le dimensioni dell'immagine $image"
+                  continue
+                fi
+
                 if [ "$current_size" == "417x250" ]; then
                   echo "Skipping $image (already 417x250)"
                   continue  # skip file if 417x250
                 fi
+
                 echo "Before resizing: $current_size"
                 convert "$image" -resize 417x250! "$image"
+											  
                 echo "After resizing: $(identify -format "%wx%h" $image)"
               done
             else
               echo "Directory $folder does not exist!"
             fi
           done
+
+      - name: Verifica modifiche prima di commit
+        run: |
+          git status
+          git diff
+
       - name: Commit resized images
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git pull origin main
+          git pull --rebase origin main
           git add -A  # Aggiunge tutte le modifiche
+          git status  # Verifica lo stato prima del commit
           git commit -m "Resize PNG and JPG images in SNP and SRF" || echo "No changes to commit"
           git push
