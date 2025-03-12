@@ -241,7 +241,7 @@
     {
         "key": "marmo",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/marmo.png"
+        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/marmo.png",
         "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/mirror_glass.png"
 
     },
@@ -315,9 +315,6 @@
         "factor": 0.90,
         "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/WhiteGrid.png"
     },
-    
-    
-    
     {
         "key": "yellow",
         "factor": 0.90,
