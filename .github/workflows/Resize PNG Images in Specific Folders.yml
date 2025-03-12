@@ -13,7 +13,6 @@ jobs:
       - name: Configure Git to handle large pushes
         run: |
           git config --global http.postBuffer 524288000
-
       - name: Install ImageMagick
         run: sudo apt-get install -y imagemagick
 
@@ -30,14 +29,14 @@ jobs:
                   continue  # skip file if 417x250
                 fi
                 echo "Before resizing: $current_size"
-                convert "$image" -resize 417x250 "$image"
+                # convert "$image" -resize 417x250 "$image"
+				        convert "$image" -resize 417x250! "$image"
                 echo "After resizing: $(identify -format "%wx%h" $image)"
               done
             else
               echo "Directory $folder does not exist!"
             fi
           done
-
       - name: Commit resized images
         run: |
           git config --global user.name "GitHub Actions"
