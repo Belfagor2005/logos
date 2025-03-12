@@ -23,7 +23,7 @@
     {
         "key": "carbon",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/carbon.png"
+        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/Carbon.png"
     },
     {
         "key": "carbon_2",
@@ -33,7 +33,7 @@
     {
         "key": "darkgrey",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/darkgrey.png"
+        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/DarkGrey.png"
     },
     {
         "key": "glossy",
@@ -65,7 +65,7 @@
     {
         "key": "red",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/red.png",
+        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/Red.png",
         "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/mirror_glass.png"
     },
     {
@@ -242,11 +242,8 @@
         "key": "marmo",
         "factor": 0.90,
         "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/marmo.png"
-    },
-    {
-        "key": "mirror_glas",
-        "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/mirror_glas.png"
+        "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/mirror_glass.png"
+
     },
     {
         "key": "orange",
@@ -318,29 +315,32 @@
         "factor": 0.90,
         "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/WhiteGrid.png"
     },
+    
+    
+    
     {
         "key": "yellow",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/Yellow.png"
+        "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/Yellow.png"
     },
     {
         "key": "frameblue",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/FrameBlue.png"
+        "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/FrameBlue.png"
     },
     {
         "key": "framegreen",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/FrameGreen.png"
+        "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/FrameGreen.png"
     },
     {
         "key": "framered",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/FrameRed.png"
+        "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/FrameRed.png"
     },
     {
         "key": "frameyellow",
         "factor": 0.90,
-        "bg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/BACKGR/FrameYellow.png"
+        "fg": "https://raw.githubusercontent.com/Belfagor2005/logos/main/logos/REFLEX/FrameYellow.png"
     }
 ]
