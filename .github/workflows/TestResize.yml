@@ -1,4 +1,4 @@
-name: Resize PNG and JPG Images in Specific Folders
+name: TEST Resize PNG and JPG Images
 
 on:
   workflow_dispatch
