@@ -60,8 +60,12 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          git add -A
+          git commit -m "Committing local changes before pulling" || echo "No local changes to commit"
+          # Stash delle modifiche locali se non si vuole commettere, per evitare conflitti
+          git stash || echo "No changes to stash"
           git pull --rebase origin main
-          git add -A  # Aggiunge tutte le modifiche
-          git status  # Verifica lo stato prima del commit
+          git stash pop || echo "No stashed changes to apply"
+          git add -A
           git commit -m "Resize PNG and JPG images in SNP and SRF" || echo "No changes to commit"
           git push
