@@ -15,7 +15,7 @@ jobs:
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
       - name: Convert filenames to lowercase in logos/logos/SNP
         run: |
-          find logos/logos/SNP -depth -type f | while read file; do
+          find logos/SNP -depth -type f | while read file; do
             lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
             if [ "$file" != "$lowercase_file" ]; then
               temp_file="${lowercase_file}.tmp"
