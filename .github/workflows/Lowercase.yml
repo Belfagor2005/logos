@@ -16,13 +16,9 @@ jobs:
           find ./logos/SNP -depth -name "*" | while read file; do
             lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
             if [ "$file" != "$lowercase_file" ]; then
-              git mv "$file" "$lowercase_file" || true
+              temp_file="${lowercase_file}.tmp"
+              mv "$file" "$temp_file"
+              mv "$temp_file" "$lowercase_file"
+              git add "$lowercase_file"
             fi
           done
-
-      - name: Commit changes
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git commit -am "Convert filenames to lowercase in ./logos/SNP" || echo "No changes to commit"
-          git push
