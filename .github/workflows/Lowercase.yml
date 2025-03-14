@@ -1,0 +1,28 @@
+name: Lowercase Filenames
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lowercase_filenames:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Convert filenames to lowercase in ./logos/SNP
+        run: |
+          find ./logos/SNP -depth -name "*" | while read file; do
+            lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
+            if [ "$file" != "$lowercase_file" ]; then
+              git mv "$file" "$lowercase_file" || true
+            fi
+          done
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git commit -am "Convert filenames to lowercase in ./logos/SNP" || echo "No changes to commit"
+          git push
