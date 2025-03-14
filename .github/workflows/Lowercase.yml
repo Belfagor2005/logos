@@ -20,14 +20,14 @@ jobs:
             exit 1
           fi
 
-      - name: Convert filenames to lowercase and remove hyphens in logos/SNP
+      - name: Convert filenames to lowercase, remove hyphens and spaces in logos/SNP
         run: |
           find logos/SNP -depth -type f | while read -r file; do
             dir=$(dirname "$file")
             base=$(basename "$file")
             # Controllo se il nome contiene lettere maiuscole
             if [[ "$base" =~ [A-Z] ]]; then
-              lowercase_base=$(echo "$base" | tr 'A-Z' 'a-z' | tr -d '-')
+              lowercase_base=$(echo "$base" | tr 'A-Z' 'a-z' | tr -d '-' | tr -d ' ')  # Rimuovo trattini e spazi
               lowercase_file="$dir/$lowercase_base"
               if [ "$file" != "$lowercase_file" ]; then
                 mv "$file" "$lowercase_file"
