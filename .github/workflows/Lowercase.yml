@@ -11,14 +11,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Convert filenames to lowercase in ./logos/SNP
+name: Lowercase Filenames
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lowercase_filenames:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure Git to handle large pushes
         run: |
-          find ./logos/SNP -depth -name "*" | while read file; do
+          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
+      - name: Convert filenames to lowercase in logos/logos/SNP
+        run: |
+          find logos/logos/SNP -depth -type f | while read file; do
             lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
             if [ "$file" != "$lowercase_file" ]; then
               temp_file="${lowercase_file}.tmp"
               mv "$file" "$temp_file"
               mv "$temp_file" "$lowercase_file"
-              git add "$lowercase_file"
+              git mv -f "$lowercase_file" "$lowercase_file"
             fi
           done
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git commit -am "Convert filenames to lowercase in logos/logos/SNP" || echo "No changes to commit"
+          git push
+
