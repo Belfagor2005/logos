@@ -13,6 +13,13 @@ jobs:
       - name: Configure Git to handle large pushes
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
+      - name: Ensure SNP directory exists
+        run: |
+          if [ ! -d "logos/SNP" ]; then
+            echo "Directory logos/SNP does not exist. Exiting."
+            exit 1
+          fi
+
       - name: Convert filenames to lowercase and remove hyphens in logos/SNP
         run: |
           find logos/SNP -depth -type f | while read -r file; do
@@ -34,6 +41,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git commit -am "Convert filenames to lowercase in logos/logos/SNP" || echo "No changes to commit"
-          git push
-
+          git pull origin main || true  # Aggiungi un pull per recuperare i cambiamenti remoti
+          git commit -am "Convert filenames to lowercase and remove hyphens in logos/SNP" || echo "No changes to commit"
+          git push origin main
