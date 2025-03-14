@@ -13,7 +13,7 @@ jobs:
       - name: Configure Git to handle large pushes
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
-      - name: Convert filenames to lowercase in logos/logos/SNP
+      - name: Convert filenames to lowercase in logos/SNP
         run: |
           find logos/SNP -depth -type f | while read file; do
             lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
@@ -24,7 +24,6 @@ jobs:
               git mv -f "$lowercase_file" "$lowercase_file"
             fi
           done
-
       - name: Commit changes
         run: |
           git config --global user.name "github-actions"
