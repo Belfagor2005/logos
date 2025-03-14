@@ -10,19 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-name: Lowercase Filenames
-
-on:
-  workflow_dispatch:
-
-jobs:
-  lowercase_filenames:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
       - name: Configure Git to handle large pushes
         run: |
           git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
