@@ -16,13 +16,17 @@ jobs:
         run: |
           find . -type f -name "*.png.png" | while read file; do
             new_name=$(echo "$file" | sed 's/.png.png$/.png/')
-            mv "$file" "$new_name"
+            if [ "$file" != "$new_name" ]; then
+              mv "$file" "$new_name"  # Solo se il nome del file è diverso
+            fi"
           done
       - name: Fix filenames:remove dashes and spaces
         run: |
           find . -type f -name "*.png" | while read file; do
             new_name=$(echo "$file" | sed 's/-//g')  # Rimuove i trattini
-            mv "$file" "$new_name"
+            if [ "$file" != "$new_name" ]; then
+              mv "$file" "$new_name"  # Solo se il nome del file è diverso
+            fi
           done
       - name: Delete files containing parentheses
         run: |
