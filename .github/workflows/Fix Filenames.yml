@@ -26,6 +26,9 @@ jobs:
           find . -type f -name "*.png" | while IFS= read -r file; do
             new_name=$(echo "$file" | sed 's/[- ]//g')  # Rimuove trattini e spazi
             if [ "$file" != "$new_name" ]; then
+              # Crea la directory di destinazione se non esiste
+              dest_dir=$(dirname "$new_name")
+              mkdir -p "$dest_dir"
               mv "$file" "$new_name"  # Solo se il nome del file è diverso
             fi
           done
@@ -42,4 +45,3 @@ jobs:
           git add .
           git commit -m "Fixed filenames: renamed double extensions, removed dashes/spaces, and deleted files with parentheses" || echo "No changes to commit"
           git push --force
-
