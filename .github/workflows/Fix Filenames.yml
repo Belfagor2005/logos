@@ -18,7 +18,12 @@ jobs:
             new_name=$(echo "$file" | sed 's/.png.png$/.png/')
             mv "$file" "$new_name"
           done
-
+      - name: Fix filenames:remove dashes and spaces
+        run: |
+          find . -type f -name "*.png" | while read file; do
+            new_name=$(echo "$file" | sed 's/-//g')  # Rimuove i trattini
+            mv "$file" "$new_name"
+          done
       - name: Delete files containing parentheses
         run: |
           find . -type f \( -name "*(*" -o -name "*)*" \) -exec rm -v {} +
