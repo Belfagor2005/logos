@@ -14,20 +14,22 @@ jobs:
 
       - name: Rename files with double extension
         run: |
-          find . -type f -name "*.png.png" | while read file; do
-            new_name=$(echo "$file" | sed 's/.png.png$/.png/')
+          find . -type f -name "*.png.png" | while IFS= read -r file; do
+            new_name=$(echo "$file" | sed 's/.png.png$/.png/')  # Rimuove l'estensione doppia
             if [ "$file" != "$new_name" ]; then
-              mv "$file" "$new_name"  # Solo se il nome del file è diverso
-            fi"
+              mv "$file" "$new_name"  # Rinomina solo se il nuovo nome è diverso
+            fi
           done
-      - name: Fix filenames:remove dashes and spaces
+
+      - name: Fix filenames:remove dashes, spaces, and other unwanted characters
         run: |
-          find . -type f -name "*.png" | while read file; do
-            new_name=$(echo "$file" | sed 's/-//g')  # Rimuove i trattini
+          find . -type f -name "*.png" | while IFS= read -r file; do
+            new_name=$(echo "$file" | sed 's/[- ]//g')  # Rimuove trattini e spazi
             if [ "$file" != "$new_name" ]; then
               mv "$file" "$new_name"  # Solo se il nome del file è diverso
             fi
           done
+
       - name: Delete files containing parentheses
         run: |
           find . -type f \( -name "*(*" -o -name "*)*" \) -exec rm -v {} +
@@ -38,5 +40,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
 
           git add .
-          git commit -m "Fixed filenames: renamed double extensions and removed files with parentheses" || echo "No changes to commit"
+          git commit -m "Fixed filenames: renamed double extensions, removed dashes/spaces, and deleted files with parentheses" || echo "No changes to commit"
           git push --force
+
