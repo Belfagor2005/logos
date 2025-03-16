@@ -36,13 +36,13 @@ jobs:
                   continue
                 fi
 
-                if [ "$current_size" == "417x250" ]; then
-                  echo "Skipping $image (already 417x250)"
-                  continue  # skip file if 417x250
+                if [ "$current_size" == "220x132" ]; then
+                  echo "Skipping $image (already 220x132)"
+                  continue  # skip file if 220x132
                 fi
 
                 echo "Before resizing: $current_size"
-                convert "$image" -resize 417x250! "$image"
+                convert "$image" -resize 220x132! "$image"
                 echo "After resizing: $(identify -format "%wx%h" $image)"
               done
             else
