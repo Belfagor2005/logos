@@ -36,13 +36,13 @@ jobs:
                   continue
                 fi
 
-                if [ "$current_size" == "417x250" ]; then
-                  echo "Skipping $image (already 417x250)"
-                  continue  # skip file if 417x250
+                if [ "$current_size" == "220x132" ]; then
+                  echo "Skipping $image (already 220x132)"
+                  continue  # Salta il file se è già 220x132
                 fi
 
                 echo "Before resizing: $current_size"
-                convert "$image" -resize 417x250! "$image"
+                convert "$image" -resize 220x132! "$image"
                 echo "After resizing: $(identify -format "%wx%h" $image)"
               done
             else
@@ -66,5 +66,5 @@ jobs:
           git pull --rebase origin main
           git stash pop || echo "No stashed changes to apply"
           git add -A
-          git commit -m "Resize PNG and JPG images in SNP and SRF" || echo "No changes to commit"
+          git commit -m "Resize PNG and JPG images in SNP and SRF to 220x132" || echo "No changes to commit"
           git push
