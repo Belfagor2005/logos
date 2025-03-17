@@ -2,8 +2,8 @@ name: List Files in Folders
 
 on:
   schedule:
-    - cron: '0 3 * * 1'  # Monday 03:00 UTC
-  workflow_dispatch:
+    - cron: '0 3 * * 1'  # Ogni lunedì alle 03:00 UTC
+  workflow_dispatch:  # Permette esecuzione manuale
 
 jobs:
   list-files-in-folders:
