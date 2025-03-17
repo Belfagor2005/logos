@@ -25,7 +25,7 @@ jobs:
             fi
           done
 
-      - name: Fix filenames:remove dashes, spaces, and other unwanted characters
+      - name: Fix filenames remove dashes, spaces, and other unwanted characters
         run: |
           find . -type f -name "*.png" | while IFS= read -r file; do
             new_name=$(echo "$file" | sed 's/[- ]//g')  # Rimuove trattini e spazi
