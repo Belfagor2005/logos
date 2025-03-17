@@ -2,8 +2,8 @@ name: Weekly Zipping
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # lunedì 00:00 UTC
-  workflow_dispatch:
+    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
+  workflow_dispatch:  # Permette l'avvio manuale
 
 jobs:
   zip-folders:
@@ -11,12 +11,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Configure Git to handle large pushes
         run: |
-          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
+          git config --global http.postBuffer 524288000  # Aumenta la dimensione del buffer a 500MB
+
       - name: Remove old zip files
         run: |
-          rm -f zip/*.zip 
+          mkdir -p zip  # Crea la cartella zip se non esiste
+          rm -f zip/*.zip  # Rimuove i vecchi file zip
 
       - name: Create zip files (max 40MB each)
         run: |
@@ -28,8 +31,8 @@ jobs:
               temp_dir=$(mktemp -d)
               total_size=0
 
-              # find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
-              for folder in $(find . -type d ! -path "./logos*" ! -path "./E2-LIST-ZIP*" ! -path "./E2-LIST*"); do
+              # Trova i file nella cartella e li aggiunge a un file zip
+              find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
                 file_size=$(du -b "$file" | cut -f1)
                 total_size=$((total_size + file_size))
 
@@ -40,11 +43,10 @@ jobs:
                   total_size=$file_size
                 fi
 
-                mkdir -p "$temp_dir"
-
                 cp "$file" "$temp_dir/"
               done
 
+              # Aggiungi i file rimanenti all'ultimo zip
               if [ "$(ls -A "$temp_dir")" ]; then
                 zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
               fi
