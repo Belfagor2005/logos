@@ -62,13 +62,11 @@ jobs:
 
           git pull origin main
 
-          for file in zip/*.zip; do
-            if [ $(du -m "$file" | cut -f1) -le 100 ]; then
-              git add "$file"
-            else
-              echo "Skipping $file (size > 100MB)"
-            fi
-          done
+          # Forza l'aggiunta dei file ignorati
+          git add -f zip/*.zip
 
+          # Committa le modifiche solo se ci sono cambiamenti
           git commit -m "Added zipped folders" || echo "No changes to commit"
+
+          # Push delle modifiche (con --force in caso di conflitti)
           git push || git push --force
