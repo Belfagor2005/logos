@@ -1,72 +1,50 @@
-name: Weekly Zipping
+name: Zip Folders
 
 on:
-  schedule:
-    - cron: '0 0 * * 1'  # Ogni lunedì alle 00:00 UTC
-  workflow_dispatch:  # Permette l'avvio manuale
+  workflow_dispatch:
 
 jobs:
   zip-folders:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Configure Git to handle large pushes
         run: |
-          git config --global http.postBuffer 524288000  # Aumenta la dimensione del buffer a 500MB
+          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
 
       - name: Remove old zip files
         run: |
-          mkdir -p zip  # Crea la cartella zip se non esiste
-          rm -f zip/*.zip  # Rimuove i vecchi file zip
+          mkdir -p zip
+          rm -f zip/*.zip
 
-      - name: Create zip files (max 40MB each)
+      - name: Create zip files
         run: |
           mkdir -p zip
           for folder in logos/*; do
             if [ -d "$folder" ]; then
               folder_name=$(basename "$folder")
-              part=1
-              temp_dir=$(mktemp -d)
-              total_size=0
-
-              # Trova i file nella cartella e li aggiunge a un file zip
-              find "$folder" -type f -print0 | while IFS= read -r -d '' file; do
-                file_size=$(du -b "$file" | cut -f1)
-                total_size=$((total_size + file_size))
-
-                if [ "$total_size" -gt 40000000 ]; then  # 40MB
-                  zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
-                  rm -rf "$temp_dir"/*
-                  part=$((part + 1))
-                  total_size=$file_size
-                fi
-
-                cp "$file" "$temp_dir/"
-              done
-
-              # Aggiungi i file rimanenti all'ultimo zip
-              if [ "$(ls -A "$temp_dir")" ]; then
-                zip -r "zip/${folder_name}_${part}.zip" -j "$temp_dir"/*
-              fi
-
-              rm -rf "$temp_dir"
+              zip_file="zip/${folder_name}.zip"
+              zip -r "$zip_file" "$folder"
+              echo "Created zip file: $zip_file"
             fi
           done
 
-      - name: Commit and push zipped files
+      - name: Commit and push changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          git pull origin main
+          # Pull remote changes and rebase local changes
+          git pull --rebase origin main
 
-          # Forza l'aggiunta dei file ignorati
-          git add -f zip/*.zip
+          # Add all changes
+          git add -A
 
-          # Committa le modifiche solo se ci sono cambiamenti
+          # Commit changes
           git commit -m "Added zipped folders" || echo "No changes to commit"
 
-          # Push delle modifiche (con --force in caso di conflitti)
-          git push || git push --force
+          # Push changes
+          git push origin main
