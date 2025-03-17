@@ -10,9 +10,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Configure Git to handle large pushes
         run: |
-          git config --global http.postBuffer 524288000  # Increase buffer size to 500MB
+          git config --global http.postBuffer 524288000  # Aumenta la dimensione del buffer a 500MB
+
       - name: Ensure SNP directory exists
         run: |
           if [ ! -d "logos/SNP" ]; then
@@ -41,6 +43,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git pull origin main || true  # Aggiungi un pull per recuperare i cambiamenti remoti
-          git commit -am "Convert filenames to lowercase and remove hyphens in logos/SNP" || echo "No changes to commit"
+          git pull --rebase origin main || true  # Aggiungi un pull per recuperare i cambiamenti remoti
+          git add -A
+          git commit -m "Convert filenames to lowercase and remove hyphens in logos/SNP" || echo "No changes to commit"
           git push origin main
