@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Riemove old files .txt (if exists)
+      # 2. Remove old .txt files (if they exist)
       - name: Remove old .txt files
         run: |
           echo "Checking if txt folder exists..."
@@ -26,8 +26,9 @@ jobs:
             echo "No txt folder found, skipping file removal."
           fi
 
-      # 3. Make file lists file folder for folder/sub
-        run:
+      # 3. Make file lists for each folder/subfolder
+      - name: Generate file lists for folders
+        run: |
           mkdir -p txt
           for folder in */; do
             if [ -d "$folder" ] && [ "$folder" != "txt/" ]; then
@@ -38,8 +39,8 @@ jobs:
             fi
           done
 
-      # 4. Commit and push (avoid changes to workflow files)
-      - name: Commit e push delle modifiche
+      # 4. Commit and push changes (avoid changes to workflow files)
+      - name: Commit and push changes
         run: |
           git config --global user.email "ekekaz@gmail.com"
           git config --global user.name "Belfagor2005"
