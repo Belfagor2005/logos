@@ -22,6 +22,7 @@ jobs:
           for folder in logos/SNP logos/SRF; do
             if [ -d "$folder" ]; then
               echo "Resizing images in folder: $folder"
+										   
               find "$folder" -type f \( -name "*.png" -o -name "*.jpg" \) | while read image; do
                 # Verifica che il file esista
                 if [ ! -f "$image" ]; then
@@ -38,7 +39,7 @@ jobs:
 
                 if [ "$current_size" == "220x132" ]; then
                   echo "Skipping $image (already 220x132)"
-                  continue  # Salta il file se è già 220x132
+                  continue  # skip file if 220x132
                 fi
 
                 echo "Before resizing: $current_size"
