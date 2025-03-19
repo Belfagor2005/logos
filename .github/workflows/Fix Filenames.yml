@@ -25,18 +25,18 @@ jobs:
             fi
           done
 
-      - name: Fix filenames remove dashes, spaces, and other unwanted characters
-        run: |
-          find . -type f -name "*.png" | while IFS= read -r file; do
-            new_name=$(echo "$file" | sed 's/[- ]//g')  # Rimuove trattini e spazi
-            if [ "$file" != "$new_name" ]; then
-              # Crea la directory di destinazione se non esiste
-              dest_dir=$(dirname "$new_name")
-              mkdir -p "$dest_dir"
-              mv "$file" "$new_name"  # Solo se il nome del file è diverso
-              echo "Renamed: $file -> $new_name"
-            fi
-          done
+      #- name: Fix filenames remove dashes, spaces, and other unwanted characters
+      #  run: |
+      #  find . -type f -name "*.png" | while IFS= read -r file; do
+      #	new_name=$(echo "$file" | sed 's/[- ]//g')  # Rimuove trattini e spazi
+      #	if [ "$file" != "$new_name" ]; then
+      #	  # Crea la directory di destinazione se non esiste
+      #	  dest_dir=$(dirname "$new_name")
+      #	  mkdir -p "$dest_dir"
+      #	  mv "$file" "$new_name"  # Solo se il nome del file è diverso
+      #	  echo "Renamed: $file -> $new_name"
+      #	fi
+      # done
 
       - name: Delete files containing parentheses
         run: |
