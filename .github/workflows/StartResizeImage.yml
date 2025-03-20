@@ -28,7 +28,7 @@ jobs:
                   echo "File non trovato: $image"
                   continue
                 fi
-                
+
                 # Check formato immagini
                 current_size=$(identify -format "%wx%h" "$image" 2>/dev/null)
                 if [ $? -ne 0 ]; then
