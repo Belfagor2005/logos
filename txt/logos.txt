@@ -29462,6 +29462,7 @@ logos/SNP/12arabia.light.png
 logos/SNP/12arabia.png
 logos/SNP/12bbctwodelay.png
 logos/SNP/12kanal.png
+logos/SNP/12tvparma.png
 logos/SNP/12Спас.png
 logos/SNP/13-ulica-hd.png
 logos/SNP/13-ulica-street-poland.png
@@ -29682,6 +29683,7 @@ logos/SNP/2500eskaostrzeszow.png
 logos/SNP/2520eskabraniewo.png
 logos/SNP/25tv.png
 logos/SNP/269italia.png
+logos/SNP/27twentyseven-hd.png
 logos/SNP/27twentyseven.png
 logos/SNP/27twentysevenhd.png
 logos/SNP/27twentysevenmediaset-hd.png
@@ -29693,6 +29695,7 @@ logos/SNP/2fmretro.default.png
 logos/SNP/2fmtheedge.dark.png
 logos/SNP/2fmtheedge.default.png
 logos/SNP/2hd.png
+logos/SNP/2m-monde-hd.png
 logos/SNP/2m-monde.png
 logos/SNP/2m.png
 logos/SNP/2mmaroc.png
@@ -29791,7 +29794,6 @@ logos/SNP/4.0.png
 logos/SNP/4.png
 logos/SNP/40-tv.png
 logos/SNP/4000plusses.png
-logos/SNP/4097_0_1_1_1_1_cccc0000_0_0_0.png
 logos/SNP/40rockradio.default.png
 logos/SNP/40rockradio.light.png
 logos/SNP/40rockradio.png
@@ -29910,6 +29912,7 @@ logos/SNP/5195.png
 logos/SNP/5198.png
 logos/SNP/5199.png
 logos/SNP/51bfbsradio.png
+logos/SNP/51radiotv.png
 logos/SNP/5201.png
 logos/SNP/52189.png
 logos/SNP/52505.png
@@ -30028,6 +30031,7 @@ logos/SNP/6terhd.png
 logos/SNP/6tersuissehd.png
 logos/SNP/7-kazakhstan.png
 logos/SNP/7.png
+logos/SNP/7080hits.png
 logos/SNP/7080tv.png
 logos/SNP/70ler.png
 logos/SNP/70s.png
@@ -30288,6 +30292,7 @@ logos/SNP/absoluutfm.default.png
 logos/SNP/absoluutfm.png
 logos/SNP/abstest.png
 logos/SNP/abu-dhabi-tv-hd.png
+logos/SNP/abudhabi-tv-hd.png
 logos/SNP/abudhabi-tv.png
 logos/SNP/abudhabiadhan.png
 logos/SNP/abudhabidrama.default.png
@@ -30704,6 +30709,7 @@ logos/SNP/akwaabamagicabusua.default.png
 logos/SNP/akwaahd.png
 logos/SNP/al-alamiya.png
 logos/SNP/al-aoula-inter-hd.png
+logos/SNP/al-aoula-inter.png
 logos/SNP/al-arabia-hd.png
 logos/SNP/al-arabiya.png
 logos/SNP/al-baghdadia.png
@@ -30728,6 +30734,7 @@ logos/SNP/al-jazeera.png
 logos/SNP/al-karma-tv-me.png
 logos/SNP/al-maghribia-hd.png
 logos/SNP/al-maghribia.png
+logos/SNP/al-malakoot-sat-the-kingdom-sat-الملكوت-سات.png
 logos/SNP/al-malakoot-sat-the-kingdom-sat.png
 logos/SNP/al-malakoot.png
 logos/SNP/al-mashhad.png
@@ -31219,6 +31226,7 @@ logos/SNP/allsportsradio.png
 logos/SNP/alltv.png
 logos/SNP/allxmas.png
 logos/SNP/alma'aly.png
+logos/SNP/alma-tv.png
 logos/SNP/alma.png
 logos/SNP/almaalitv.default.png
 logos/SNP/almaaly.png
@@ -31873,6 +31881,7 @@ logos/SNP/antenastars.png
 logos/SNP/antenastarshd.png
 logos/SNP/antenazagreb.png
 logos/SNP/antenna-1-europe.png
+logos/SNP/antenna-sud.png
 logos/SNP/antenna-tv-ant-1.png
 logos/SNP/antenna-tv.png
 logos/SNP/antenna.default.png
@@ -31880,12 +31889,14 @@ logos/SNP/antenna.png
 logos/SNP/antenna1.png
 logos/SNP/antenna10.png
 logos/SNP/antenna1europe.png
+logos/SNP/antenna2.png
 logos/SNP/antenna3.png
 logos/SNP/antenna3rw.png
 logos/SNP/antennablu.png
 logos/SNP/antennacherkasy.png
 logos/SNP/antennadelmediterraneo.png
 logos/SNP/antennasicilia.default.png
+logos/SNP/antennasicilia.png
 logos/SNP/antennasicilia1_200.png
 logos/SNP/antennasud.default.png
 logos/SNP/antennasud.png
@@ -32004,6 +32015,7 @@ logos/SNP/aragontv.png
 logos/SNP/aragontvhd.png
 logos/SNP/aragontvint.png
 logos/SNP/aramcrenc1.png
+logos/SNP/aranciatv.png
 logos/SNP/aranciatvhd.png
 logos/SNP/arapca.png
 logos/SNP/araz_fm.png
@@ -32560,6 +32572,7 @@ logos/SNP/avangtvhd.png
 logos/SNP/avaseries.png
 logos/SNP/avatar.png
 logos/SNP/avatv.png
+logos/SNP/avengersgrimmchannel.png
 logos/SNP/avers.default.png
 logos/SNP/avers.png
 logos/SNP/avianoeagle.png
@@ -32669,6 +32682,7 @@ logos/SNP/azatlyk-radiosy.png
 logos/SNP/azatlykradiosy.png
 logos/SNP/azatlykradiosy217.png
 logos/SNP/azatlykradiosych217.png
+logos/SNP/azattyk-unalgysy.png
 logos/SNP/azattykunalgysy.png
 logos/SNP/azattykunalgysy211.png
 logos/SNP/azattykunalgysych211.png
@@ -33669,8 +33683,10 @@ logos/SNP/belintersatpromohdru.png
 logos/SNP/bellaemonella.png
 logos/SNP/bellaradio.png
 logos/SNP/bellaradiotv.default.png
+logos/SNP/bellaradiotv.png
 logos/SNP/belleamie.default.png
 logos/SNP/belleamie.png
+logos/SNP/belllaandmonellatv.png
 logos/SNP/belodyaflam.png
 logos/SNP/belqees.png
 logos/SNP/belqeeshd.png
@@ -34006,6 +34022,7 @@ logos/SNP/bloombergtelevision.png
 logos/SNP/bloombergtelevision4097.png
 logos/SNP/bloombergtelevision5002.png
 logos/SNP/bloombergtv.png
+logos/SNP/bloombergtv4k.png
 logos/SNP/bloombergtvbg.png
 logos/SNP/bloombergtvbulgaria.default.png
 logos/SNP/bloombergtvbulgaria.light.png
@@ -34074,10 +34091,18 @@ logos/SNP/bnl.default.png
 logos/SNP/bnl.png
 logos/SNP/bnmusic.png
 logos/SNP/bnmusichd.png
+logos/SNP/bnr-burgas.png
+logos/SNP/bnr-horizont-___plus___t.png
+logos/SNP/bnr-horizont.png
 logos/SNP/bnr-hr-botev.png
+logos/SNP/bnr-kardzali.png
 logos/SNP/bnr-nieuwsradio.png
 logos/SNP/bnr-plovdiv.png
+logos/SNP/bnr-shumen.png
+logos/SNP/bnr-sofia.png
 logos/SNP/bnr-st-zagora.png
+logos/SNP/bnr-varna.png
+logos/SNP/bnr-vidin.png
 logos/SNP/bnr.png
 logos/SNP/bnradio.png
 logos/SNP/bnrblagoevgrad.png
@@ -34433,6 +34458,7 @@ logos/SNP/btspt__espnhd.png
 logos/SNP/btsptboxoff2hd.png
 logos/SNP/btsptboxoffhd.png
 logos/SNP/btsptespnhd.png
+logos/SNP/btv-action-hd.png
 logos/SNP/btv-action.png
 logos/SNP/btv-cinema.png
 logos/SNP/btv-comedy.png
@@ -34447,7 +34473,6 @@ logos/SNP/btv1.png
 logos/SNP/btv1hd.png
 logos/SNP/btv2.png
 logos/SNP/btvaction.png
-logos/SNP/btvactionhd.png
 logos/SNP/btvaustria.png
 logos/SNP/btvbusohetheg.png
 logos/SNP/btvcinema.png
@@ -34655,12 +34680,14 @@ logos/SNP/cacavision.default.png
 logos/SNP/cacavision.light.png
 logos/SNP/cacavision.png
 logos/SNP/caccia-e-pesca.png
+logos/SNP/caccia.png
 logos/SNP/cacciaepesca.png
 logos/SNP/caccion.png
 logos/SNP/caccionhd.png
 logos/SNP/caddetv.png
 logos/SNP/cadena100.png
 logos/SNP/cadenaser.png
+logos/SNP/cafe24.png
 logos/SNP/cafetrade.png
 logos/SNP/cafetv24.png
 logos/SNP/cafetv24_ok.png
@@ -34799,6 +34826,8 @@ logos/SNP/canal___plus___-dokument-hd.png
 logos/SNP/canal___plus___-domo-hd.png
 logos/SNP/canal___plus___-extra-1.png
 logos/SNP/canal___plus___-extra-2.png
+logos/SNP/canal___plus___-extra-3.png
+logos/SNP/canal___plus___-extra-4.png
 logos/SNP/canal___plus___-family-hd.png
 logos/SNP/canal___plus___-family.png
 logos/SNP/canal___plus___-film-hd.png
@@ -34896,8 +34925,11 @@ logos/SNP/canale163.png
 logos/SNP/canale165.png
 logos/SNP/canale168.png
 logos/SNP/canale169.png
+logos/SNP/canale2.png
 logos/SNP/canale21.default.png
 logos/SNP/canale21.png
+logos/SNP/canale21campania.png
+logos/SNP/canale21extra.png
 logos/SNP/canale230.png
 logos/SNP/canale232.png
 logos/SNP/canale235.png
@@ -34914,6 +34946,7 @@ logos/SNP/canale3.png
 logos/SNP/canale40.png
 logos/SNP/canale40reg.png
 logos/SNP/canale48.png
+logos/SNP/canale5-hd.png
 logos/SNP/canale5.png
 logos/SNP/canale58.png
 logos/SNP/canale5hd.png
@@ -34933,6 +34966,7 @@ logos/SNP/canale8palermo.png
 logos/SNP/canale9.png
 logos/SNP/canaleaste.default.png
 logos/SNP/canaleaste.png
+logos/SNP/canaledieci.png
 logos/SNP/canalediservizio.png
 logos/SNP/canaleeuropa.png
 logos/SNP/canaleitalia.png
@@ -35763,6 +35797,7 @@ logos/SNP/cine1.default.png
 logos/SNP/cine1.png
 logos/SNP/cine34.png
 logos/SNP/cine34hd.png
+logos/SNP/cine34mediaset.png
 logos/SNP/cine34provvisorio.png
 logos/SNP/cine5.png
 logos/SNP/cine___plus___-classic.png
@@ -36997,6 +37032,7 @@ logos/SNP/dazn-2-hd.png
 logos/SNP/dazn-2-sky.png
 logos/SNP/dazn-2.png
 logos/SNP/dazn-f1-hd.png
+logos/SNP/dazn.png
 logos/SNP/dazn1.png
 logos/SNP/dazn1bar.png
 logos/SNP/dazn1barhd.png
@@ -37414,6 +37450,7 @@ logos/SNP/discoveryf.png
 logos/SNP/discoveryfamily.default.png
 logos/SNP/discoveryfamily.light.png
 logos/SNP/discoveryfamily.png
+logos/SNP/discoveryfocus.png
 logos/SNP/discoveryfr.png
 logos/SNP/discoveryfrisbee.png
 logos/SNP/discoveryhd.default.png
@@ -37460,6 +37497,7 @@ logos/SNP/discoverylifepoland.png
 logos/SNP/discoverymax.png
 logos/SNP/discoverymiddleeast.png
 logos/SNP/discoveryn.png
+logos/SNP/discoverynove.png
 logos/SNP/discoveryplus.default.png
 logos/SNP/discoveryplus.light.png
 logos/SNP/discoveryplus.png
@@ -37656,6 +37694,7 @@ logos/SNP/disneymagic1.png
 logos/SNP/disneymagichd.png
 logos/SNP/disneyme.png
 logos/SNP/disneyplus.png
+logos/SNP/disneyplusfilm.png
 logos/SNP/disneyrom.png
 logos/SNP/disneysd.png
 logos/SNP/disneyturkey.png
@@ -38311,6 +38350,10 @@ logos/SNP/ebatvlkokul.png
 logos/SNP/ebatvortaokul.png
 logos/SNP/ebbctvebonyi.png
 logos/SNP/ebenzertv.png
+logos/SNP/ebgomorrastagione1.png
+logos/SNP/ebgomorrastagione2.png
+logos/SNP/ebgomorrastagione3.png
+logos/SNP/ebgomorrastagione4.png
 logos/SNP/ebiraunitytv.png
 logos/SNP/ebis_europe_1.png
 logos/SNP/ebiseurope1.png
@@ -38569,6 +38612,7 @@ logos/SNP/eliteshopping.png
 logos/SNP/eliteshoppingtv.default.png
 logos/SNP/eliteshoppingtv.png
 logos/SNP/elivebrescia.png
+logos/SNP/elivetvbrescia.png
 logos/SNP/elkeraza.png
 logos/SNP/elkerazatv.png
 logos/SNP/elladafm.default.png
@@ -38733,6 +38777,7 @@ logos/SNP/ennahartv.default.png
 logos/SNP/ennahartv.png
 logos/SNP/enregistrements.png
 logos/SNP/entella.png
+logos/SNP/entellatv.png
 logos/SNP/enter.png
 logos/SNP/enter_film_77_8.png
 logos/SNP/enterfilm.default.png
@@ -39084,6 +39129,7 @@ logos/SNP/espdutch.png
 logos/SNP/espech.png
 logos/SNP/esperanza.png
 logos/SNP/esperiatv.png
+logos/SNP/esperiatv18.png
 logos/SNP/espgreek.png
 logos/SNP/esphd.png
 logos/SNP/esphdbulgaria.png
@@ -39309,6 +39355,7 @@ logos/SNP/eurofootball3.png
 logos/SNP/eurog.png
 logos/SNP/eurohd.png
 logos/SNP/euroindiemusic.png
+logos/SNP/euroindiemusiccharttv.png
 logos/SNP/euroindiemusicradiochannel.png
 logos/SNP/eurolatinatv.png
 logos/SNP/euroleague.png
@@ -39580,6 +39627,7 @@ logos/SNP/eurotic.png
 logos/SNP/eurotictv.default.png
 logos/SNP/eurotictv.light.png
 logos/SNP/eurotictv.png
+logos/SNP/eurotv.png
 logos/SNP/eurovision.png
 logos/SNP/eurozet.default.png
 logos/SNP/eurozet.light.png
@@ -40360,6 +40408,7 @@ logos/SNP/fm957.png
 logos/SNP/fm987streamfo.default.png
 logos/SNP/fmhuesca.png
 logos/SNP/fmitalia.png
+logos/SNP/fmitaliatv.png
 logos/SNP/fmlatina.png
 logos/SNP/fmplusk.png
 logos/SNP/fmradiotest1.png
@@ -41161,6 +41210,7 @@ logos/SNP/globonow.png
 logos/SNP/globopernambuco.default.png
 logos/SNP/globopremium.png
 logos/SNP/globosaopaulo.default.png
+logos/SNP/globustelevision.png
 logos/SNP/globustvc819.png
 logos/SNP/gloom.png
 logos/SNP/gloomchannel.default.png
@@ -41324,6 +41374,7 @@ logos/SNP/gradskatv.png
 logos/SNP/graffic.png
 logos/SNP/grand.png
 logos/SNP/grandcinemahd.png
+logos/SNP/grandefratello.png
 logos/SNP/grandefratelloviplogo.png
 logos/SNP/grandhd.png
 logos/SNP/grandiorchestre.png
@@ -41333,6 +41384,7 @@ logos/SNP/grandnostalgija.png
 logos/SNP/grandprixradio.default.png
 logos/SNP/grandprixradio.light.png
 logos/SNP/grandprixradio.png
+logos/SNP/granducato.png
 logos/SNP/granducatotv.png
 logos/SNP/graspopmetalmeeting.png
 logos/SNP/graspopmetalmeetingkanaal1.png
@@ -42945,6 +42997,8 @@ logos/SNP/itaj45000261b_20220223t010810.png
 logos/SNP/italc.png
 logos/SNP/italia-1-provvisorio.png
 logos/SNP/italia-1.png
+logos/SNP/italia-channel.png
+logos/SNP/italia1-hd.png
 logos/SNP/italia1.png
 logos/SNP/italia121.png
 logos/SNP/italia126.png
@@ -42966,6 +43020,8 @@ logos/SNP/italia161.png
 logos/SNP/italia164.png
 logos/SNP/italia1hd.png
 logos/SNP/italia1provvisorio.png
+logos/SNP/italia2-news.png
+logos/SNP/italia2.png
 logos/SNP/italia241.png
 logos/SNP/italia2giusto.png
 logos/SNP/italia2news76.png
@@ -42978,7 +43034,9 @@ logos/SNP/italia9network1.png
 logos/SNP/italia_2.png
 logos/SNP/italiachannel.default.png
 logos/SNP/italiachannel.png
+logos/SNP/italiachannel123.png
 logos/SNP/italiadue.png
+logos/SNP/italian-fishing-tv-channel.png
 logos/SNP/italian-fishing-tv.png
 logos/SNP/italianfishingtv.default.png
 logos/SNP/italianfishingtv.light.png
@@ -43202,6 +43260,7 @@ logos/SNP/itvyorkshirehd.png
 logos/SNP/itvyorkshirewest.png
 logos/SNP/itvyorkshirewesthd.png
 logos/SNP/iuc.png
+logos/SNP/iuniortv.png
 logos/SNP/iwotv.png
 logos/SNP/ixir.png
 logos/SNP/izauratv.png
@@ -43248,6 +43307,7 @@ logos/SNP/jawharatv.png
 logos/SNP/jawnatv.default.png
 logos/SNP/jawnatv.png
 logos/SNP/jazz&fusion.png
+logos/SNP/jazz-fmt.png
 logos/SNP/jazz-radio.png
 logos/SNP/jazz.png
 logos/SNP/jazzandfusion.png
@@ -43555,6 +43615,7 @@ logos/SNP/juwelohealth.png
 logos/SNP/juwelohealthtv.default.png
 logos/SNP/juwelohealthtv.light.png
 logos/SNP/juwelohealthtv.png
+logos/SNP/juweloitalia.png
 logos/SNP/juwelopur.png
 logos/SNP/juwelosk.png
 logos/SNP/juwelotv-internet.png
@@ -44636,12 +44697,20 @@ logos/SNP/la3.default.png
 logos/SNP/la3.png
 logos/SNP/la3marsala.png
 logos/SNP/la4italia.png
+logos/SNP/la5-hd.png
 logos/SNP/la5.png
 logos/SNP/la5hd.png
 logos/SNP/la5provvisorio.png
 logos/SNP/la6_header.png
+logos/SNP/la7-hd.png
+logos/SNP/la7-on-demand.png
+logos/SNP/la7-servizi-on-demand.png
+logos/SNP/la7-test.png
 logos/SNP/la7.default.png
 logos/SNP/la7.png
+logos/SNP/la7d-hd.png
+logos/SNP/la7d-on-demand.png
+logos/SNP/la7d-test.png
 logos/SNP/la7d.png
 logos/SNP/la7dhd.png
 logos/SNP/la7dondemand.png
@@ -44777,6 +44846,7 @@ logos/SNP/latinjazz.png
 logos/SNP/latinotropical.png
 logos/SNP/latmusic.png
 logos/SNP/latr3.default.png
+logos/SNP/latr3.png
 logos/SNP/latrois.png
 logos/SNP/latroishd.png
 logos/SNP/laudatotv.default.png
@@ -45273,6 +45343,8 @@ logos/SNP/loupe.png
 logos/SNP/lourdestv.png
 logos/SNP/love-nature-4k.png
 logos/SNP/love.png
+logos/SNP/lovefmtv.png
+logos/SNP/loveinvenice.png
 logos/SNP/lovenature.png
 logos/SNP/lovenature4k.png
 logos/SNP/lovenaturehd.png
@@ -45765,6 +45837,7 @@ logos/SNP/marcopolotv.png
 logos/SNP/marginal.default.png
 logos/SNP/marginal.png
 logos/SNP/mariamtv.png
+logos/SNP/mariaplusvisionitalia.png
 logos/SNP/mariaradio.default.png
 logos/SNP/mariaradio.png
 logos/SNP/mariaradioerdely.png
@@ -46221,11 +46294,20 @@ logos/SNP/mediaset-italia-due.png
 logos/SNP/mediaset-italia.png
 logos/SNP/mediaset-rewind-provvisorio.png
 logos/SNP/mediaset.png
+logos/SNP/mediaset1.png
+logos/SNP/mediaset20.png
 logos/SNP/mediasetextra.png
 logos/SNP/mediasetextra2.png
 logos/SNP/mediasetextrahd.png
 logos/SNP/mediasetextraprovvisorio.png
 logos/SNP/mediasetinfinity.png
+logos/SNP/mediasetinfinityplus1.png
+logos/SNP/mediasetinfinityplus2.png
+logos/SNP/mediasetinfinityplus3.png
+logos/SNP/mediasetinfinityplus4.png
+logos/SNP/mediasetinfinityplus5.png
+logos/SNP/mediasetinfinityplus6.png
+logos/SNP/mediasetiris.png
 logos/SNP/mediasetitalia.default.png
 logos/SNP/mediasetitalia.png
 logos/SNP/mediasetitalia2.png
@@ -46512,6 +46594,7 @@ logos/SNP/miinfornotv.png
 logos/SNP/milady95x72.png
 logos/SNP/miladytelevision.default.png
 logos/SNP/miladytelevision.png
+logos/SNP/milanchannel.png
 logos/SNP/milanonow.png
 logos/SNP/milantv.png
 logos/SNP/miledytv.png
@@ -49246,6 +49329,7 @@ logos/SNP/oktvlu.png
 logos/SNP/oktvludwigshafenhd.png
 logos/SNP/oktvluhd.png
 logos/SNP/ol-tv.png
+logos/SNP/ol3radio.png
 logos/SNP/olala.png
 logos/SNP/olaytvhd.png
 logos/SNP/oldiesbutgoldies.png
@@ -49426,6 +49510,7 @@ logos/SNP/ondamedia.png
 logos/SNP/ondamelodia.png
 logos/SNP/ondamex.dark.png
 logos/SNP/ondamex.default.png
+logos/SNP/ondanovaratv.png
 logos/SNP/ondatv.png
 logos/SNP/ondemand.png
 logos/SNP/onderadioweb.png
@@ -50065,6 +50150,7 @@ logos/SNP/pearltvhd.png
 logos/SNP/pearltvhdshop.png
 logos/SNP/pearltvshop.png
 logos/SNP/pebbletv.png
+logos/SNP/peertvaltoadige.png
 logos/SNP/pegaso.png
 logos/SNP/peiraikiekklisia.default.png
 logos/SNP/peiraikiekklisia.png
@@ -50242,6 +50328,7 @@ logos/SNP/perviykanalort.png
 logos/SNP/pervydelovoy.png
 logos/SNP/pervyyrespublikanskiy.default.png
 logos/SNP/pervyyrespublikanskiy.png
+logos/SNP/pesca.png
 logos/SNP/pescaecaccia.png
 logos/SNP/pescareandcacciaretv.png
 logos/SNP/pescareecacciaretv.default.png
@@ -51210,6 +51297,7 @@ logos/SNP/primasport4hd.png
 logos/SNP/primastar.png
 logos/SNP/primativvu.png
 logos/SNP/primativvu_logo.png
+logos/SNP/primatv.png
 logos/SNP/primatvhd.png
 logos/SNP/primatvro.png
 logos/SNP/primazoom.png
@@ -51550,6 +51638,7 @@ logos/SNP/qtvreligious.png
 logos/SNP/quadrace.png
 logos/SNP/quadratauge-tv.png
 logos/SNP/quadrataugetv.png
+logos/SNP/quadrifogliotv.png
 logos/SNP/quadrifogliotv162.dark.png
 logos/SNP/quadrifogliotv162.default.png
 logos/SNP/quadrifogliotv162.png
@@ -53594,7 +53683,9 @@ logos/SNP/raisport2.png
 logos/SNP/raisport___plus___hd.png
 logos/SNP/raisporthd.png
 logos/SNP/raisporthdtesthevc.png
+logos/SNP/raisportliveduringeventsonly.png
 logos/SNP/raisportpi¨.png
+logos/SNP/raisportplus.png
 logos/SNP/raisportplushd.png
 logos/SNP/raistoria.png
 logos/SNP/raistoriahd.png
@@ -53605,8 +53696,15 @@ logos/SNP/raiyoyo.png
 logos/SNP/raiyoyohd.png
 logos/SNP/rajawalitv.png
 logos/SNP/rakadhan.png
+logos/SNP/rakutenactionmovies.png
+logos/SNP/rakutencomedymovies.png
+logos/SNP/rakutendrama.png
+logos/SNP/rakutenfamily.png
+logos/SNP/rakutenspotlight.png
 logos/SNP/rakutenstories.png
+logos/SNP/rakutentopfree.png
 logos/SNP/rakutentv.png
+logos/SNP/rakutentvshows.png
 logos/SNP/rakutenviki.png
 logos/SNP/rakutenviki4097.png
 logos/SNP/rakutenviki5002.png
@@ -54061,6 +54159,7 @@ logos/SNP/rete8vga.png
 logos/SNP/rete_55.png
 logos/SNP/reteaste.default.png
 logos/SNP/reteaste.png
+logos/SNP/retebiellatv.png
 logos/SNP/retecapri.default.png
 logos/SNP/retecapri.png
 logos/SNP/retechiara.default.png
@@ -54079,6 +54178,7 @@ logos/SNP/retesette.light.png
 logos/SNP/retesette.png
 logos/SNP/retesole.png
 logos/SNP/retetre.png
+logos/SNP/retetvitalia.png
 logos/SNP/reteuno.png
 logos/SNP/reteveneta.default.png
 logos/SNP/reteveneta.png
@@ -54937,10 +55037,12 @@ logos/SNP/rtpmadeira.png
 logos/SNP/rtpmemo.png
 logos/SNP/rtpmemoria.png
 logos/SNP/rtpmemória.png
+logos/SNP/rtpretetelevisiva.png
 logos/SNP/rtpÁfrica.png
 logos/SNP/rtr-planeta-rus.png
 logos/SNP/rtr-planeta.png
 logos/SNP/rtr.png
+logos/SNP/rtr99tv.png
 logos/SNP/rtraidinagaeltachta.png
 logos/SNP/rtrbelarus.default.png
 logos/SNP/rtrmoldova.png
@@ -55041,6 +55143,7 @@ logos/SNP/rtsunhd.png
 logos/SNP/rtszivot.png
 logos/SNP/rtsŽivot.png
 logos/SNP/rttr.png
+logos/SNP/rttrtv.png
 logos/SNP/rtunisieculture.png
 logos/SNP/rtunisieinternatio.png
 logos/SNP/rtunisieinternationale.png
@@ -55849,6 +55952,7 @@ logos/SNP/senato.png
 logos/SNP/senato_footer.png
 logos/SNP/senatoitaliano.default.png
 logos/SNP/senatoitaliano.png
+logos/SNP/senatotv.png
 logos/SNP/sender-neu-jerusalem.png
 logos/SNP/senderneujerusalem.default.png
 logos/SNP/senderneujerusalem.png
@@ -56972,6 +57076,7 @@ logos/SNP/skycinemadrama.png
 logos/SNP/skycinemadramaandromance.png
 logos/SNP/skycinemadramaandromancehd.png
 logos/SNP/skycinemadramahd.png
+logos/SNP/skycinemadrema.png
 logos/SNP/skycinemadue+24.png
 logos/SNP/skycinemadue+24hd.png
 logos/SNP/skycinemadue.png
@@ -57224,6 +57329,24 @@ logos/SNP/skypremiereplus1.png
 logos/SNP/skypremierleaguehd.png
 logos/SNP/skypremplus1.png
 logos/SNP/skyprimafila.png
+logos/SNP/skyprimafila1.png
+logos/SNP/skyprimafila10.png
+logos/SNP/skyprimafila11.png
+logos/SNP/skyprimafila12.png
+logos/SNP/skyprimafila13.png
+logos/SNP/skyprimafila14.png
+logos/SNP/skyprimafila15.png
+logos/SNP/skyprimafila16.png
+logos/SNP/skyprimafila17.png
+logos/SNP/skyprimafila18.png
+logos/SNP/skyprimafila2.png
+logos/SNP/skyprimafila3.png
+logos/SNP/skyprimafila4.png
+logos/SNP/skyprimafila5.png
+logos/SNP/skyprimafila6.png
+logos/SNP/skyprimafila7.png
+logos/SNP/skyprimafila8.png
+logos/SNP/skyprimafila9.png
 logos/SNP/skyprimafilaactive.png
 logos/SNP/skyprimafilahotclub.png
 logos/SNP/skyradio.png
@@ -57349,6 +57472,7 @@ logos/SNP/skysport1newshd.png
 logos/SNP/skysport2.png
 logos/SNP/skysport24.png
 logos/SNP/skysport24hd.png
+logos/SNP/skysport24liveduringeventsonly.png
 logos/SNP/skysport2hd.png
 logos/SNP/skysport3.png
 logos/SNP/skysport37thamericascup.default.png
@@ -57427,6 +57551,7 @@ logos/SNP/skysportf1hd.png
 logos/SNP/skysportfanzonehd.png
 logos/SNP/skysportfootball.png
 logos/SNP/skysportfootballhd.png
+logos/SNP/skysportfootballliveduringeventsonly.png
 logos/SNP/skysportfootballthumb.png
 logos/SNP/skysportgolf.png
 logos/SNP/skysportgolfhd.png
@@ -57522,6 +57647,7 @@ logos/SNP/skysupercalcio.png
 logos/SNP/skysupercalciohd.png
 logos/SNP/skysuperhero.png
 logos/SNP/skysuperherohd.png
+logos/SNP/skysupertennis.png
 logos/SNP/skytestradio.png
 logos/SNP/skytg24.png
 logos/SNP/skytg24active.png
@@ -58179,6 +58305,9 @@ logos/SNP/sportitalia.png
 logos/SNP/sportitalia4097.png
 logos/SNP/sportitalia5002.png
 logos/SNP/sportitaliahd.png
+logos/SNP/sportitaliaplus.png
+logos/SNP/sportitaliasolocalcio.png
+logos/SNP/sportitaliasolocalcioliveduringeventsonly.png
 logos/SNP/sportkanalen.default.png
 logos/SNP/sportkanalen.light.png
 logos/SNP/sportkanalen.png
@@ -58511,6 +58640,7 @@ logos/SNP/starcinema1.png
 logos/SNP/starcinema2.png
 logos/SNP/starcinema3.png
 logos/SNP/starcinemahd.png
+logos/SNP/starcomedy.png
 logos/SNP/starcrime.png
 logos/SNP/starcrimeadria.png
 logos/SNP/starcrimehd.png
@@ -58977,6 +59107,7 @@ logos/SNP/superherohd.png
 logos/SNP/supericarly.png
 logos/SNP/supericarlyplus.png
 logos/SNP/superintervallo.png
+logos/SNP/superj.png
 logos/SNP/superkids.default.png
 logos/SNP/superkids.png
 logos/SNP/supermystery.png
@@ -58996,6 +59127,7 @@ logos/SNP/superrugrats.png
 logos/SNP/supersat.png
 logos/SNP/supersattv.png
 logos/SNP/supersix.png
+logos/SNP/supersixlombardia.png
 logos/SNP/supersixtv.png
 logos/SNP/supersonictv.default.png
 logos/SNP/supersonictv.png
@@ -59083,6 +59215,7 @@ logos/SNP/supertv2hd.png
 logos/SNP/supertv2svt.png
 logos/SNP/supertvaristanis.png
 logos/SNP/supertvblu.png
+logos/SNP/supertvbrescia.png
 logos/SNP/supertvn.png
 logos/SNP/supervictorious.png
 logos/SNP/superyacht.png
@@ -59658,10 +59791,12 @@ logos/SNP/teleambiente.png
 logos/SNP/teleamiga.png
 logos/SNP/telearena.png
 logos/SNP/telearg.png
+logos/SNP/telearte.png
 logos/SNP/telearuba.default.png
 logos/SNP/telearuba.png
 logos/SNP/telearubachannel13.png
 logos/SNP/telearubachannel23.png
+logos/SNP/teleatv.png
 logos/SNP/telebaern.png
 logos/SNP/telebari.png
 logos/SNP/telebarn.png
@@ -59670,6 +59805,7 @@ logos/SNP/telebasel.light.png
 logos/SNP/telebasel.png
 logos/SNP/telebell.png
 logos/SNP/telebelluno.default.png
+logos/SNP/telebelluno.png
 logos/SNP/telebellunodolomiti.png
 logos/SNP/telebet.png
 logos/SNP/telebielingue.png
@@ -59759,6 +59895,7 @@ logos/SNP/telefenoticias.png
 logos/SNP/telefeshinkacaalmiga_universal.png
 logos/SNP/telefeshinkacaalmigauniversal.png
 logos/SNP/telefishinkacaalmigauniversal.png
+logos/SNP/telefoggia.png
 logos/SNP/telefonchat-24-tv.png
 logos/SNP/telefonchat-tv.png
 logos/SNP/telefonchat24tv.png
@@ -59830,6 +59967,7 @@ logos/SNP/telemb.png
 logos/SNP/telemedellin.png
 logos/SNP/telemelody.png
 logos/SNP/telemetro3d.png
+logos/SNP/telemia.png
 logos/SNP/telemiaextra.png
 logos/SNP/telemilano.png
 logos/SNP/telemist.png
@@ -59872,12 +60010,18 @@ logos/SNP/teleostschweiz.png
 logos/SNP/telepace-hd.png
 logos/SNP/telepace.default.png
 logos/SNP/telepace.png
+logos/SNP/telepace1.png
+logos/SNP/telepace2.png
+logos/SNP/telepace3.png
+logos/SNP/telepace4.png
 logos/SNP/telepacehd.png
 logos/SNP/telepacetrento.png
+logos/SNP/telepacetrentohistorylab.png
 logos/SNP/telepadova7gold.png
 logos/SNP/telepadrepio.png
 logos/SNP/telepavia.png
 logos/SNP/telepegaso.png
+logos/SNP/telepegasocatania.png
 logos/SNP/telepiuchannel.png
 logos/SNP/teleponte.png
 logos/SNP/telepord.png
@@ -59885,6 +60029,7 @@ logos/SNP/telepordenone.png
 logos/SNP/teleprima.png
 logos/SNP/teleputeshestviya.default.png
 logos/SNP/teleputeshestviya.png
+logos/SNP/telequattro.png
 logos/SNP/telequebec.png
 logos/SNP/teleradiocanicattì.dark.png
 logos/SNP/teleradiocanicattì.default.png
@@ -59900,6 +60045,7 @@ logos/SNP/teleradiosciacca.png
 logos/SNP/teleradiostudio98.png
 logos/SNP/teleradst05.png
 logos/SNP/teleradyo.png
+logos/SNP/telerama.png
 logos/SNP/telered.png
 logos/SNP/telereggio.png
 logos/SNP/teleregione.png
@@ -60005,6 +60151,7 @@ logos/SNP/televercanal12.png
 logos/SNP/televicentro.png
 logos/SNP/televicenza.png
 logos/SNP/televideoagrigento.default.png
+logos/SNP/televideoagrigento.png
 logos/SNP/televisatelenovellas.png
 logos/SNP/televisiacentral.default.png
 logos/SNP/televisiacentral.png
@@ -61223,6 +61370,7 @@ logos/SNP/trp1.png
 logos/SNP/trpadrepio.png
 logos/SNP/trsp.default.png
 logos/SNP/trsp.png
+logos/SNP/trsport.png
 logos/SNP/trt-1-hd.png
 logos/SNP/trt-1.png
 logos/SNP/trt-3-spor-hd.png
@@ -61904,6 +62052,7 @@ logos/SNP/tv7bulgaria.png
 logos/SNP/tv7color_new.png
 logos/SNP/tv7elmaarifa.png
 logos/SNP/tv7hd.png
+logos/SNP/tv7news.png
 logos/SNP/tv7plus.default.png
 logos/SNP/tv7plus.png
 logos/SNP/tv7plusukraine.png
@@ -62403,6 +62552,7 @@ logos/SNP/tvpsport.png
 logos/SNP/tvpsporthd.png
 logos/SNP/tvpuls.png
 logos/SNP/tvpulshd.png
+logos/SNP/tvqui.png
 logos/SNP/tvquihd.png
 logos/SNP/tvquimodena.png
 logos/SNP/tvr-lichoridas.default.png
@@ -62549,6 +62699,7 @@ logos/SNP/tvx40+.png
 logos/SNP/tvx40plus.png
 logos/SNP/tvxbangers.default.png
 logos/SNP/tvxbangers.png
+logos/SNP/tvyes.png
 logos/SNP/tvzachod.default.png
 logos/SNP/tvzimbolive.png
 logos/SNP/tvΔΕΛΤΑ.png
@@ -63381,7 +63532,9 @@ logos/SNP/videosicilia.default.png
 logos/SNP/videosicilia.light.png
 logos/SNP/videosicilia.png
 logos/SNP/videostar.png
+logos/SNP/videostartv.png
 logos/SNP/videothek.png
+logos/SNP/videotolentino.png
 logos/SNP/videotouring.png
 logos/SNP/videotouringtv.png
 logos/SNP/vidikon.default.png
@@ -64359,6 +64512,7 @@ logos/SNP/wusadt.png
 logos/SNP/wvit.png
 logos/SNP/wwe.png
 logos/SNP/wwec.png
+logos/SNP/wwechannel.png
 logos/SNP/wwechd.png
 logos/SNP/wwehd.png
 logos/SNP/wwenetwork.png
