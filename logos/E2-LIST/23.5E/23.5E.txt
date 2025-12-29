@@ -171,6 +171,7 @@
 1_0_16_36EA_C8C_3_EB0000_0_0_0.png - CS Film
 1_0_16_36EB_C8C_3_EB0000_0_0_0.png - CS Horror
 1_0_16_36EC_C8C_3_EB0000_0_0_0.png - Prima Krimi HD
+1_0_19_308_C94_3_EB0000_0_0_0.png - Pirma Krimi SK
 1_0_16_36ED_C8C_3_EB0000_0_0_0.png - Prima STAR
 1_0_16_36EE_C8C_3_EB0000_0_0_0.png - Prima Show
 1_0_16_36EF_C8C_3_EB0000_0_0_0.png - Prima Love
