@@ -1,16 +1,16 @@
-name: Generate SRC-SNP-Positions Mapping
+name: Generate SRC Mapping
 
 on:
   schedule:
-    - cron: '0 4 * * 1'
+    - cron: '0 4 * * 1'  # Every Monday at 04:00 UTC
   workflow_dispatch:
 
 jobs:
-  generate-src-mapping:
+  generate-src:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Setup Python
@@ -18,20 +18,19 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Install packages
         run: |
-          python -m pip install --upgrade pip
           pip install requests
 
-      - name: Generate SRC mapping
+      - name: Run script
         run: |
           python generate_src_mapping.py
 
-      - name: Commit and push (same as other workflow)
+      - name: Push changes
         run: |
-          git config --global user.email "ekekaz@gmail.com"
-          git config --global user.name "Belfagor2005"
+          git config user.email "ekekaz@gmail.com"
+          git config user.name "Belfagor2005"
+          git pull origin main
           git add src_mapping.txt
-          git commit -m "Update SRC mapping file" || echo "No changes to make"
-          git pull origin main --rebase --autostash || true
-          git push origin main || echo "Push failure"
+          git commit -m "Update SRC map" || echo "No changes"
+          git push origin main
