@@ -1,46 +1,40 @@
 name: Generate SRC-SNP-Positions Mapping
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0'
-  push:
-    paths:
-      - 'logos/SRF/**'
+    - cron: '0 4 * * 1'  # Ogni lunedì alle 04:00 UTC (dopo l'altro alle 03:00)
+  workflow_dispatch:
 
 jobs:
-  generate-mapping:
+  generate-src-mapping:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests beautifulsoup4
-        
-    - name: Generate SRC mapping file
-      run: |
-        python generate_src_mapping.py
-        
-    - name: Create Pull Request or push directly
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "Update SRC mapping file"
-        title: "Update SRC mapping file"
-        body: "Auto-generated SRC mapping file update"
-        branch: update-src-mapping
-        delete-branch: true
+      # 1. Checkout repository (stesso approccio)
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Setup Python (nuovo per questo workflow)
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      # 4. Generate SRC mapping file
+      - name: Generate SRC mapping
+        run: |
+          python generate_src_mapping.py
+
+      # 5. Commit and push changes (stesso approccio con tolleranza errori)
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "ekekaz@gmail.com"
+          git config --global user.name "Belfagor2005"
+          git add src_mapping.txt
+          git commit -m "Update SRC mapping file" || echo "No changes to make"
+          git push origin main || echo "Push failure"
