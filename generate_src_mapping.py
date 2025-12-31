@@ -9,19 +9,25 @@ def main():
     print("Generating SRC mapping file...")
 
     # 1. Get PNG files from SRF folder
-    png_response = requests.get("https://api.github.com/repos/Belfagor2005/logos/contents/logos/SRF")
-    png_files = [item['name'] for item in png_response.json() if item['name'].endswith('_small.png')]
+    png_response = requests.get(
+        "https://api.github.com/repos/Belfagor2005/logos/contents/logos/SRF")
+    png_files = [item['name'] for item in png_response.json(
+    ) if item['name'].endswith('_small.png')]
 
     print("Found {} PNG files".format(len(png_files)))
 
     # 2. Get XML file
-    xml_response = requests.get("https://raw.githubusercontent.com/Belfagor2005/EPGimport-Sources/main/rytec.channels.xml")
+    xml_response = requests.get(
+        "https://raw.githubusercontent.com/Belfagor2005/EPGimport-Sources/main/rytec.channels.xml")
     xml_content = xml_response.text
 
     # 3. Build dictionary SRC -> Channel Name from XML
     channel_map = {}
     # Pattern: <channel id="1_0_16_105_F01_20CB_EEEE0000_0_0_0">
-    matches = re.findall(r'<channel\s+id="([^"]+)".*?<display-name>([^<]+)</display-name>', xml_content, re.DOTALL)
+    matches = re.findall(
+        r'<channel\s+id="([^"]+)".*?<display-name>([^<]+)</display-name>',
+        xml_content,
+        re.DOTALL)
 
     for src, name in matches:
         if '_' in src:  # Ensure it's an SRC code
@@ -38,7 +44,9 @@ def main():
 
             # Channel name
             parts = src.split('_')
-            channel_name = channel_map.get(src, "Channel {}".format(parts[4] if len(parts) > 4 else "Unknown"))
+            channel_name = channel_map.get(
+                src, "Channel {}".format(
+                    parts[4] if len(parts) > 4 else "Unknown"))
 
             # Satellite positions (simple logic)
             if 'F01' in src:
