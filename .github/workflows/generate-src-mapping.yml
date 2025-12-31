@@ -1,12 +1,9 @@
-- name: Checkout repository
-  uses: actions/checkout@v4
-  with:
-    token: ${{ secrets.GITHUB_TOKEN }}
+name: Generate SRC-SNP-Positions Mapping
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0'  # Esegue ogni domenica a mezzanotte
+    - cron: '0 0 * * 0'
   push:
     paths:
       - 'logos/SRF/**'
@@ -14,6 +11,9 @@ on:
 jobs:
   generate-mapping:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
@@ -35,14 +35,12 @@ jobs:
       run: |
         python generate_src_mapping.py
         
-    - name: Commit and push if changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add src_mapping.txt
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update SRC mapping file"
-          git push
-        fi
+    - name: Create Pull Request or push directly
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Update SRC mapping file"
+        title: "Update SRC mapping file"
+        body: "Auto-generated SRC mapping file update"
+        branch: update-src-mapping
+        delete-branch: true
