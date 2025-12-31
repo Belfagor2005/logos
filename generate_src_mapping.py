@@ -5,6 +5,8 @@ import sys
 import io
 
 # from lululla for test @s3no
+
+
 def extract_info_from_filename(filename):
     """Extract SRC and other info from PNG filename"""
     pattern = r'(\d+_\d+_\d+_\d+_[A-Z0-9]+_[A-Z0-9]+_[A-Z0-9]+_\d+_\d+_\d+)_small\.png'
@@ -51,7 +53,8 @@ def scrape_srf_files():
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         files = response.json()
-        png_files = [file['name'] for file in files if file['name'].endswith('.png')]
+        png_files = [file['name']
+                     for file in files if file['name'].endswith('.png')]
         return png_files
     except Exception as e:
         print("Error retrieving files: %s" % str(e))
@@ -73,7 +76,8 @@ def generate_mapping_file():
         if src_code:
             channel_name = get_channel_name(src_code)
             satellite_positions = get_satellite_positions(src_code)
-            mapping_line = "%s - %s - %s" % (src_code, channel_name, satellite_positions)
+            mapping_line = "%s - %s - %s" % (src_code,
+                                             channel_name, satellite_positions)
             mappings.append(mapping_line)
             print("Processed: %s" % src_code)
 
