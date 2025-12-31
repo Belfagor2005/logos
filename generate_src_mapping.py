@@ -7,8 +7,11 @@ import io
 def main():
     # Get PNG files from SRF folder
     api_url = "https://api.github.com/repos/Belfagor2005/logos/contents/logos/SRF"
-    response = requests.get(api_url, headers={'Accept': 'application/vnd.github.v3+json'})
-    png_files = [f['name'] for f in response.json() if f['name'].endswith('_small.png')]
+    response = requests.get(
+        api_url, headers={
+            'Accept': 'application/vnd.github.v3+json'})
+    png_files = [f['name']
+                 for f in response.json() if f['name'].endswith('_small.png')]
 
     print("Found {} PNG files".format(len(png_files)))
 
