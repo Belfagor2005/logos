@@ -31,25 +31,26 @@ def extract_src_and_satellite_from_path(path):
     """Extract SRC and satellite position from PNG path"""
     # Esempio: logos/E2LIST/39.0E/1_0_1_67_E_3_130000_0_0_0.png
     # Estrae: (1_0_1_67_E_3_130000_0_0_0, "39.0E")
-    
+
     parts = path.split('/')
-    
+
     # Estrai satellite dalla struttura di directory
     satellite = ""
     if len(parts) >= 3:
-        # Cerca la parte che contiene la posizione satellitare (es: "39.0E", "5.0W")
+        # Cerca la parte che contiene la posizione satellitare (es: "39.0E",
+        # "5.0W")
         for part in parts:
             if re.search(r'\d+\.\d+[EW]', part):
                 satellite = part
                 break
-    
+
     # Estrai SRC dal nome del file
     filename = parts[-1]
     if filename.endswith('.png'):
         src = filename[:-4]  # Rimuove ".png"
     else:
         src = filename
-    
+
     return src, satellite
 
 
@@ -102,14 +103,16 @@ def parse_xml_for_channels():
 
                         # Estrai nome canale
                         name_match = re.search(r'<!--\s*([^<]+)\s*-->$', line)
-                        channel_name = name_match.group(1).strip() if name_match else channel_id
+                        channel_name = name_match.group(
+                            1).strip() if name_match else channel_id
 
                         # Aggiorna il dizionario
                         if not xml_dict[src_png]['name']:
                             xml_dict[src_png]['name'] = channel_name
-                        
+
                         if current_satellite:
-                            xml_dict[src_png]['satellites'].add(current_satellite)
+                            xml_dict[src_png]['satellites'].add(
+                                current_satellite)
 
         print(f"Parsed {len(xml_dict)} unique SRC entries from XML")
         return dict(xml_dict)
@@ -126,11 +129,12 @@ def create_snp_code(channel_name):
 
     # Rimuovi spazi e caratteri speciali
     clean_name = re.sub(r'\s+', '', channel_name)  # Rimuovi spazi
-    clean_name = re.sub(r'[^a-zA-Z0-9]', '', clean_name)  # Rimuovi caratteri speciali
-    
+    # Rimuovi caratteri speciali
+    clean_name = re.sub(r'[^a-zA-Z0-9]', '', clean_name)
+
     if not clean_name:
         return "CHNL"
-    
+
     # Prendi prime 4 lettere e converti in maiuscolo
     return clean_name[:4].upper()
 
@@ -158,42 +162,42 @@ def generate_final_mapping():
 
     # 3. Process PNG paths
     print("Processing PNG paths...")
-    
+
     # Dizionario per tenere traccia di tutti i satelliti trovati nei PNG
     png_srcs = defaultdict(set)  # src -> set di satelliti
-    
+
     for path in png_paths:
         src, satellite = extract_src_and_satellite_from_path(path)
         if src and satellite:
             png_srcs[src].add(satellite)
-    
+
     print(f"Found {len(png_srcs)} unique SRCs in PNG directories")
-    
+
     # 4. Genera i due file
     print("\nGenerating output files...")
-    
+
     # File 1: mapping completo (SRC - SNP - satelliti)
     mapping_lines = []
-    
+
     # File 2: PNG mancanti nell'XML
     missing_png_lines = []
-    
+
     # Prima: processa gli SRC che sono nell'XML
     for src in sorted(xml_dict.keys()):
         xml_data = xml_dict[src]
         channel_name = xml_data['name']
-        
+
         # Crea SNP code
         snp_code = create_snp_code(channel_name)
-        
+
         # Prendi satelliti dall'XML
         xml_satellites = xml_data['satellites']
-        
+
         # Aggiungi satelliti dai PNG se esistono
         all_satellites = set(xml_satellites)
         if src in png_srcs:
             all_satellites.update(png_srcs[src])
-        
+
         # Ordina satelliti (prima Est, poi Ovest)
         def sat_sort_key(s):
             if not s:
@@ -209,85 +213,91 @@ def generate_final_mapping():
                 else:
                     return num + 1000  # Metti tutti gli E dopo i W
             return 9999
-        
+
         sorted_satellites = sorted(all_satellites, key=sat_sort_key)
-        
+
         # Formatta la stringa satelliti
         if sorted_satellites:
             satellites_str = '|'.join(sorted_satellites)
         else:
             satellites_str = 'Unknown'
-        
+
         # Aggiungi alla lista mapping
         mapping_lines.append(f"{src} - {snp_code} - {satellites_str}")
-        
+
         # Rimuovi dagli SRC PNG processati
         if src in png_srcs:
             del png_srcs[src]
-    
+
     # Secondo: processa gli SRC rimanenti (solo nei PNG, non nell'XML)
     for src in sorted(png_srcs.keys()):
         satellites = png_srcs[src]
-        
+
         # Per il file mapping: usa UNKN come SNP
         if satellites:
             satellites_str = '|'.join(sorted(satellites))
         else:
             satellites_str = 'Unknown'
-        
+
         mapping_lines.append(f"{src} - UNKN - {satellites_str}")
-        
+
         # Per il file PNG mancanti: aggiungi tutti i dettagli
         for satellite in sorted(satellites):
-            missing_png_lines.append(f"{src} - Found in PNG at {satellite} but not in XML")
-    
+            missing_png_lines.append(
+                f"{src} - Found in PNG at {satellite} but not in XML")
+
     # 5. Scrivi i file
     print("\nWriting files...")
-    
+
     # File 1: src_mapping.txt
     with open('src_mapping.txt', 'w', encoding='utf-8') as f:
         f.write("# SRC (codice) - SNP (codice abbreviato del nome del canale) - posizioni satellitari disponibili\n")
         f.write(f"# Total entries: {len(mapping_lines)}\n")
         f.write("# Generated from logos.txt and rytec.channels.xml\n")
         f.write("# Format example: 1_0_16_105_F01_20CB_EEEE0000_0_0_0 - filmbox premium - 23.5E|16.0E|13.0E|0.8W\n\n")
-        
+
         for line in sorted(mapping_lines):
             f.write(line + "\n")
-    
+
     # File 2: missing_pngs.txt
     with open('missing_pngs.txt', 'w', encoding='utf-8') as f:
         f.write("# PNG files that need to be added to XML\n")
         f.write(f"# Total missing: {len(missing_png_lines)}\n")
         f.write("# These SRC codes exist in PNG files but not in rytec.channels.xml\n")
         f.write("# Need to add corresponding <channel> entries to the XML\n\n")
-        
+
         if missing_png_lines:
             for line in sorted(missing_png_lines):
                 f.write(line + "\n")
         else:
-            f.write("# No missing PNGs found - all PNGs have corresponding XML entries!\n")
-    
+            f.write(
+                "# No missing PNGs found - all PNGs have corresponding XML entries!\n")
+
     # 6. Statistiche
     print("\n" + "=" * 80)
     print("RESULTS SUMMARY:")
-    print(f"Total PNG SRCs found: {len(png_srcs) + len(xml_dict) - len(png_srcs)}")
+    print(
+        f"Total PNG SRCs found: {
+            len(png_srcs) +
+            len(xml_dict) -
+            len(png_srcs)}")
     print(f"SRCs found in XML: {len(xml_dict)}")
     print(f"SRCs only in PNG (not in XML): {len(png_srcs)}")
     print(f"Total lines in mapping file: {len(mapping_lines)}")
     print(f"Missing PNGs to add to XML: {len(missing_png_lines)}")
-    
+
     if mapping_lines:
         print(f"\nSample from src_mapping.txt (first 5 lines):")
         for line in sorted(mapping_lines)[:5]:
             print(f"  {line}")
-    
+
     if missing_png_lines:
         print(f"\nSample from missing_pngs.txt (first 5 lines):")
         for line in sorted(missing_png_lines)[:5]:
             print(f"  {line}")
     else:
         print(f"\nGreat! No missing PNGs found.")
-    
+
     print(f"\nFiles created:")
     print(f"  src_mapping.txt - Main mapping file (SRC - SNP - satellites)")
     print(f"  missing_pngs.txt - PNGs that need XML entries")
