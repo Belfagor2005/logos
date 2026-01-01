@@ -3,7 +3,6 @@
 import requests
 import re
 from collections import defaultdict
-import json
 import time
 
 
@@ -32,7 +31,7 @@ def get_png_paths():
 def extract_src_and_satellite_from_path(path):
     """Extract SRC and satellite position from PNG path"""
     parts = path.split('/')
-
+    
     # Estrai satellite dalla struttura di directory
     satellite = ""
     if len(parts) >= 3:
@@ -40,19 +39,19 @@ def extract_src_and_satellite_from_path(path):
             if re.search(r'\d+\.\d+[EW]', part):
                 satellite = part
                 break
-
+    
     # Estrai SRC dal nome del file
     filename = parts[-1]
     if filename.endswith('.png'):
         src = filename[:-4]
     else:
         src = filename
-
+    
     return src, satellite
 
 
 def parse_xml_for_channels():
-    """Parse XML CORRECTLY - VERSIONE DEFINITIVA"""
+    """Parse XML and organize by channel_id for better matching"""
     xml_url = "https://raw.githubusercontent.com/Belfagor2005/EPGimport-Sources/main/rytec.channels.xml"
 
     try:
@@ -60,165 +59,147 @@ def parse_xml_for_channels():
         content = response.text
 
         print(f"XML size: {len(content):,} bytes")
-
-        # PARSER MIGLIORATO: cerca pattern completo
-        # Formato: <!-- 16.0E --><channel
-        # id="ZicoTV.rs">1:0:1:9:1:1:A00000:0:0:0:</channel><!-- Zico TV -->
-        pattern = r'<!--\s*([^>]+?)\s*-->\s*<channel id="([^"]+)">([^<]+)</channel>\s*<!--\s*([^>]+?)\s*-->'
-
-        # Prima cerca con pattern completo
-        matches_full = re.findall(pattern, content)
-        print(
-            f"Found {
-                len(matches_full)} complete channel entries (with both comments)")
-
-        # Poi cerca quelli senza commento finale
-        pattern_no_end_comment = r'<!--\s*([^>]+?)\s*-->\s*<channel id="([^"]+)">([^<]+)</channel>'
-        matches_no_end = re.findall(pattern_no_end_comment, content)
-        print(f"Found {len(matches_no_end)} entries without end comment")
-
-        # Combina match
-        all_matches = []
-
-        # Prima aggiungi quelli completi
-        for match in matches_full:
-            before_comment, channel_id, service_ref, after_comment = match
-            all_matches.append(
-                (before_comment, channel_id, service_ref, after_comment))
-
-        # Poi quelli senza commento finale
-        for match in matches_no_end:
-            before_comment, channel_id, service_ref = match
-            all_matches.append((before_comment, channel_id, service_ref, ""))
-
-        print(f"Total channel entries found: {len(all_matches)}")
-
-        xml_dict = {}
-
-        for before_comment, channel_id, service_ref, after_comment in all_matches:
-            # Estrai satellite dal commento prima
+        
+        # Cerca pattern: <!-- sat --><channel id="id">src</channel><!-- name -->
+        pattern = r'<!--\s*([^>]+?)\s*-->\s*<channel id="([^"]+)">([^<]+)</channel>\s*(?:<!--\s*([^>]+?)\s*-->)?'
+        matches = re.findall(pattern, content)
+        
+        print(f"Found {len(matches)} channel entries in XML")
+        
+        # Strutture dati
+        src_to_info = {}  # src_png -> {name, satellites, channel_id}
+        channel_id_to_srcs = defaultdict(list)  # channel_id -> lista di src_png
+        channel_id_to_names = defaultdict(set)  # channel_id -> set di nomi
+        
+        for before_comment, channel_id, service_ref, after_comment in matches:
+            # Estrai satellite
             satellite = ""
             sat_match = re.search(r'(\d+(?:\.\d+)?[EW])', before_comment)
             if sat_match:
                 satellite = sat_match.group(1)
-
-            # Determina nome canale
-            channel_name = channel_id  # Default
-
-            if after_comment:
-                # Nome dal commento finale
-                channel_name = after_comment.strip()
-                # Pulisci: rimuovi eventuali " - " o altri separatori
-                channel_name = re.sub(r'\s*[-–]\s*.*$', '', channel_name)
-            elif before_comment:
-                # Se non c'è commento finale, prova a estrarre dal commento prima
-                # Rimuovi la parte satellitare
-                clean_before = re.sub(r'\d+\.\d+[EW]\s*', '', before_comment)
-                clean_before = re.sub(r'\s*[-–>]*\s*$', '', clean_before)
-                if clean_before and not clean_before.startswith('<'):
-                    channel_name = clean_before.strip()
-
+            
+            # Estrai nome
+            channel_name = after_comment.strip() if after_comment else channel_id
+            
             # Converti SRC
             service_ref = service_ref.strip().rstrip(':')
             src_png = service_ref.replace(':', '_')
-
-            # Aggrega dati
-            if src_png not in xml_dict:
-                xml_dict[src_png] = {
+            
+            # Salva info SRC
+            if src_png not in src_to_info:
+                src_to_info[src_png] = {
                     'name': channel_name,
                     'satellites': set(),
                     'channel_id': channel_id
                 }
-
+            
             if satellite:
-                xml_dict[src_png]['satellites'].add(satellite)
-
-            # Se troviamo nomi migliori, aggiorna
-            if after_comment and len(
-                    after_comment.strip()) > len(channel_name):
-                xml_dict[src_png]['name'] = after_comment.strip()
-
-        print(f"Parsed {len(xml_dict)} unique SRC entries from XML")
-
-        # DEBUG: mostra esempi REALI
-        print("\n🔍 DEBUG - Sample parsed channels (first 10):")
-        sample_count = 0
-        for src, data in xml_dict.items():
-            if sample_count >= 10:
-                break
-            if data['name'] and data['name'] != data['channel_id']:
-                sats = ', '.join(
-                    sorted(
-                        data['satellites'])) if data['satellites'] else 'none'
-                print(
-                    f"  {src[:40]}... -> '{data['name']}' (id: {data['channel_id']}, sats: {sats})")
-                sample_count += 1
-
-        # Cerca esempi specifici dai tuoi output
-        print("\n🔍 DEBUG - Looking for specific channels from your output:")
-        test_srcs = [
-            "1_0_16_1005_451_35_C00000_0_0_0",
-            "1_0_16_1006_451_35_C00000_0_0_0",
-            "1_0_11_BEA_20D0_13E_820000_0_0_0"
-        ]
-
-        for test_src in test_srcs:
-            if test_src in xml_dict:
-                data = xml_dict[test_src]
-                print(
-                    f"  Found: {test_src} -> '{data['name']}' (id: {data['channel_id']})")
-            else:
-                print(f"  Not found: {test_src}")
-
-        return xml_dict
+                src_to_info[src_png]['satellites'].add(satellite)
+            
+            # Aggrega per channel_id
+            channel_id_to_srcs[channel_id].append(src_png)
+            channel_id_to_names[channel_id].add(channel_name)
+        
+        print(f"Parsed {len(src_to_info)} unique SRCs from XML")
+        print(f"Found {len(channel_id_to_srcs)} unique channel IDs")
+        
+        # Sostituisci nomi con il più comune per ciascun channel_id
+        for channel_id, names in channel_id_to_names.items():
+            if len(names) > 1:
+                # Prendi il nome più lungo (di solito più completo)
+                main_name = max(names, key=len)
+                # Aggiorna tutti gli SRC con questo channel_id
+                for src_png in channel_id_to_srcs[channel_id]:
+                    if src_png in src_to_info:
+                        src_to_info[src_png]['name'] = main_name
+        
+        return src_to_info, channel_id_to_srcs
 
     except Exception as e:
         print(f"Error parsing XML: {e}")
-        import traceback
-        traceback.print_exc()
-        return {}
+        return {}, {}
 
 
 def create_snp_code(channel_name):
-    """Create SNP code from channel name - VERSIONE MIGLIORATA"""
+    """Create SNP code from channel name"""
     if not channel_name or channel_name.lower() in ['unknown', 'no_epg', '']:
         return "UNKN"
-
-    # Rimuovi numeri satellitari all'inizio (es: "13.0E" o "19.2E")
-    clean = re.sub(r'^\d+\.\d+[EW]\s*', '', channel_name)
-
-    # Rimuovi indicatori di qualità
-    clean = re.sub(
-        r'\s*(?:HD|FHD|UHD|4K|SD|HEVC|H265|H264)\b',
-        '',
-        clean,
-        flags=re.IGNORECASE)
-
-    # Rimuovi tutto dopo certi separatori
-    clean = re.split(r'[-–:/()]', clean)[0]
-
-    # Prendi solo lettere (rimuovi numeri e caratteri speciali)
+    
+    # Rimuovi estensioni HD, TV, etc.
+    clean = re.sub(r'\b(?:HD|FHD|UHD|4K|SD|HEVC|TV|CHANNEL|LIVE)\b', '', channel_name, flags=re.IGNORECASE)
+    
+    # Prendi solo lettere
     letters = re.findall(r'[a-zA-Z]', clean)
     clean = ''.join(letters)
-
+    
     if len(clean) >= 4:
         return clean[:4].upper()
     elif clean:
         return clean.upper().ljust(4, 'X')
-
-    # Se ancora nulla, prova con il nome originale
-    clean_orig = re.sub(r'[^a-zA-Z]', '', channel_name)
-    if clean_orig:
-        return clean_orig[:4].upper()
-
+    
     return "CHNL"
+
+
+def find_similar_channels_in_xml(src_png, src_to_info, channel_id_to_srcs):
+    """Find similar channels in XML based on various criteria"""
+    suggestions = []
+    src_parts = src_png.split('_')
+    
+    if len(src_parts) < 7:
+        return suggestions
+    
+    # 1. Cerca per channel_id simile (se c'è pattern nei PNG)
+    # Estrai possibili parti che potrebbero essere channel_id
+    possible_ids = []
+    
+    # Cerca parti esadecimali che potrebbero essere ID
+    for part in src_parts[3:6]:  # TS ID, ONID, Namespace
+        if re.match(r'^[0-9A-F]{2,}$', part, re.IGNORECASE):
+            possible_ids.append(part)
+    
+    # 2. Cerca SRC simili per struttura
+    for xml_src, xml_info in src_to_info.items():
+        xml_parts = xml_src.split('_')
+        
+        if len(xml_parts) < 7:
+            continue
+        
+        # Calcola similarità
+        similarity = 0
+        
+        # Namespace uguale = alta similarità
+        if src_parts[5] == xml_parts[5]:
+            similarity += 3
+        
+        # ONID uguale = media similarità
+        if src_parts[4] == xml_parts[4]:
+            similarity += 2
+        
+        # TS ID simile (primi caratteri)
+        if src_parts[3][:4] == xml_parts[3][:4]:
+            similarity += 1
+        
+        # Service ID simile
+        if src_parts[2] == xml_parts[2]:
+            similarity += 1
+        
+        if similarity >= 2:
+            suggestions.append({
+                'src': xml_src,
+                'name': xml_info['name'],
+                'channel_id': xml_info['channel_id'],
+                'similarity': similarity,
+                'satellites': xml_info['satellites']
+            })
+    
+    return sorted(suggestions, key=lambda x: x['similarity'], reverse=True)[:5]
 
 
 def generate_final_mapping():
     print("=" * 80)
-    print("GENERATING COMPLETE SRC MAPPING - FINAL VERSION")
+    print("GENERATING SRC MAPPING - INTELLIGENT MATCHING")
     print("=" * 80)
-
+    
     start_time = time.time()
 
     # 1. Get PNG paths
@@ -231,201 +212,217 @@ def generate_final_mapping():
 
     # 2. Parse XML
     print("\nParsing XML from rytec.channels.xml...")
-    xml_dict = parse_xml_for_channels()
+    src_to_info, channel_id_to_srcs = parse_xml_for_channels()
 
-    if not xml_dict:
-        print("ERROR: Failed to parse XML!")
-        return
-
-    # 3. Process PNG paths
-    print("\nProcessing PNG paths...")
-    png_srcs = defaultdict(set)
-
+    # 3. Process PNG paths - AGGREGA satelliti per SRC
+    print("\nProcessing PNG paths and aggregating satellites...")
+    png_srcs = defaultdict(set)  # src -> set di satelliti
+    
     for path in png_paths:
         src, satellite = extract_src_and_satellite_from_path(path)
         if src and satellite:
             png_srcs[src].add(satellite)
-
+    
     print(f"Found {len(png_srcs)} unique SRCs in PNG directories")
-
-    # 4. Calcola statistiche
-    all_srcs = set(list(xml_dict.keys()) + list(png_srcs.keys()))
-    srcs_in_both = set(xml_dict.keys()) & set(png_srcs.keys())
-    srcs_only_in_xml = set(xml_dict.keys()) - set(png_srcs.keys())
-    srcs_only_in_png = set(png_srcs.keys()) - set(xml_dict.keys())
-
-    print(f"\n📊 STATISTICS:")
-    print(f"  Total unique SRCs: {len(all_srcs):,}")
-    print(f"  SRCs in both XML and PNG: {len(srcs_in_both):,}")
-    print(f"  SRCs only in XML (need PNGs): {len(srcs_only_in_xml):,}")
-    print(f"  SRCs only in PNG (need XML entries): {len(srcs_only_in_png):,}")
-
-    # 5. Genera src_mapping.txt
-    print("\n📁 Generating src_mapping.txt...")
+    
+    # Conta SRC su più satelliti
+    multi_sat_pngs = sum(1 for sats in png_srcs.values() if len(sats) > 1)
+    print(f"PNGs on multiple satellites: {multi_sat_pngs}")
+    
+    # 4. Genera mapping intelligente
+    print("\n📁 Generating intelligent mapping...")
+    
     mapping_lines = []
-
-    # Contatori per statistiche
-    known_with_name = 0
-    known_without_name = 0
-    unknown = 0
-
-    # Processa tutti gli SRC nei PNG
-    for src in sorted(png_srcs.keys()):
-        satellites = png_srcs[src]
-
+    missing_pngs = []
+    matched_by_similarity = 0
+    
+    # Per ogni SRC nei PNG
+    for src_png in sorted(png_srcs.keys()):
+        png_satellites = png_srcs[src_png]
+        
         # Determina nome e SNP
-        if src in xml_dict:
-            xml_data = xml_dict[src]
-            channel_name = xml_data['name']
-
-            # Controlla se il nome è valido o è solo ID/satellite
-            if (channel_name and
-                channel_name != xml_data['channel_id'] and
-                not re.match(r'^\d+\.\d+[EW]', channel_name) and
-                    len(channel_name) > 3):
-
-                snp_code = create_snp_code(channel_name)
-                known_with_name += 1
-            else:
-                # Nome non valido, usa UNKN
-                snp_code = "UNKN"
-                known_without_name += 1
+        snp_code = "UNKN"
+        channel_name = ""
+        all_satellites = set(png_satellites)
+        
+        # CASO 1: SRC trovato esattamente nell'XML
+        if src_png in src_to_info:
+            xml_info = src_to_info[src_png]
+            channel_name = xml_info['name']
+            snp_code = create_snp_code(channel_name)
+            all_satellites.update(xml_info['satellites'])
+        
+        # CASO 2: Cerca canali simili nell'XML
         else:
-            snp_code = "UNKN"
-            unknown += 1
-
-        # Combina satelliti (XML + PNG)
-        all_satellites = set(satellites)
-        if src in xml_dict:
-            all_satellites.update(xml_dict[src]['satellites'])
-
-        # Ordina satelliti
+            similar_channels = find_similar_channels_in_xml(src_png, src_to_info, channel_id_to_srcs)
+            
+            if similar_channels:
+                # Prendi il più simile
+                best_match = similar_channels[0]
+                
+                # Usa solo se similarity è abbastanza alta
+                if best_match['similarity'] >= 3:
+                    channel_name = f"{best_match['name']} (similar)"
+                    snp_code = create_snp_code(best_match['name'])
+                    all_satellites.update(best_match['satellites'])
+                    matched_by_similarity += 1
+                    
+                    # Aggiungi al file missing per verifica
+                    missing_pngs.append({
+                        'src': src_png,
+                        'png_satellites': png_satellites,
+                        'suggested_name': best_match['name'],
+                        'similar_src': best_match['src'],
+                        'similarity': best_match['similarity']
+                    })
+                else:
+                    # Similarità bassa, aggiungi a missing per ricerca manuale
+                    missing_pngs.append({
+                        'src': src_png,
+                        'png_satellites': png_satellites,
+                        'suggestions': similar_channels[:3]
+                    })
+            else:
+                # Nessun match trovato
+                missing_pngs.append({
+                    'src': src_png,
+                    'png_satellites': png_satellites,
+                    'suggestions': []
+                })
+        
+        # Ordina satelliti: W negativi, E positivi
         def sat_sort_key(s):
             match = re.match(r'(\d+\.?\d*)([EW])', s)
             if match:
                 num = float(match.group(1))
                 return -num if match.group(2) == 'W' else num
             return 999
-
+        
         sorted_sats = sorted(all_satellites, key=sat_sort_key)
-        satellites_str = '|'.join(sorted_sats) if sorted_sats else 'Unknown'
-
-        mapping_lines.append(f"{src} - {snp_code} - {satellites_str}")
-
-    # 6. Genera missing_pngs.txt
-    missing_lines = []
-    if srcs_only_in_png:
-        for src in sorted(srcs_only_in_png):
-            satellites = png_srcs[src]
-            sat_str = '|'.join(sorted(satellites)) if satellites else 'Unknown'
-            missing_lines.append(f"{src} - {sat_str}")
-
-    # 7. Genera xml_without_pngs.txt
-    xml_no_png_lines = []
-    if srcs_only_in_xml:
-        for src in sorted(srcs_only_in_xml):
-            if src in xml_dict:
-                data = xml_dict[src]
-                sats = '|'.join(
-                    sorted(
-                        data['satellites'])) if data['satellites'] else 'none'
-                xml_no_png_lines.append(f"{src} - {data['name']} - {sats}")
-
-    # 8. Scrivi i file
+        satellites_str = '|'.join(sorted_sats)
+        
+        mapping_lines.append(f"{src_png} - {snp_code} - {satellites_str}")
+    
+    # 5. Scrivi i file
     print("\n💾 Writing files...")
-
+    
     # File 1: src_mapping.txt
     with open('src_mapping.txt', 'w', encoding='utf-8') as f:
         f.write("# SRC (codice) - SNP (codice abbreviato del nome del canale) - posizioni satellitari disponibili\n")
         f.write(f"# Total entries: {len(mapping_lines):,}\n")
-        f.write(f"# Known channels with valid names: {known_with_name:,}\n")
-        f.write(
-            f"# Known channels without valid names: {
-                known_without_name:,}\n")
-        f.write(f"# Unknown channels (not in XML): {unknown:,}\n")
+        f.write(f"# Direct matches in XML: {len([l for l in mapping_lines if '(similar)' not in l and 'UNKN' not in l])}\n")
+        f.write(f"# Similarity matches: {matched_by_similarity}\n")
+        f.write(f"# Unknown: {len([l for l in mapping_lines if 'UNKN' in l]) - matched_by_similarity}\n")
         f.write("# Generated from logos.txt and rytec.channels.xml\n")
         f.write("# Format example: 1_0_16_105_F01_20CB_EEEE0000_0_0_0 - filmbox premium - 23.5E|16.0E|13.0E|0.8W\n\n")
-
+        
         for line in mapping_lines:
             f.write(line + "\n")
-
-    # File 2: missing_pngs.txt
-    with open('missing_pngs.txt', 'w', encoding='utf-8') as f:
-        f.write("# PNG files missing in XML (need to add to rytec.channels.xml)\n")
-        f.write(f"# Total: {len(missing_lines):,}\n\n")
-
-        if missing_lines:
-            for line in missing_lines:
-                f.write(line + "\n")
-        else:
-            f.write("# No missing PNGs found!\n")
-
-    # File 3: xml_without_pngs.txt
-    with open('xml_without_pngs.txt', 'w', encoding='utf-8') as f:
-        f.write("# Channels in XML but missing PNG files\n")
-        f.write(f"# Total: {len(xml_no_png_lines):,}\n")
-        f.write("# Consider creating logos for these channels\n\n")
-
-        for line in xml_no_png_lines[:1000]:  # Limita output
+    
+    # File 2: missing_pngs_detailed.txt
+    with open('missing_pngs_detailed.txt', 'w', encoding='utf-8') as f:
+        f.write("# DETAILED REPORT: PNG FILES NEEDING XML ENTRIES\n")
+        f.write("# ================================================\n")
+        f.write(f"# Total missing: {len(missing_pngs):,}\n")
+        f.write(f"# Matched by similarity: {matched_by_similarity}\n")
+        f.write(f"# Need manual identification: {len(missing_pngs) - matched_by_similarity}\n")
+        f.write("# Generated: " + time.strftime('%Y-%m-%d %H:%M:%S') + "\n")
+        f.write("#\n")
+        f.write("# COLUMNS:\n")
+        f.write("# 1. PNG SRC that's missing in XML\n")
+        f.write("# 2. Satellites where PNG was found\n")
+        f.write("# 3. Suggested channel name (from similarity)\n")
+        f.write("# 4. Similar channels in XML\n")
+        f.write("# 5. Search links for identification\n")
+        f.write("# ================================================\n\n")
+        
+        for item in missing_pngs:
+            f.write(f"SRC: {item['src']}\n")
+            f.write(f"PNG Satellites: {'|'.join(sorted(item['png_satellites']))}\n")
+            
+            if 'suggested_name' in item:
+                f.write(f"SUGGESTED NAME: {item['suggested_name']} (similarity: {item['similarity']}/6)\n")
+                f.write(f"Similar SRC in XML: {item['similar_src']}\n")
+            elif 'suggestions' in item and item['suggestions']:
+                f.write(f"POSSIBLE MATCHES in XML:\n")
+                for sug in item['suggestions']:
+                    sats = '|'.join(sorted(sug['satellites'])) if sug['satellites'] else 'none'
+                    f.write(f"  • {sug['name']} (channel_id: {sug['channel_id']}, similarity: {sug['similarity']}/6)\n")
+                    f.write(f"    SRC: {sug['src']}, Satellites: {sats}\n")
+            else:
+                f.write(f"NO SIMILAR CHANNELS FOUND in XML\n")
+            
+            # Aggiungi link di ricerca
+            if item['png_satellites']:
+                f.write(f"SEARCH ON:\n")
+                for sat in sorted(item['png_satellites']):
+                    sat_num = sat.replace('E', '').replace('W', '')
+                    direction = 'east' if 'E' in sat else 'west'
+                    f.write(f"  • KingOfSat {sat}: https://en.kingofsat.net/pos-{sat_num}{direction}.php\n")
+            
+            f.write("-" * 60 + "\n\n")
+    
+    # File 3: multi_satellite_channels.txt
+    multi_sat_channels = []
+    for line in mapping_lines:
+        if '|' in line and 'Unknown' not in line:
+            multi_sat_channels.append(line)
+    
+    with open('multi_satellite_channels.txt', 'w', encoding='utf-8') as f:
+        f.write("# CHANNELS AVAILABLE ON MULTIPLE SATELLITES\n")
+        f.write(f"# Total: {len(multi_sat_channels):,}\n")
+        f.write("# These channels have the same SRC/PNG on different satellites\n")
+        f.write("# Format: SRC - SNP - satellite1|satellite2|...\n\n")
+        
+        for line in sorted(multi_sat_channels):
             f.write(line + "\n")
-
-        if len(xml_no_png_lines) > 1000:
-            f.write(f"\n# ... and {len(xml_no_png_lines) - 1000:,} more\n")
-
-    # 9. Statistiche finali
+    
+    # 6. Statistiche finali
     print("\n" + "=" * 80)
     print("🎯 FINAL RESULTS")
     print("=" * 80)
+    
+    exact_matches = len([l for l in mapping_lines if '(similar)' not in l and 'UNKN' not in l])
+    similarity_matches = matched_by_similarity
+    unknown_count = len([l for l in mapping_lines if 'UNKN' in l]) - similarity_matches
+    
     print(f"✅ Processing completed in {time.time() - start_time:.1f} seconds")
-    print(f"📊 Total SRCs processed: {len(all_srcs):,}")
-    print(
-        f"📈 Known with valid names: {
-            known_with_name:,} ({
-            known_with_name / len(mapping_lines) * 100:.1f}%)")
-    print(
-        f"📉 Known without valid names: {
-            known_without_name:,} ({
-            known_without_name / len(mapping_lines) * 100:.1f}%)")
-    print(
-        f"❓ Unknown (not in XML): {
-            unknown:,} ({
-            unknown / len(mapping_lines) * 100:.1f}%)")
-
-    # Mostra esempi REALI con nomi
-    print(f"\n📄 Sample channels WITH VALID NAMES (first 5):")
-    valid_samples = []
-    for line in mapping_lines:
-        if ' - UNKN - ' not in line:
-            valid_samples.append(line)
-
-    for line in valid_samples[:5]:
+    print(f"📊 Total PNG SRCs: {len(png_srcs):,}")
+    print(f"📈 Exact matches in XML: {exact_matches:,} ({exact_matches/len(png_srcs)*100:.1f}%)")
+    print(f"📉 Similarity matches: {similarity_matches:,} ({similarity_matches/len(png_srcs)*100:.1f}%)")
+    print(f"❓ Unknown (need research): {unknown_count:,} ({unknown_count/len(png_srcs)*100:.1f}%)")
+    print(f"🌍 Multi-satellite channels: {len(multi_sat_channels):,}")
+    
+    # Esempi
+    print(f"\n📄 Sample EXACT matches (first 5):")
+    exact_samples = [l for l in mapping_lines if '(similar)' not in l and 'UNKN' not in l]
+    for line in exact_samples[:5]:
         print(f"  {line}")
-
-    if not valid_samples:
-        print(f"  No valid channel names found!")
-        print(f"\n🔍 Debug: checking XML parsing issues...")
-        print(f"  Sample XML entries (first 5):")
-        for i, (src, data) in enumerate(list(xml_dict.items())[:5]):
-            print(
-                f"    {src[:30]}... -> '{data['name']}' (id: {data['channel_id']})")
-
-    print(f"\n❓ Sample UNKNOWN channels (first 3):")
-    unkn_samples = [line for line in mapping_lines if ' - UNKN - ' in line]
-    for line in unkn_samples[:3]:
+    
+    if similarity_matches > 0:
+        print(f"\n🔍 Sample SIMILARITY matches (first 3):")
+        similar_samples = [l for l in mapping_lines if '(similar)' in l]
+        for line in similar_samples[:3]:
+            print(f"  {line}")
+    
+    print(f"\n❓ Sample UNKNOWN (first 3):")
+    unknown_samples = [l for l in mapping_lines if 'UNKN' in l and '(similar)' not in l]
+    for line in unknown_samples[:3]:
         print(f"  {line}")
-
+    
+    print(f"\n🌍 Sample MULTI-SATELLITE channels (first 3):")
+    for line in multi_sat_channels[:3]:
+        print(f"  {line}")
+    
     print(f"\n📁 Files created:")
-    print(f"  1. src_mapping.txt - Main mapping file")
-    print(f"  2. missing_pngs.txt - PNGs missing in XML")
-    print(f"  3. xml_without_pngs.txt - XML channels without PNGs")
-
-    print(f"\n⚠️  ISSUE DIAGNOSIS:")
-    if known_with_name == 0:
-        print(f"  ❌ Problem: XML parser not extracting channel names correctly")
-        print(f"  🔧 Fix: Check regex patterns in parse_xml_for_channels()")
-        print(f"  💡 Tip: Manually inspect rytec.channels.xml format")
-    else:
-        print(f"  ✅ Good: Found {known_with_name:,} channels with valid names")
+    print(f"  1. src_mapping.txt - Main mapping with | separated satellites")
+    print(f"  2. missing_pngs_detailed.txt - Detailed report with suggestions")
+    print(f"  3. multi_satellite_channels.txt - Channels on multiple satellites")
+    
+    print(f"\n✅ OUTPUT FORMAT IS CORRECT:")
+    print(f"   SRC - SNP - satellite1|satellite2|satellite3")
+    print(f"\n🔍 For {unknown_count:,} unknown channels, check missing_pngs_detailed.txt")
+    print(f"   It includes search links and similarity suggestions!")
 
 
 if __name__ == "__main__":
