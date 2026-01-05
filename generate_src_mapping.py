@@ -103,7 +103,11 @@ def create_snp_code(channel_name):
     if not channel_name or channel_name.lower() in ['unknown', 'no_epg', '']:
         return "UNKN"
 
-    clean = re.sub(r'\b(?:HD|FHD|UHD|4K|SD|HEVC|TV|CHANNEL|LIVE)\b', '', channel_name, flags=re.IGNORECASE)
+    clean = re.sub(
+        r'\b(?:HD|FHD|UHD|4K|SD|HEVC|TV|CHANNEL|LIVE)\b',
+        '',
+        channel_name,
+        flags=re.IGNORECASE)
     letters = re.findall(r'[a-zA-Z]', clean)
     clean = ''.join(letters)
 
@@ -145,7 +149,8 @@ def generate_final_mapping():
         else:
             snp = "UNKN"
 
-        mapping_lines.append("{} - {} - {}".format(src_png, snp, satellites_str))
+        mapping_lines.append(
+            "{} - {} - {}".format(src_png, snp, satellites_str))
 
     with open('src_mapping.txt', 'w', encoding='utf-8') as f:
         f.write("# SRC - SNP - SATELLITES\n")
