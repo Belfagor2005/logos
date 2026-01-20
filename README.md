@@ -15,5 +15,5 @@ linuxsat-support.com
 
 
 
-Number of graphic files: 104530
+Number of graphic files: 106961
 
